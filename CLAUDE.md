@@ -13,19 +13,23 @@ Hosted on Overleaf. Compile entry point: `main.tex`.
 
 ```
 04-technical-report/
-├── main.tex              entry point — compile this
-├── references.bib        BibTeX bibliography
-├── readme.md             usage guide (how to compile / upload)
+├── main.tex                        entry point — compile this
+├── references.bib                  BibTeX bibliography
+├── readme.md                       usage guide (how to compile / upload)
 ├── sections/
 │   ├── 01-introduction.tex
-│   ├── 02-database.tex
-│   ├── 03-methodology.tex
-│   └── 04-website-and-outputs.tex
-├── figures/              place .pdf/.png figures here
+│   ├── 02-database.tex             IHPD construction, variables, sources
+│   ├── 03-data-access.tex          data retrieval, ihpdr, update workflow
+│   ├── 03-methodology.tex          GSADF + PSY-IVX
+│   ├── 04-website-and-outputs.tex  dashboard, reports, software
+│   ├── appendix-a-countries.tex    country source table
+│   ├── appendix-b-changelog.tex    version history
+│   └── bibliography.tex            wraps \bibliographystyle + \bibliography
+├── figures/                        place .pdf/.png figures here
 ├── data/
-│   ├── raw/              Dallas Fed downloads (hp2504.xlsx, hpta2504.xlsx)
-│   └── processed/        cleaned outputs for tables
-└── references/           downloaded PDFs of key papers
+│   ├── raw/                        Dallas Fed downloads (hp2504.xlsx, hpta2504.xlsx)
+│   └── processed/                  cleaned outputs for tables
+└── references/                     downloaded PDFs of key papers
 ```
 
 ## Key domain facts

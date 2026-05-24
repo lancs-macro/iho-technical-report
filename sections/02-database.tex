@@ -90,24 +90,7 @@ shares from 2005 as weights.
 
 \subsection{Update Schedule}
 
-The database is updated quarterly. The most recent release covers
-2025\,Q4. Data are available at
-\url{https://www.dallasfed.org/research/international/houseprice}.
-
-\subsection{Programmatic Access via \texttt{ihpdr}}
-
-The \texttt{ihpdr} \textsf{R} package \citep{ihpdr} provides direct download
-of IHPD series, GSADF test statistics, and BSADF sequences.
-
-\begin{lstlisting}[caption={Downloading IHPD data with \texttt{ihpdr}}]
-install.packages("ihpdr")
-library(ihpdr)
-
-raw   <- hpdr_raw()    # HPI, RHPI, PDI, RPDI for all countries
-sadf  <- hpdr_sadf()   # SADF/GSADF statistics
-bsadf <- hpdr_bsadf()  # BSADF sequences for date-stamping
-\end{lstlisting}
-
-The package is available on CRAN
-(\url{https://cran.r-project.org/web/packages/ihpdr/}) and GitHub
-(\url{https://github.com/kvasilopoulos/ihpdr}).
+The database is updated quarterly by the Dallas Fed Globalization Institute.
+The most recent release covers 2025\,Q4. See Section~\ref{sec:data-access}
+for the release file format, programmatic access, and the Observatory's
+quarterly update workflow.
