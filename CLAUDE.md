@@ -51,6 +51,7 @@ Hosted on Overleaf. Compile entry point: `main.tex`.
 | Shi & Phillips — | JES 2021, 35(5) — key `shi2021` |
 | GMI WP 99 (Mack & MG 2011) | **No journal version** — working paper only, key `mack2011` |
 | GMI WP 325 (Pavlidis et al. 2017/2018) | **No journal version** — working paper only, key `pavlidis2018` |
+| `exuber` `@manual` | JSS 2022, 103(10):1–26 — key `vasilopoulos2022` (use this for methodology citations) |
 
 ## Team
 

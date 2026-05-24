@@ -21,34 +21,13 @@ The dashboard visualises:
 Users can select individual countries, switch between the RHPI and RHPI/RPDI
 indicators, and adjust the confidence level (95\,\%, 90\,\%, 80\,\%).
 
-The dashboard source code is maintained in the Observatory's private
-repository.
-
 \subsection{Quarterly Monitoring Reports}
 
-A PDF monitoring report is published each quarter. Table~\ref{tab:reports}
-lists the most recent releases.
-
-\begin{table}[ht]
-  \centering
-  \caption{Recent quarterly monitoring reports}
-  \label{tab:reports}
-  \begin{tabular}{ll}
-    \toprule
-    Quarter & URL \\
-    \midrule
-    2025\,Q2 & \url{https://int.housing-observatory.com/reports/2025q2.html} \\
-    2025\,Q1 & \url{https://int.housing-observatory.com/reports/2025q1.html} \\
-    2024\,Q3 & \url{https://int.housing-observatory.com/reports/2024q3.html} \\
-    2024\,Q2 & \url{https://int.housing-observatory.com/reports/2024q2.html} \\
-    2023\,Q4 & \url{https://int.housing-observatory.com/reports/2023q4.html} \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-Each report covers: (i)~a summary of current exuberance status by country;
-(ii)~BSADF plots for RHPI and the price-to-income ratio; (iii)~historical
-context and trend commentary.
+A PDF monitoring report is published each quarter following the IHPD data
+release. Each report covers: (i)~a summary of current exuberance status by
+country; (ii)~BSADF plots for RHPI and the price-to-income ratio;
+(iii)~historical context and trend commentary. Reports are listed at
+\url{https://int.housing-observatory.com/}.
 
 \subsection{Companion Platform: Housing Fever}
 
@@ -65,22 +44,22 @@ the Observatory.
   \centering
   \caption{Open-source \textsf{R} packages}
   \label{tab:software}
-  \begin{tabular}{lll}
+  \begin{tabular}{llp{3.5cm}}
     \toprule
     Package & Purpose & Reference \\
     \midrule
-    \texttt{ihpdr}  & Download IHPD data, GSADF statistics, BSADF sequences
-                    & \citet{ihpdr} \\
-    \texttt{exuber} & Estimate GSADF/BSADF; date-stamp explosive episodes
-                    & \citet{exuber} \\
+    \texttt{ihpdr}
+      & Download IHPD data, GSADF statistics, BSADF sequences
+      & \citet{ihpdr} \\[4pt]
+    \texttt{exuber}
+      & Estimate GSADF/BSADF; date-stamp explosive episodes
+      & \citet{vasilopoulos2022} \\
     \bottomrule
   \end{tabular}
 \end{table}
 
-Both packages are available on CRAN and GitHub.
-
-\subsection{Disclaimer}
-
-The views presented on the Observatory platform are those of the authors and
-do not necessarily represent the views of the Federal Reserve Bank of Dallas
-or the Federal Reserve System.
+Both packages are available on CRAN
+(\url{https://cran.r-project.org/web/packages/ihpdr/},
+\url{https://cran.r-project.org/web/packages/exuber/}) and on GitHub
+(\url{https://github.com/kvasilopoulos/ihpdr},
+\url{https://github.com/kvasilopoulos/exuber}).
