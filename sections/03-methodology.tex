@@ -1,0 +1,139 @@
+\section{Methodology}
+\label{sec:methodology}
+
+The Observatory applies two complementary econometric frameworks to detect
+and date-stamp periods of housing market exuberance.
+
+% ── 3.1 GSADF ────────────────────────────────────────────────────────────────
+\subsection{The GSADF Test}
+\label{subsec:gsadf}
+
+\subsubsection{Overview}
+
+The \textit{Generalised Supremum Augmented Dickey--Fuller} (GSADF) test
+\citep{phillips2015a, phillips2015b} is a recursive, right-tailed unit root
+test designed to detect mildly explosive autoregressive behaviour in time
+series. It extends the earlier SADF test of \citet{phillips2015a} with
+improved power for detecting multiple explosive episodes within a single
+sample. The test has been applied to international house prices by
+\citet{pavlidis2016} and \citet{pavlidis2018}.
+
+\subsubsection{Estimation}
+
+For sub-sample $[r_1, r_2] \subset [0, 1]$ (fractions of the full sample),
+the test fits an ADF-type regression:
+\begin{equation}
+  \label{eq:adf}
+  \Delta y_t = \alpha_{r_1, r_2}
+             + \beta_{r_1, r_2}\, y_{t-1}
+             + \sum_{j=1}^{k} \phi_j\, \Delta y_{t-j}
+             + \varepsilon_t,
+\end{equation}
+where $k$ is the lag order selected by an information criterion. The
+null hypothesis is $H_0\colon \beta = 0$ (unit root) against the
+right-tailed alternative $H_1\colon \beta > 0$ (explosive root).
+
+\subsubsection{The GSADF Statistic}
+
+The GSADF statistic is the supremum of the ADF$_{r_1}^{r_2}$ statistics
+over all feasible sub-sample pairs:
+\begin{equation}
+  \label{eq:gsadf}
+  \mathrm{GSADF}(r_0) = \sup_{\substack{r_2 \in [r_0, 1] \\
+                                        r_1 \in [0,\, r_2 - r_0]}}
+                        \mathrm{ADF}_{r_1}^{r_2},
+\end{equation}
+where $r_0$ is the minimum window size. Critical values are obtained by
+Monte Carlo simulation.
+
+\subsubsection{Date-Stamping with the BSADF Sequence}
+
+The \textit{Backward SADF} (BSADF) sequence enables date-stamping of
+exuberance episodes. For each end-point $r_2$:
+\begin{equation}
+  \label{eq:bsadf}
+  \mathrm{BSADF}_{r_2}(r_0)
+    = \sup_{r_1 \in [0,\, r_2 - r_0]} \mathrm{ADF}_{r_1}^{r_2}.
+\end{equation}
+A period $t$ is classified as \textit{explosive} when
+$\mathrm{BSADF}_{r_2}$ exceeds the right-tailed critical value at the
+chosen confidence level (95\,\%, 90\,\%, or 80\,\%).
+
+\subsubsection{Application to House Price Data}
+
+The Observatory applies the GSADF test to two series for each country:
+\begin{itemize}
+  \item \textbf{RHPI} --- real house price index (inflation-adjusted).
+  \item \textbf{RHPI/RPDI ratio} --- house-price-to-income ratio
+        (affordability-adjusted).
+\end{itemize}
+
+\subsubsection{Open-Source Implementation}
+
+The \texttt{exuber} \textsf{R} package \citep{exuber} provides a full
+implementation of GSADF estimation, Monte Carlo critical values, and
+BSADF date-stamping:
+
+\begin{lstlisting}[caption={GSADF estimation with \texttt{exuber}}]
+install.packages("exuber")
+library(exuber)
+
+result <- radf(price_series)
+cv     <- radf_cv(nrow(price_series))
+datestamp(result, cv)
+\end{lstlisting}
+
+% ── 3.2 PSY-IVX ──────────────────────────────────────────────────────────────
+\subsection{The PSY-IVX Approach}
+\label{subsec:psyivx}
+
+\subsubsection{Overview}
+
+The PSY-IVX method \citep{shi2021} decomposes the price-to-rent ratio into
+fundamental and non-fundamental (speculative) components. Unlike the GSADF
+test, which examines prices in isolation, PSY-IVX explicitly models the role
+of economic fundamentals in driving house prices.
+
+\subsubsection{Two-Step Procedure}
+
+\paragraph{Step 1 --- Fundamental component estimation.}
+The long-run relationship between the price-to-rent ratio and economic
+fundamentals (interest rates, income, user cost of capital) is estimated
+using IVX estimation \citep{shi2021}, which is robust to persistent and
+potentially explosive regressors.
+
+\paragraph{Step 2 --- Exuberance testing.}
+Recursive right-tailed unit root tests of the PSY type are applied to the
+non-fundamental residual from Step~1. Explosive dynamics in the residual
+indicate speculative pricing that is decoupled from fundamentals.
+
+\subsubsection{Platform}
+
+PSY-IVX results are published on the companion platform
+\url{https://housing-fever.com/}.
+
+% ── 3.3 Reporting ────────────────────────────────────────────────────────────
+\subsection{Confidence Levels and Reporting}
+\label{subsec:reporting}
+
+Both methods report exuberance indicators at three confidence levels,
+summarised in Table~\ref{tab:confidence}.
+
+\begin{table}[ht]
+  \centering
+  \caption{Confidence levels for exuberance classification}
+  \label{tab:confidence}
+  \begin{tabular}{cl}
+    \toprule
+    Level & Interpretation \\
+    \midrule
+    95\,\% & Strong evidence of explosive dynamics \\
+    90\,\% & Moderate evidence \\
+    80\,\% & Early warning signal \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Quarterly reports provide country-level exuberance date-stamps, aggregate
+heatmaps across all 25 countries, and historical context (e.g., the early
+2000s global episode, the 2020--22 pandemic-era price surge).

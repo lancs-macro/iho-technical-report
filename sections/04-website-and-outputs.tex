@@ -1,0 +1,86 @@
+\section{Website and Outputs}
+\label{sec:website}
+
+\subsection{Main Platform}
+
+The International Housing Observatory is publicly accessible at
+\url{https://int.housing-observatory.com/}. The platform provides real-time
+monitoring of housing market exuberance across 25 countries and is updated
+quarterly following each new IHPD data release from the Dallas Fed.
+
+\subsection{Interactive Dashboard}
+
+The dashboard visualises:
+\begin{itemize}
+  \item BSADF sequences plotted against Monte Carlo critical values,
+        by country and confidence level;
+  \item shaded exuberance episodes overlaid on real house price and
+        price-to-income series;
+  \item cross-country heatmaps showing exuberance status by quarter.
+\end{itemize}
+Users can select individual countries, switch between the RHPI and RHPI/RPDI
+indicators, and adjust the confidence level (95\,\%, 90\,\%, 80\,\%).
+
+The dashboard source code is available at
+\texttt{/c/Users/User/Documents/02-housing-observatory/02-dashboard/idash}.
+
+\subsection{Quarterly Monitoring Reports}
+
+A PDF monitoring report is published each quarter. Table~\ref{tab:reports}
+lists the most recent releases.
+
+\begin{table}[ht]
+  \centering
+  \caption{Recent quarterly monitoring reports}
+  \label{tab:reports}
+  \begin{tabular}{ll}
+    \toprule
+    Quarter & URL \\
+    \midrule
+    2025\,Q2 & \url{https://int.housing-observatory.com/reports/2025q2.html} \\
+    2025\,Q1 & \url{https://int.housing-observatory.com/reports/2025q1.html} \\
+    2024\,Q3 & \url{https://int.housing-observatory.com/reports/2024q3.html} \\
+    2024\,Q2 & \url{https://int.housing-observatory.com/reports/2024q2.html} \\
+    2023\,Q4 & \url{https://int.housing-observatory.com/reports/2023q4.html} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Each report covers: (i)~a summary of current exuberance status by country;
+(ii)~BSADF plots for RHPI and the price-to-income ratio; (iii)~historical
+context and trend commentary.
+
+\subsection{Companion Platform: Housing Fever}
+
+The companion platform at \url{https://housing-fever.com/} applies the
+PSY-IVX methodology (Section~\ref{subsec:psyivx}) to decompose house prices
+into fundamental and non-fundamental components.
+
+\subsection{Open-Source Software}
+
+Table~\ref{tab:software} summarises the \textsf{R} packages associated with
+the Observatory.
+
+\begin{table}[ht]
+  \centering
+  \caption{Open-source \textsf{R} packages}
+  \label{tab:software}
+  \begin{tabular}{lll}
+    \toprule
+    Package & Purpose & Reference \\
+    \midrule
+    \texttt{ihpdr}  & Download IHPD data, GSADF statistics, BSADF sequences
+                    & \citet{ihpdr} \\
+    \texttt{exuber} & Estimate GSADF/BSADF; date-stamp explosive episodes
+                    & \citet{exuber} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Both packages are available on CRAN and GitHub.
+
+\subsection{Disclaimer}
+
+The views presented on the Observatory platform are those of the authors and
+do not necessarily represent the views of the Federal Reserve Bank of Dallas
+or the Federal Reserve System.

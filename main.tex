@@ -1,0 +1,98 @@
+\documentclass[12pt, a4paper]{article}
+
+% ── Encoding & fonts ──────────────────────────────────────────────────────────
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+\usepackage{lmodern}
+
+% ── Page layout ───────────────────────────────────────────────────────────────
+\usepackage[top=2.5cm, bottom=2.5cm, left=3cm, right=3cm]{geometry}
+\usepackage{setspace}
+\onehalfspacing
+
+% ── Mathematics ───────────────────────────────────────────────────────────────
+\usepackage{amsmath, amssymb, amsthm}
+
+% ── Tables ────────────────────────────────────────────────────────────────────
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{longtable}
+
+% ── Graphics ──────────────────────────────────────────────────────────────────
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+
+% ── Code listings ─────────────────────────────────────────────────────────────
+\usepackage{listings}
+\lstset{
+  basicstyle=\small\ttfamily,
+  breaklines=true,
+  frame=single,
+  backgroundcolor=\color{gray!10},
+  language=R
+}
+\usepackage{xcolor}
+
+% ── URLs and hyperlinks ───────────────────────────────────────────────────────
+\usepackage{url}
+\usepackage[colorlinks=true, linkcolor=blue!60!black,
+            citecolor=blue!60!black, urlcolor=blue!60!black]{hyperref}
+
+% ── Bibliography ──────────────────────────────────────────────────────────────
+\usepackage[round, authoryear, sort]{natbib}
+
+% ── Section formatting ────────────────────────────────────────────────────────
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+
+% ── Abstract ──────────────────────────────────────────────────────────────────
+\usepackage{abstract}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\title{\textbf{International House Price Database}\\
+       \large Technical Report\\[0.5em]
+       \normalsize International Housing Observatory}
+
+\author{Konstantin Vasilopoulos\thanks{%
+  \texttt{k.vasilopoulo@gmail.com}.
+  The views expressed here are those of the authors and do not necessarily
+  represent those of the Federal Reserve Bank of Dallas or the Federal Reserve
+  System.}
+  \and Enrique Mart\'{i}nez-Garc\'{i}a
+  \and Themis Pavlidis
+  \and Ivan Paya}
+
+\date{\today}
+% ─────────────────────────────────────────────────────────────────────────────
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+  This report documents the Dallas Fed International House Price Database
+  (IHPD) and the monitoring methodology used by the International Housing
+  Observatory (\url{https://int.housing-observatory.com/}). We describe the
+  data coverage (25 countries, quarterly from 1975\,Q1), variable construction,
+  and the two econometric frameworks applied to detect and date-stamp episodes
+  of housing market exuberance: the Generalised Supremum Augmented
+  Dickey--Fuller (GSADF) test of \citet{phillips2015a} and the PSY-IVX
+  decomposition approach of \citet{shi2021}.
+\end{abstract}
+
+\tableofcontents
+\newpage
+
+% ── Sections ──────────────────────────────────────────────────────────────────
+\input{sections/01-introduction}
+\input{sections/02-database}
+\input{sections/03-methodology}
+\input{sections/04-website-and-outputs}
+
+% ── Bibliography ──────────────────────────────────────────────────────────────
+\bibliographystyle{plainnat}
+\bibliography{references}
+
+\end{document}

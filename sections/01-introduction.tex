@@ -1,0 +1,67 @@
+\section{Introduction}
+\label{sec:introduction}
+
+\subsection{Background}
+
+Housing markets play a central role in macroeconomic stability. Episodes of
+speculative exuberance --- where real house prices detach from economic
+fundamentals --- have historically preceded major financial crises, most
+notably the global housing boom of the early 2000s that collapsed in
+2006--07 and precipitated the 2008--09 financial crisis
+\citep{pavlidis2016}.
+
+Monitoring such episodes in real time, across multiple countries
+simultaneously, requires a consistent, long-span, and internationally
+comparable dataset alongside robust statistical methodology. Existing
+country-level databases are often incomparable across nations due to
+differences in index construction, base years, deflation methods, and
+seasonal adjustment procedures.
+
+\subsection{The International Housing Observatory}
+
+The International Housing Observatory is a collaborative research initiative
+established in 2019 by three partner institutions:
+
+\begin{itemize}
+  \item Federal Reserve Bank of Dallas, Globalization Institute (United States)
+  \item Lancaster University Management School, Economics Department
+        (United Kingdom)
+  \item University of Alicante, Department of Fundamentals of Economic Analysis
+        (Spain)
+\end{itemize}
+
+The Observatory provides a publicly accessible, real-time monitoring platform
+for international real estate markets at
+\url{https://int.housing-observatory.com/}. Exuberance indicators are updated
+quarterly following each new data release from the Dallas Fed.
+
+\subsection{Purpose of This Report}
+
+This technical report documents three interrelated components of the
+Observatory's infrastructure:
+
+\begin{enumerate}
+  \item \textbf{Data infrastructure} --- the Dallas Fed International House
+        Price Database (IHPD), including country coverage, variable
+        definitions, construction methodology, and programmatic access via
+        the \texttt{ihpdr} \textsf{R} package \citep{ihpdr}.
+
+  \item \textbf{Econometric methodology} --- the GSADF test of
+        \citet{phillips2015a, phillips2015b} and the PSY-IVX decomposition
+        approach of \citet{shi2021}, both used to detect and date-stamp
+        periods of housing market exuberance.
+
+  \item \textbf{Web platform} --- the structure and outputs of the Observatory's
+        dashboard, quarterly monitoring reports, and companion tools.
+\end{enumerate}
+
+\subsection{Scope}
+
+\begin{itemize}
+  \item \textbf{Data:} 25 countries, 1975\,Q1 -- present, updated quarterly.
+  \item \textbf{Variables:} Real and nominal house price indices and personal
+        disposable income indices, rebased to 2005\,=\,100.
+  \item \textbf{Methods:} Recursive right-tailed unit root tests for explosive
+        dynamics; fundamental--non-fundamental price decomposition.
+  \item \textbf{Platform:} Interactive dashboard and quarterly PDF reports.
+\end{itemize}

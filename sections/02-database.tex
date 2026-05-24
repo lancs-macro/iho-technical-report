@@ -1,0 +1,113 @@
+\section{The International House Price Database}
+\label{sec:database}
+
+\subsection{Overview}
+
+The International House Price Database (IHPD) is maintained by the
+Globalization Institute of the Federal Reserve Bank of Dallas. It provides
+quarterly, seasonally adjusted, cross-country comparable house price and
+income series for 25 economies, beginning in 1975\,Q1. The construction
+methodology is described in detail in \citet{mack2011}.
+
+\subsection{Country Coverage}
+
+The database currently covers 25 countries, listed in
+Table~\ref{tab:countries}.
+
+\begin{table}[ht]
+  \centering
+  \caption{IHPD country coverage}
+  \label{tab:countries}
+  \begin{tabular}{ll}
+    \toprule
+    Region & Countries \\
+    \midrule
+    North America  & United States, Canada \\
+    Western Europe & Belgium, Switzerland, Germany, Denmark, Spain, Finland, \\
+                   & France, United Kingdom, Ireland, Italy, Luxembourg, \\
+                   & Netherlands, Norway, Sweden \\
+    Eastern Europe & Croatia \\
+    Asia-Pacific   & Australia, Japan, South Korea, New Zealand \\
+    Other          & South Africa, Israel \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Variables}
+
+Each country series contains four quarterly time series, defined in
+Table~\ref{tab:variables}.
+
+\begin{table}[ht]
+  \centering
+  \caption{IHPD variable definitions}
+  \label{tab:variables}
+  \begin{tabular}{lp{10cm}}
+    \toprule
+    Variable & Description \\
+    \midrule
+    HPI  & Nominal house price index. Country-specific source index selected
+           for consistency with the U.S.\ FHFA quarterly index for existing
+           single-family homes. \\[4pt]
+    RHPI & Real house price index. HPI deflated by the country's personal
+           consumption expenditure (PCE) deflator, rebased to
+           2005\,=\,100. \\[4pt]
+    PDI  & Nominal personal disposable income per capita (PDI divided by
+           working-age population), indexed to 2005\,=\,100. \\[4pt]
+    RPDI & Real personal disposable income per capita. PDI deflated by the
+           country's PCE deflator, indexed to 2005\,=\,100. \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{Construction Methodology}
+
+\paragraph{Base year.}
+All indices are rebased to 2005\,=\,100 to ensure cross-country
+comparability.
+
+\paragraph{Deflator.}
+The personal consumption expenditure (PCE) deflator is used to construct
+real series, consistent with U.S.\ national accounts methodology.
+
+\paragraph{Per capita income.}
+Personal disposable income is expressed per working-age capita to control
+for demographic variation across countries and over time.
+
+\paragraph{Seasonal adjustment.}
+An unobserved components time series model is estimated over the full
+available sample for each country's nominal house price index.
+
+\paragraph{Source selection.}
+For each country, the house price series is selected to maximise
+consistency with the U.S.\ Federal Housing Finance Agency (FHFA) quarterly
+index for existing single-family homes. Where data do not extend back to
+1975\,Q1, historical sources are used to backfill the series.
+
+\paragraph{Weighted aggregates.}
+Cross-country aggregates use purchasing-power-parity (PPP) adjusted GDP
+shares from 2005 as weights.
+
+\subsection{Update Schedule}
+
+The database is updated quarterly. The most recent release covers
+2025\,Q4. Data are available at
+\url{https://www.dallasfed.org/research/international/houseprice}.
+
+\subsection{Programmatic Access via \texttt{ihpdr}}
+
+The \texttt{ihpdr} \textsf{R} package \citep{ihpdr} provides direct download
+of IHPD series, GSADF test statistics, and BSADF sequences.
+
+\begin{lstlisting}[caption={Downloading IHPD data with \texttt{ihpdr}}]
+install.packages("ihpdr")
+library(ihpdr)
+
+raw   <- hpdr_raw()    # HPI, RHPI, PDI, RPDI for all countries
+sadf  <- hpdr_sadf()   # SADF/GSADF statistics
+bsadf <- hpdr_bsadf()  # BSADF sequences for date-stamping
+\end{lstlisting}
+
+The package is available on CRAN
+(\url{https://cran.r-project.org/web/packages/ihpdr/}) and GitHub
+(\url{https://github.com/kvasilopoulos/ihpdr}).
