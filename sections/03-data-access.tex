@@ -1,0 +1,112 @@
+\section{Data Access and Retrieval}
+\label{sec:data-access}
+
+\subsection{Source Data}
+
+The IHPD raw data are published by the Globalization Institute of the Federal
+Reserve Bank of Dallas at:
+\begin{center}
+  \url{https://www.dallasfed.org/research/international/houseprice}
+\end{center}
+
+Two Excel files are released each quarter, described in
+Table~\ref{tab:release-files}.
+
+\begin{table}[ht]
+  \centering
+  \caption{Dallas Fed IHPD quarterly release files}
+  \label{tab:release-files}
+  \begin{tabular}{lp{9cm}}
+    \toprule
+    File & Contents \\
+    \midrule
+    \texttt{hp\textit{YYMM}.xlsx}
+      & HPI, RHPI, PDI, and RPDI series for all 25 countries.
+        One worksheet per country. \\[4pt]
+    \texttt{hpta\textit{YYMM}.xlsx}
+      & BSADF sequences and GSADF/SADF test statistics for each country,
+        pre-computed by the Dallas Fed team. \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+The filename encodes the release year and month: \texttt{hp2504.xlsx}
+is the file released in April~2025 (\texttt{25}\,=\,year,
+\texttt{04}\,=\,month), containing data through 2025\,Q4 (the most recent
+completed quarter at time of publication). The most recent release archived
+in this project is \texttt{data/raw/hp2504.xlsx} and
+\texttt{data/raw/hpta2504.xlsx}.
+
+\subsection{Manual Download}
+
+Files are available for direct download from the Dallas Fed database page
+linked above. Only the current release is linked on the main page; historical
+files are not archived by Dallas Fed. The Observatory retains all historical
+release files under \texttt{data/raw/}.
+
+\subsection{Programmatic Access via \texttt{ihpdr}}
+
+The \texttt{ihpdr} \textsf{R} package \citep{ihpdr} provides programmatic
+access to the current IHPD release, fetching data directly from the Dallas
+Fed server and returning tidy data frames.
+
+\begin{lstlisting}[caption={Downloading IHPD data with \texttt{ihpdr}}]
+install.packages("ihpdr")
+library(ihpdr)
+
+raw   <- hpdr_raw()    # HPI, RHPI, PDI, RPDI for all countries
+sadf  <- hpdr_sadf()   # GSADF/SADF test statistics
+bsadf <- hpdr_bsadf()  # BSADF sequences for date-stamping
+\end{lstlisting}
+
+The package is available on CRAN
+(\url{https://cran.r-project.org/web/packages/ihpdr/}) and GitHub
+(\url{https://github.com/kvasilopoulos/ihpdr}).
+
+\subsection{Data Structure}
+
+The raw Excel file contains one worksheet per country. Each sheet lists
+quarterly observations from the earliest available date for that country
+through the current release quarter. The \texttt{ihpdr} package consolidates
+these into a single long-format data frame. Table~\ref{tab:data-structure}
+describes the output of \texttt{hpdr\_raw()}.
+
+\begin{table}[ht]
+  \centering
+  \caption{Structure of \texttt{hpdr\_raw()} output}
+  \label{tab:data-structure}
+  \begin{tabular}{lll}
+    \toprule
+    Column & Type & Description \\
+    \midrule
+    \texttt{date}    & Date    & Quarter start date (\texttt{YYYY-MM-01}) \\
+    \texttt{country} & Factor  & Country name \\
+    \texttt{hpi}     & numeric & Nominal house price index (2005\,=\,100) \\
+    \texttt{rhpi}    & numeric & Real house price index (2005\,=\,100) \\
+    \texttt{pdi}     & numeric & Nominal per capita disposable income (2005\,=\,100) \\
+    \texttt{rpdi}    & numeric & Real per capita disposable income (2005\,=\,100) \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+The output of \texttt{hpdr\_sadf()} returns the GSADF and SADF test statistics
+per country. The output of \texttt{hpdr\_bsadf()} returns the full BSADF
+sequence with one row per country--quarter observation.
+
+\subsection{Quarterly Update Workflow}
+
+Each quarter, the Observatory follows a fixed procedure to incorporate the
+new data release:
+
+\begin{enumerate}
+  \item Dallas Fed publishes new \texttt{hp\textit{YYMM}.xlsx} and
+        \texttt{hpta\textit{YYMM}.xlsx} files on the database page.
+  \item Raw files are downloaded and archived in \texttt{data/raw/}.
+  \item Exuberance statistics are re-estimated using the \texttt{exuber}
+        package (Section~\ref{subsec:gsadf}).
+  \item The dashboard and quarterly monitoring report are regenerated and
+        published to the Observatory website.
+  \item This technical report is updated to the next \textsc{minor} version
+        (e.g., \texttt{v1.0.0} $\to$ \texttt{v1.1.0}) and the changelog
+        (Appendix~\ref{app:changelog}) is updated accordingly.
+\end{enumerate}

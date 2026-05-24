@@ -11,6 +11,21 @@
 \usepackage{setspace}
 \onehalfspacing
 
+% ── Headers and footers ───────────────────────────────────────────────────────
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textit{International Housing Observatory}}
+\fancyhead[R]{\small Technical Report \reportversion}
+\fancyfoot[C]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0pt}
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[C]{\small\thepage}%
+  \renewcommand{\headrulewidth}{0pt}%
+}
+
 % ── Mathematics ───────────────────────────────────────────────────────────────
 \usepackage{amsmath, amssymb, amsthm}
 
@@ -25,6 +40,7 @@
 
 % ── Code listings ─────────────────────────────────────────────────────────────
 \usepackage{listings}
+\usepackage{xcolor}
 \lstset{
   basicstyle=\small\ttfamily,
   breaklines=true,
@@ -32,7 +48,6 @@
   backgroundcolor=\color{gray!10},
   language=R
 }
-\usepackage{xcolor}
 
 % ── URLs and hyperlinks ───────────────────────────────────────────────────────
 \usepackage{url}
@@ -46,55 +61,79 @@
 \usepackage{titlesec}
 \titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
 \titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+\titleformat{\subsubsection}{\normalsize\itshape}{\thesubsubsection.}{0.5em}{}
+
+% ── Captions ──────────────────────────────────────────────────────────────────
+\usepackage[labelfont=bf, font=small]{caption}
 
 % ── Abstract ──────────────────────────────────────────────────────────────────
 \usepackage{abstract}
+\renewcommand{\abstractname}{Abstract}
+
+% ── Version ───────────────────────────────────────────────────────────────────
+\newcommand{\reportversion}{v1.0.0}
 
 % ─────────────────────────────────────────────────────────────────────────────
-\title{\textbf{International House Price Database}\\
-       \large Technical Report\\[0.5em]
-       \normalsize International Housing Observatory}
+\title{%
+  \textbf{International House Price Database}\\[0.4em]
+  \large Technical Report\\[0.3em]
+  \normalsize International Housing Observatory%
+}
 
 \author{%
-  Enrique Mart\'{i}nez-Garc\'{i}a\thanks{Director. Federal Reserve Bank of Dallas.}
-  \and Themis Pavlidis\thanks{Director. Lancaster University Management School.}
-  \and Ivan Paya\thanks{Director. University of Alicante.}
-  \and Kostas Vasilopoulos\thanks{Web Administrator. \texttt{k.vasilopoulo@gmail.com}.
-       The views expressed here are those of the authors and do not necessarily
-       represent those of the Federal Reserve Bank of Dallas or the Federal Reserve
-       System.}
+  Enrique Mart\'{i}nez-Garc\'{i}a\thanks{Director. Federal Reserve Bank of Dallas,
+       Globalization Institute. The views expressed here are those of the authors
+       and do not necessarily represent those of the Federal Reserve Bank of
+       Dallas or the Federal Reserve System.}
+  \and Themis Pavlidis\thanks{Director. Lancaster University Management School,
+       Economics Department.}
+  \and Ivan Paya\thanks{Director. University of Alicante, Department of
+       Fundamentals of Economic Analysis.}
+  \and Kostas Vasilopoulos\thanks{Web Administrator.
+       \href{mailto:k.vasilopoulo@gmail.com}{\texttt{k.vasilopoulo@gmail.com}}.
+       \texttt{ihpdr} and \texttt{exuber} \textsf{R} packages.}
   \and Erik Andres Escayola\thanks{Researcher.}%
 }
 
-\date{\today}
+\date{%
+  Version \reportversion\\[0.2em]
+  \normalsize May 2026%
+}
 % ─────────────────────────────────────────────────────────────────────────────
 
 \begin{document}
 
 \maketitle
+\thispagestyle{plain}
 
 \begin{abstract}
   This report documents the Dallas Fed International House Price Database
-  (IHPD) and the monitoring methodology used by the International Housing
-  Observatory (\url{https://int.housing-observatory.com/}). We describe the
-  data coverage (25 countries, quarterly from 1975\,Q1), variable construction,
-  and the two econometric frameworks applied to detect and date-stamp episodes
-  of housing market exuberance: the Generalised Supremum Augmented
-  Dickey--Fuller (GSADF) test of \citet{phillips2015a} and the PSY-IVX
-  decomposition approach of \citet{shi2021}.
+  (IHPD) and the monitoring methodology of the International Housing
+  Observatory (\url{https://int.housing-observatory.com/}). It covers data
+  coverage (25 countries, quarterly from 1975\,Q1), variable construction,
+  programmatic data access via the \texttt{ihpdr} \textsf{R} package, and
+  the two econometric frameworks applied to detect and date-stamp housing
+  market exuberance: the Generalised Supremum Augmented Dickey--Fuller
+  (GSADF) test \citep{phillips2015a} and the PSY-IVX decomposition approach
+  \citep{shi2021}. This report is a living document updated quarterly
+  alongside each data release; the version history is in Appendix~\ref{app:changelog}.
 \end{abstract}
 
-\tableofcontents
-\newpage
+\clearpage
 
 % ── Sections ──────────────────────────────────────────────────────────────────
 \input{sections/01-introduction}
 \input{sections/02-database}
+\input{sections/03-data-access}
 \input{sections/03-methodology}
 \input{sections/04-website-and-outputs}
 
+% ── Appendices ────────────────────────────────────────────────────────────────
+\appendix
+\input{sections/appendix-a-countries}
+\input{sections/appendix-b-changelog}
+
 % ── Bibliography ──────────────────────────────────────────────────────────────
-\bibliographystyle{plainnat}
-\bibliography{references}
+\input{sections/bibliography}
 
 \end{document}
