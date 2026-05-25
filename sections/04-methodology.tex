@@ -57,12 +57,15 @@ chosen confidence level (95\,\%, 90\,\%, or 80\,\%).
 
 \subsubsection{Application to House Price Data}
 
-The Observatory applies the GSADF test to two series for each country:
-\begin{itemize}
-  \item \textbf{RHPI} --- real house price index (inflation-adjusted).
-  \item \textbf{RHPI/RPDI ratio} --- house-price-to-income ratio
-        (affordability-adjusted).
-\end{itemize}
+The Observatory applies the GSADF test to two series for each country.
+The first is the real house price index (RHPI), which captures
+inflation-adjusted price dynamics in isolation. The second is the
+house-price-to-income ratio (RHPI/RPDI), which anchors prices to a
+measure of household purchasing power and thereby tests for exuberance
+relative to income fundamentals. Running both series in parallel allows
+the Observatory to distinguish episodes where nominal price growth is
+mirrored by real income gains from those where prices are rising faster
+than fundamentals would support.
 
 \paragraph{Software.}
 The \texttt{exuber} \textsf{R} package \citep{vasilopoulos2022} implements
