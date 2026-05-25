@@ -72,6 +72,7 @@
 
 % ── Version ───────────────────────────────────────────────────────────────────
 \newcommand{\reportversion}{v1.0.0}
+\newcommand{\reportdate}{May 2026}
 
 % ─────────────────────────────────────────────────────────────────────────────
 \title{%
@@ -97,7 +98,7 @@
 
 \date{%
   Version \reportversion\\[0.2em]
-  \normalsize May 2026%
+  \normalsize\reportdate%
 }
 % ─────────────────────────────────────────────────────────────────────────────
 
@@ -119,10 +120,21 @@
   alongside each data release; the version history is in Appendix~\ref{app:changelog}.
 \end{abstract}
 
+\vspace{1em}
+\noindent\rule{\linewidth}{0.4pt}
+{\small\noindent\textbf{Suggested citation:}
+Mart\'{i}nez-Garc\'{i}a, E., Pavlidis, T., Paya, I., Vasilopoulos, K.,
+and Andres Escayola, E. (\reportdate).
+\textit{International House Price Database: Technical Report}
+(\reportversion). International Housing Observatory.
+\url{https://int.housing-observatory.com/}}
+\noindent\rule{\linewidth}{0.4pt}
+
 \clearpage
 
 % ── Sections ──────────────────────────────────────────────────────────────────
 \input{sections/01-introduction}
+\input{sections/notation}
 \input{sections/02-database}
 \input{sections/03-data-access}
 \input{sections/04-methodology}

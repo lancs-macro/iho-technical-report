@@ -18,6 +18,7 @@ Hosted on Overleaf. Compile entry point: `main.tex`.
 ├── readme.md                       usage guide (how to compile / upload)
 ├── sections/
 │   ├── 01-introduction.tex
+│   ├── notation.tex                abbreviations table (unnumbered section)
 │   ├── 02-database.tex             IHPD construction, variables, sources
 │   ├── 03-data-access.tex          data retrieval, ihpdr, update workflow
 │   ├── 03-methodology.tex          GSADF + PSY-IVX
