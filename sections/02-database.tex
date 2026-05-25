@@ -101,6 +101,26 @@ shares from 2005 as weights \citep{pavlidis2018}. Fixing the weights at
 2005 ensures that aggregate dynamics reflect structural differences in
 housing market size rather than cyclical movements in GDP or exchange rates.
 
+\subsection{Data Quality and Known Limitations}
+
+The IHPD is designed for cross-country comparability, but several
+limitations should be noted. First, series start dates differ by country:
+while most series begin in 1975\,Q1, a number of economies have shorter
+histories and rely on backfilled historical sources for earlier quarters.
+Users should check the country-level data for missing observations before
+applying methods that assume a balanced panel.
+
+Second, source index methodologies vary across countries. Although
+preference is given to repeat-sales or hedonic indices that control for
+quality change, some country series are based on median or average prices,
+which conflate quality mix with pure price change. Cross-country
+comparisons of levels should therefore be treated with caution.
+
+Third, because seasonal adjustment is applied retrospectively over the
+full available sample, the adjusted series in any given release may differ
+from those in prior releases for the same observation dates. Users archiving
+vintages for real-time analysis should retain the original release files.
+
 \subsection{Update Schedule}
 
 The database is updated quarterly by the Dallas Fed Globalization Institute.
