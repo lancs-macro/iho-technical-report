@@ -4,10 +4,15 @@
 \subsection{Overview}
 
 The International House Price Database (IHPD) is maintained by the
-Globalization Institute of the Federal Reserve Bank of Dallas. It provides
+Globalization Institute of the Federal Reserve Bank of Dallas and provides
 quarterly, seasonally adjusted, cross-country comparable house price and
-income series for 25 economies, beginning in 1975\,Q1. The construction
-methodology is described in detail in \citet{mack2011}.
+income series. The database was originally established with 19 economies
+in \citet{mack2011} and has since been extended to its current 25-country
+coverage. Series begin in 1975\,Q1 for most countries; where earlier data
+are unavailable, historical sources are used to backfill the series as far
+back as possible. The construction methodology is described in detail in
+\citet{mack2011}; country-level source details are in
+Appendix~\ref{app:countries}.
 
 \subsection{Country Coverage}
 
@@ -76,17 +81,25 @@ for demographic variation across countries and over time.
 
 \paragraph{Seasonal adjustment.}
 An unobserved components time series model is estimated over the full
-available sample for each country's nominal house price index.
+available sample for each country's nominal house price index. Because the
+model is re-estimated with each quarterly data release, seasonal factors
+are not produced in real time but are instead revised retrospectively over
+the entire history. This approach trades real-time availability for smoother
+and more consistent seasonal adjustment across revisions.
 
 \paragraph{Source selection.}
 For each country, the house price series is selected to maximise
 consistency with the U.S.\ Federal Housing Finance Agency (FHFA) quarterly
-index for existing single-family homes. Where data do not extend back to
-1975\,Q1, historical sources are used to backfill the series.
+index for existing single-family homes, giving preference to repeat-sales
+or hedonic indices that control for quality change. Where data do not extend
+back to 1975\,Q1, historical sources are used to backfill the series.
+Country-level source details are in Appendix~\ref{app:countries}.
 
 \paragraph{Weighted aggregates.}
 Cross-country aggregates use purchasing-power-parity (PPP) adjusted GDP
-shares from 2005 as weights.
+shares from 2005 as weights \citep{pavlidis2018}. Fixing the weights at
+2005 ensures that aggregate dynamics reflect structural differences in
+housing market size rather than cyclical movements in GDP or exchange rates.
 
 \subsection{Update Schedule}
 

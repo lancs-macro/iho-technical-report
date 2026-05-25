@@ -49,8 +49,22 @@ archived there by quarter.
 \subsection{Companion Platform: Housing Fever}
 
 The companion platform at \url{https://housing-fever.com/} applies the
-PSY-IVX methodology (Section~\ref{subsec:psyivx}) to decompose house prices
-into fundamental and non-fundamental components.
+PSY-IVX methodology of \citet{shi2021} (Section~\ref{subsec:psyivx}) to
+decompose real house prices into fundamental and non-fundamental
+(speculative) components. The fundamental component is estimated from the
+long-run equilibrium relationship between the price-to-rent ratio and
+economic drivers including interest rates, income, and the user cost of
+capital, using the IVX estimator, which is robust to persistent and
+explosive regressors. The non-fundamental residual is then subjected to
+recursive right-tailed unit root tests to identify periods of speculative
+excess.
+
+This decomposition complements the GSADF-based analysis on the main
+Observatory platform: while the GSADF test signals exuberance in raw or
+inflation-adjusted price levels, the PSY-IVX approach distinguishes whether
+that exuberance is driven by economic fundamentals or by speculative
+dynamics that are decoupled from them. The platform is updated in line with
+the quarterly IHPD release cycle.
 
 \subsection{Open-Source Software}
 
@@ -61,7 +75,7 @@ the Observatory.
   \centering
   \caption{Open-source \textsf{R} packages}
   \label{tab:software}
-  \begin{tabular}{llp{3.5cm}}
+  \begin{tabular}{lp{7.5cm}p{3.5cm}}
     \toprule
     Package & Purpose & Reference \\
     \midrule
