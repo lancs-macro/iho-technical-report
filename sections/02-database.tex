@@ -1,47 +1,72 @@
 \section{The International House Price Database}
 \label{sec:database}
 
-\subsection{Overview}
+\subsection{Overview and Relationship to Working Paper 99}
 
-The International House Price Database (IHPD) is maintained by the
-Globalization Institute of the Federal Reserve Bank of Dallas and provides
-quarterly, seasonally adjusted, cross-country comparable house price and
-income series. The database was originally established with 19 economies
-in \citet{mack2011} and has since been extended to its current 25-country
-coverage. Series begin in 1975\,Q1 for most countries; where earlier data
-are unavailable, historical sources are used to backfill the series as far
-back as possible. The construction methodology is described in detail in
-\citet{mack2011}; country-level source details are in
-Appendix~\ref{app:countries}.
+The International House Price Database is constructed and maintained by the
+Globalization Institute of the Federal Reserve Bank of Dallas. It provides
+quarterly, seasonally adjusted, cross-country comparable indices of house
+prices and personal disposable income, beginning in 1975\,Q1.
 
-\subsection{Country Coverage}
+The authoritative description of the database is \citet{mack2011}, Dallas Fed
+Globalization Institute Working Paper 99, which is revised whenever the
+construction methodology changes. That paper documents the selection criteria
+applied to national sources, the full methodological decision tree, the
+treatment of each country individually, and the underlying national sources.
+This section summarises the parts of that methodology that a user needs in
+order to interpret the series correctly --- and, in
+Section~\ref{subsec:limitations}, what follows from it. For anything beyond
+that, and in particular for country-level detail, the reader should consult
+Working Paper 99 directly.
 
-The database currently covers 25 countries, listed in
-Table~\ref{tab:countries}.
+\subsection{Coverage}
+
+The current release covers 26 economies, listed in
+Table~\ref{tab:countries}, together with two aggregate series. Every country
+series runs the full span of the database, 1975\,Q1 to the most recent
+release quarter, with no interior gaps; how that completeness is achieved,
+and what it implies, is discussed in
+Sections~\ref{subsec:construction} and~\ref{subsec:limitations}.
 
 \begin{table}[ht]
   \centering
-  \caption{IHPD country coverage}
+  \caption{IHPD coverage, current release}
   \label{tab:countries}
-  \begin{tabular}{ll}
+  \begin{tabular}{lp{9.5cm}}
     \toprule
-    Region & Countries \\
+    Region & Economies \\
     \midrule
-    North America  & United States, Canada \\
-    Western Europe & Belgium, Switzerland, Germany, Denmark, Spain, Finland, \\
-                   & France, United Kingdom, Ireland, Italy, Luxembourg, \\
-                   & Netherlands, Norway, Sweden \\
-    Eastern Europe & Croatia \\
-    Asia-Pacific   & Australia, Japan, South Korea, New Zealand \\
-    Other          & South Africa, Israel \\
+    North America  & United States, Canada \\[3pt]
+    Western Europe & Belgium, Denmark, Finland, France, Germany, Ireland,
+                     Italy, Luxembourg, Netherlands, Norway, Portugal, Spain,
+                     Sweden, Switzerland, United Kingdom \\[3pt]
+    Central and Eastern Europe
+                   & Croatia, Slovenia \\[3pt]
+    Asia-Pacific   & Australia, Japan, New Zealand, South Korea \\[3pt]
+    Other          & Colombia, Israel, South Africa \\
     \bottomrule
   \end{tabular}
 \end{table}
 
+\paragraph{Aggregates.}
+Two aggregate series are published alongside the country series. The first,
+\textit{Aggregate --- 2005 Fixed Weights}, weights countries by their
+purchasing-power-parity adjusted GDP shares in 2005, held constant over the
+whole sample. Fixing the weights means that movements in the aggregate
+reflect movements in the underlying country series rather than changes in
+relative economic size or exchange rates. The second, \textit{Aggregate ---
+Dynamic Weights}, allows the weights to vary over time, which tracks the
+changing composition of the sample more closely at the cost of mixing price
+dynamics with reweighting. The Observatory's headline charts use the
+dynamically weighted aggregate. On the role of aggregation in exuberance
+testing specifically, see \citet{pavlidis2018}.
+
 \subsection{Variables}
 
-Each country series contains four quarterly time series, defined in
-Table~\ref{tab:variables}.
+Each economy is represented by four quarterly series, defined in
+Table~\ref{tab:variables}. All are indices rebased to 2005\,=\,100, which
+means the database supports comparison of \emph{growth rates and dynamics}
+across countries, but not comparison of price \emph{levels}.
 
 \begin{table}[ht]
   \centering
@@ -49,81 +74,177 @@ Table~\ref{tab:variables}.
   \label{tab:variables}
   \begin{tabular}{lp{10cm}}
     \toprule
-    Variable & Description \\
+    Variable & Definition \\
     \midrule
-    HPI  & Nominal house price index. Country-specific source index selected
-           for consistency with the U.S.\ FHFA quarterly index for existing
-           single-family homes. \\[4pt]
+    HPI  & Nominal house price index. For each country, the national series
+           selected as most consistent with the U.S.\ FHFA quarterly
+           nationwide index for existing single-family houses. \\[4pt]
     RHPI & Real house price index. HPI deflated by the country's personal
-           consumption expenditure (PCE) deflator, rebased to
-           2005\,=\,100. \\[4pt]
-    PDI  & Nominal personal disposable income per capita (PDI divided by
-           working-age population), indexed to 2005\,=\,100. \\[4pt]
-    RPDI & Real personal disposable income per capita. PDI deflated by the
-           country's PCE deflator, indexed to 2005\,=\,100. \\
+           consumption expenditure (PCE) deflator. \\[4pt]
+    PDI  & Nominal personal disposable income per working-age capita. \\[4pt]
+    RPDI & Real personal disposable income per working-age capita. PDI
+           deflated by the country's PCE deflator. \\
     \bottomrule
   \end{tabular}
 \end{table}
 
+\noindent Expressing income per working-age capita, rather than per head of
+total population, controls for cross-country and over-time variation in
+demographic structure. The ratio RHPI/RPDI --- real prices relative to real
+income per capita --- is the affordability measure used throughout the
+Observatory's outputs, and is one of the two series to which the exuberance
+tests of Section~\ref{sec:methodology} are applied.
+
 \subsection{Construction Methodology}
+\label{subsec:construction}
 
-\paragraph{Base year.}
-All indices are rebased to 2005\,=\,100 to ensure cross-country
-comparability.
+The construction of each country series follows a fixed sequence, described
+in full in \citet{mack2011}. The steps below are the ones that bear on
+interpretation.
 
-\paragraph{Deflator.}
-The personal consumption expenditure (PCE) deflator is used to construct
-real series, consistent with U.S.\ national accounts methodology.
+\paragraph{Benchmark and source selection.}
+The U.S.\ FHFA house price index serves as the benchmark against which
+candidate series for other countries are judged. Preference is given, in
+order, to nationwide geographic coverage, existing rather than newly built
+dwellings, single-family dwellings, pricing per dwelling, availability back
+to 1975, and quarterly frequency. Sources are drawn primarily from central
+banks, national statistical offices and other bodies not party to housing
+transactions, in preference to market participants whose samples may be
+biased by their own commercial footprint. The corresponding benchmark for
+income is the disposable personal income series of the U.S.\ Bureau of
+Economic Analysis, with national accounts aggregates reconciled to that
+concept where necessary.
 
-\paragraph{Per capita income.}
-Personal disposable income is expressed per working-age capita to control
-for demographic variation across countries and over time.
+\paragraph{Frequency conversion.}
+Series reported more frequently than quarterly are converted by simple
+averaging of the constituent months. Series reported less frequently
+(semi-annual, annual, bi-annual) are interpolated up to quarterly frequency,
+using a quadratic-match method. Where a country has experienced severe
+inflation within the sample --- Croatia is the example given by
+\citet{mack2011} --- interpolation is performed on the logged series to avoid
+a fitted curve that violates non-negativity.
+
+\paragraph{Splicing.}
+Few national reference series extend back to 1975. The current reference
+series for a country is therefore extended backwards using the growth rates
+of older historical series, producing what \citet{mack2011} term the extended
+or full-length series. Splicing uses exact growth rates, except for countries
+with severe inflation episodes, where log-differences are used.
+
+\paragraph{Backcasting and nowcasting.}
+Where splicing still does not reach 1975\,Q1, the remaining observations ---
+never more than about two years --- are backcast. Where the current series
+lags, because a national source reports late or at lower than quarterly
+frequency, the most recent observations are nowcast and replaced with actual
+data in later releases. Both are produced from the same basic structural time
+series model described below. The release file's \texttt{Note} sheet records
+which series contain forecast values in the current vintage.
 
 \paragraph{Seasonal adjustment.}
-An unobserved components time series model is estimated over the full
-available sample for each country's nominal house price index. Because the
-model is re-estimated with each quarterly data release, seasonal factors
-are not produced in real time but are instead revised retrospectively over
-the entire history. This approach trades real-time availability for smoother
-and more consistent seasonal adjustment across revisions.
+Seasonal adjustment is performed by the Dallas Fed using a
+basic structural time series (BSTS) model in the sense of
+\citet{harvey1989}, fitted by maximum likelihood with the Kalman filter and
+selected by information criteria. The model decomposes each series
+additively --- or, in logs, multiplicatively --- into trend, cycle, seasonal
+and irregular components,
+\begin{equation}
+  \label{eq:bsts}
+  y_t \;=\; \mu_t \;+\; c_t \;+\; s_t \;+\; e_t,
+  \qquad e_t \sim \mathrm{NID}\!\left(0, \sigma_e^2\right),
+\end{equation}
+where $\mu_t$ is a stochastic polynomial trend of order two or lower, $c_t$ a
+covariance-stationary AR($p$) cycle, $s_t$ a stochastic seasonal factor, and
+$e_t$ irregular noise. The published series is the sum of the smoothed trend
+and cycle, so that both seasonality and irregular noise are removed. Series
+that national sources publish only in seasonally adjusted form are taken as
+given unless residual seasonality remains.
 
-\paragraph{Source selection.}
-For each country, the house price series is selected to maximise
-consistency with the U.S.\ Federal Housing Finance Agency (FHFA) quarterly
-index for existing single-family homes, giving preference to repeat-sales
-or hedonic indices that control for quality change. Where data do not extend
-back to 1975\,Q1, historical sources are used to backfill the series.
-Country-level source details are in Appendix~\ref{app:countries}.
+Two features of this choice matter to users. First, because the same model is
+applied to every country, seasonality is treated consistently across the
+panel, rather than inheriting whatever procedure each national agency
+happens to use --- X-12, TRAMO/SEATS, or none. Data not seasonally adjusted at
+source are therefore preferred. Second, the same fitted model supplies the
+backcasts and nowcasts described above, so smoothing and series completion
+are internally consistent. \citet{martinezgarcia2014} provides the formal
+evaluation of the method.
 
-\paragraph{Weighted aggregates.}
-Cross-country aggregates use purchasing-power-parity (PPP) adjusted GDP
-shares from 2005 as weights \citep{pavlidis2018}. Fixing the weights at
-2005 ensures that aggregate dynamics reflect structural differences in
-housing market size rather than cyclical movements in GDP or exchange rates.
+\paragraph{Rebasing.}
+All completed quarterly series are indexed to 2005\,=\,100. Real series are
+obtained using each country's own PCE deflator on the same base.
+
+\subsection{Release Schedule and Vintages}
+\label{subsec:release}
+
+The database is released four times a year, on a fixed schedule that builds
+in a three-month reporting lag, reflecting the fact that a large share of
+countries report the necessary data roughly one quarter in arrears
+(Table~\ref{tab:release-schedule}).
+
+\begin{table}[ht]
+  \centering
+  \caption{IHPD release schedule \citep{mack2011}}
+  \label{tab:release-schedule}
+  \begin{tabular}{ll}
+    \toprule
+    Last quarter included & Release date \\
+    \midrule
+    Q4 of year $T-1$ & First full week of April, year $T$ \\
+    Q1 of year $T$   & First full week of July, year $T$ \\
+    Q2 of year $T$   & First full week of October, year $T$ \\
+    Q3 of year $T$   & First full week of January, year $T+1$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Earlier vintages of the database are retained by the Dallas Fed for
+researchers working in real time, and are reachable programmatically
+(Section~\ref{subsec:ihpdr}). This matters because the series are revised:
+national sources revise their own data, nowcast values are replaced by
+observed ones, and seasonal adjustment is re-estimated over the full sample
+at each release. A given historical quarter can therefore take slightly
+different values in different vintages.
 
 \subsection{Data Quality and Known Limitations}
+\label{subsec:limitations}
 
-The IHPD is designed for cross-country comparability, but several
-limitations should be noted. First, series start dates differ by country:
-while most series begin in 1975\,Q1, a number of economies have shorter
-histories and rely on backfilled historical sources for earlier quarters.
-Users should check the country-level data for missing observations before
-applying methods that assume a balanced panel.
+The database is designed for cross-country comparability, and the
+construction steps above are what deliver it. Each, however, carries a cost,
+and the following should be kept in mind.
 
-Second, source index methodologies vary across countries. Although
-preference is given to repeat-sales or hedonic indices that control for
-quality change, some country series are based on median or average prices,
-which conflate quality mix with pure price change. Cross-country
-comparisons of levels should therefore be treated with caution.
+\paragraph{The panel is balanced by construction, not by observation.}
+Every country series spans the full sample without gaps. That completeness is
+the product of splicing, interpolation and backcasting, not of every country
+having reported comparable quarterly data since 1975. Early observations are
+in many cases derived from lower-frequency historical sources, and in a few
+cases are model-based backcasts. Users should treat the early part of the
+sample as reconstructed, and should not read the absence of missing values as
+evidence of uniform data quality across the panel.
 
-Third, because seasonal adjustment is applied retrospectively over the
-full available sample, the adjusted series in any given release may differ
-from those in prior releases for the same observation dates. Users archiving
-vintages for real-time analysis should retain the original release files.
+\paragraph{Interpolation induces serial correlation.}
+Quadratic-match interpolation relates adjacent observations by construction.
+\citet{mack2011} note explicitly that this introduces a systematic source of
+serial correlation, and that inference using interpolated series should use
+standard errors robust to autocorrelation. Averaging monthly data to
+quarterly frequency can likewise induce spurious first-order serial
+correlation in differenced series.
 
-\subsection{Update Schedule}
+\paragraph{Source methodologies still differ.}
+Selection against a common benchmark narrows cross-country heterogeneity but
+does not remove it. National indices differ in how, and whether, they control
+for quality change; standardising that treatment is beyond the scope of the
+database. Comparisons of dynamics are therefore better founded than
+comparisons of levels, and the 2005 rebasing means level comparisons are not
+available in any case.
 
-The database is updated quarterly by the Dallas Fed Globalization Institute.
-The most recent release covers 2025\,Q4. See Section~\ref{sec:data-access}
-for the release file format, programmatic access, and the Observatory's
-quarterly update workflow.
+\paragraph{Revisions are retrospective.}
+Because seasonal adjustment is re-estimated over the whole sample at each
+release, a published observation may change in later vintages even when the
+underlying national data have not been revised. Analysis that depends on what
+was knowable at a point in time should use the archived vintage for that
+date rather than the current release.
+
+\paragraph{The most recent quarter may be partly forecast.}
+To keep the release timely and complete, missing current observations are
+filled with nowcasts. In the current vintage this affects a number of HPI and
+PDI series, each flagged on the \texttt{Note} sheet of the release file.
+These values are provisional and are replaced as national data arrive.
