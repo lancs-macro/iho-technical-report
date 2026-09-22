@@ -3,58 +3,92 @@
 
 \subsection{Background}
 
-Real-time monitoring of international housing markets requires a consistent,
-long-span, and cross-country comparable dataset. Country-level house price
-databases are often incomparable due to differences in index construction,
-base years, deflation methods, and seasonal adjustment. The Dallas Fed
-International House Price Database (IHPD) addresses this by providing a
-harmonised set of quarterly house price and income series for 25 economies,
-applying uniform construction methods across all countries
-\citep{mack2011}.
+Comparing house prices across countries is harder than it first appears.
+National statistical agencies, central banks and private data providers each
+construct their indices for their own purposes, and those purposes differ:
+indices vary in geographic coverage, in the vintage and type of dwelling
+priced, in how they control for quality change, in reporting frequency, in
+base year, and in whether and how they are seasonally adjusted. Differences
+of this kind are large enough that a naive cross-country panel assembled
+from national sources will confound genuine price dynamics with measurement
+convention \citep{mack2011}.
+
+The Dallas Fed International House Price Database (IHPD) exists to address
+exactly this problem. For each economy it selects the national series most
+consistent with a common benchmark, extends that series back to 1975\,Q1
+using historical sources, and then applies a uniform set of transformations
+--- frequency conversion, splicing, seasonal adjustment, rebasing --- so that
+the resulting panel is comparable across countries. It pairs each house price
+series with a matching measure of personal disposable income, so that prices
+need not be read in isolation from the capacity of households to pay them.
 
 \subsection{The International Housing Observatory}
 
 The International Housing Observatory is a collaborative research initiative
-established in 2019 by the Federal Reserve Bank of Dallas (Globalization
-Institute), Lancaster University Management School (Economics Department),
-and the University of Alicante (Department of Fundamentals of Economic
-Analysis). The Observatory team consists of Enrique Mart\'{i}nez-Garc\'{i}a,
-Themis Pavlidis, and Ivan Paya (Directors); Kostas Vasilopoulos (Web
-Administrator); and Erik Andres Escayola (Researcher).
+of the Federal Reserve Bank of Dallas (Globalization Institute), Lancaster
+University Management School (Economics Department), and the University of
+Alicante (Department of Fundamentals of Economic Analysis). Its public
+platform, at \url{https://int.housing-observatory.com/}, turns the IHPD into
+a monitoring tool: each new data release is passed through a fixed
+econometric pipeline and published as an updated set of exuberance
+indicators, charts and reports.
 
-The Observatory provides a publicly accessible, real-time monitoring platform
-for international real estate markets at
-\url{https://int.housing-observatory.com/}. Exuberance indicators are updated
-quarterly following each new data release from the Dallas Fed. The platform
-combines the IHPD data infrastructure with open-source econometric software
-(\texttt{ihpdr}, \texttt{exuber}) to deliver reproducible, quarterly
-assessments of housing market conditions across all 25 IHPD economies.
+The Observatory's role is therefore complementary to that of the database.
+The Dallas Fed constructs and publishes the data; the Observatory maintains
+the statistical machinery applied to it, the open-source software that
+implements that machinery, and the public-facing outputs through which the
+results are disseminated.
 
-\subsection{Purpose and Scope}
+\subsection{Purpose of This Report}
 
-This report documents four interrelated components of the Observatory's
-infrastructure:
+The Observatory's data, methods and outputs are currently documented across
+several places: the working paper describing the database, a set of published
+econometric papers, two \textsf{R} package manuals, and the methodology pages
+of the website. There is no single document that describes the system as a
+whole, and no citable reference for the platform itself. This report is
+intended to be that document.
+
+It is deliberately \emph{not} a restatement of
+\citet{mack2011}. That working paper remains the authoritative description of
+how the IHPD is built, is maintained by the team that builds it, and is
+revised whenever the construction methodology changes. Section~\ref{sec:database}
+summarises its methodology at the level of detail needed to interpret the
+data correctly and to understand the limitations that follow from it, and
+refers the reader there for the remainder --- in particular for the
+country-by-country source documentation, which this report does not attempt
+to duplicate.
+
+\subsection{Scope}
+
+This report documents five components:
 
 \begin{enumerate}
-  \item \textbf{Database} (Section~\ref{sec:database}) --- the Dallas Fed
-        IHPD: country coverage, variable definitions, and construction
-        methodology.
+  \item \textbf{The database} (Section~\ref{sec:database}) --- coverage,
+        variable definitions, and the construction methodology of
+        \citet{mack2011}, including the consequences of that methodology for
+        how the early part of the sample should be read.
 
-  \item \textbf{Data access} (Section~\ref{sec:data-access}) --- how the raw
-        data are retrieved, the file format of each quarterly release, and
-        programmatic access via the \texttt{ihpdr} \textsf{R} package
-        \citep{ihpdr}.
+  \item \textbf{Data access} (Section~\ref{sec:data-access}) --- the structure
+        of the quarterly release files, programmatic access through the
+        \texttt{ihpdr} \textsf{R} package \citep{ihpdr}, the Observatory's
+        own JSON data API, and the quarterly update workflow.
 
-  \item \textbf{Methodology} (Section~\ref{sec:methodology}) --- the GSADF
-        test \citep{phillips2015a, phillips2015b} and PSY-IVX decomposition
-        \citep{shi2021} used to detect and date-stamp housing market
-        exuberance.
+  \item \textbf{Econometric methodology} (Section~\ref{sec:methodology}) ---
+        the GSADF test and BSADF date-stamping procedure
+        \citep{phillips2015a, phillips2015b}, the PSY-IVX decomposition
+        \citep{shi2021}, and the mixed-frequency dynamic factor model used to
+        nowcast real house prices ahead of the official release.
 
-  \item \textbf{Web platform} (Section~\ref{sec:website}) --- the
-        Observatory's interactive dashboard, quarterly monitoring reports,
-        and companion tools.
+  \item \textbf{Platform and outputs} (Section~\ref{sec:website}) --- the
+        interactive dashboard, the quarterly monitoring reports, the nowcast
+        reports, the Housing Fever companion platform, and the supporting
+        open-source software.
+
+  \item \textbf{Planned extensions} (Section~\ref{sec:roadmap}) --- additions
+        to the database and to the econometric toolkit that are agreed or
+        under consideration.
 \end{enumerate}
 
-\noindent Country-level data sources are listed in
-Appendix~\ref{app:countries}. The version history of this report is in
-Appendix~\ref{app:changelog}.
+\noindent Country coverage and the sources of country-level documentation are
+given in Appendix~\ref{app:countries}. The version history of this report is
+in Appendix~\ref{app:changelog}.

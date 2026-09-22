@@ -73,7 +73,7 @@
 
 % ── Version ───────────────────────────────────────────────────────────────────
 \newcommand{\reportversion}{v1.0.0}
-\newcommand{\reportdate}{May 2026}
+\newcommand{\reportdate}{September 2026}
 
 % ─────────────────────────────────────────────────────────────────────────────
 \title{%
@@ -111,14 +111,20 @@
 \begin{abstract}
   This report documents the Dallas Fed International House Price Database
   (IHPD) and the monitoring methodology of the International Housing
-  Observatory (\url{https://int.housing-observatory.com/}). It covers data
-  coverage (25 countries, quarterly from 1975\,Q1), variable construction,
-  programmatic data access via the \texttt{ihpdr} \textsf{R} package, and
-  the two econometric frameworks applied to detect and date-stamp housing
-  market exuberance: the Generalised Supremum Augmented Dickey--Fuller
-  (GSADF) test \citep{phillips2015a} and the PSY-IVX decomposition approach
-  \citep{shi2021}. This report is a living document updated quarterly
-  alongside each data release; the version history is in Appendix~\ref{app:changelog}.
+  Observatory (\url{https://int.housing-observatory.com/}). It describes the
+  database as currently released --- 26 economies and two aggregates,
+  quarterly from 1975\,Q1 --- together with the construction methodology of
+  \citet{mack2011}, to which this report is a companion rather than a
+  replacement. It then documents how the data are accessed, and the three
+  econometric tools the Observatory maintains: the Generalised Supremum
+  Augmented Dickey--Fuller (GSADF) test used to detect and date-stamp
+  episodes of exuberance \citep{phillips2015a, phillips2015b}, the PSY-IVX
+  decomposition that separates fundamental from speculative movements in the
+  price-to-rent ratio \citep{shi2021}, and a mixed-frequency dynamic factor
+  model used to nowcast real house prices ahead of the official release.
+  A final section records planned extensions to the database and the toolkit.
+  This report is a living document updated alongside each data release; the
+  version history is in Appendix~\ref{app:changelog}.
 \end{abstract}
 
 \vspace{1em}
@@ -139,6 +145,7 @@ and Andres Escayola, E. (\reportdate).
 \input{sections/03-data-access}
 \input{sections/04-methodology}
 \input{sections/05-website-and-outputs}
+\input{sections/06-roadmap}
 
 % ── Acknowledgements ──────────────────────────────────────────────────────────
 \input{sections/acknowledgements}

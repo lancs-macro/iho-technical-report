@@ -1,67 +1,68 @@
-\section{Country Data Sources}
+\section{Coverage and Country Documentation}
 \label{app:countries}
 
-Table~\ref{tab:country-sources} lists the 25 countries in the IHPD and their
-primary house price index source. Full source documentation, including
-descriptions of seasonal adjustment and backfill methods applied to each
-country series, is available in the Dallas Fed Appendix~A at
-\url{https://www.dallasfed.org/~/media/documents/research/international/houseprice/appendixA.pdf}
-and in \citet{mack2011}.
+\subsection*{Where the country-level documentation lives}
 
-\small
-\begin{longtable}{lp{5.5cm}p{4cm}}
-  \caption{IHPD country coverage and primary HPI sources}
-  \label{tab:country-sources} \\
-  \toprule
-  Country & Source institution & Series \\
-  \midrule
-  \endfirsthead
-  \multicolumn{3}{l}{\small\textit{(continued from previous page)}} \\
-  \toprule
-  Country & Source institution & Series \\
-  \midrule
-  \endhead
-  \midrule
-  \multicolumn{3}{r}{\small\textit{(continued on next page)}} \\
-  \endfoot
-  \bottomrule
-  \endlastfoot
-  % North America
-  United States  & Federal Housing Finance Agency (FHFA)   & All-transactions HPI \\
-  Canada         & Statistics Canada / CREA                & MLS HPI \\
-  \midrule
-  % Western Europe
-  Belgium        & Statistics Belgium                      & House price index \\
-  Switzerland    & Wüest Partner                           & Residential property index \\
-  Germany        & Bundesbank                              & House price index \\
-  Denmark        & Statistics Denmark                      & House price index \\
-  Spain          & Ministerio de Fomento                   & House price index \\
-  Finland        & Statistics Finland                      & Dwelling price index \\
-  France         & INSEE / Notaires                        & Property price index \\
-  United Kingdom & Nationwide                              & House price index \\
-  Ireland        & Permanent TSB / ESRI                    & House price index \\
-  Italy          & Banca d'Italia                          & House price index \\
-  Luxembourg     & Observatoire de l'Habitat               & House price index \\
-  Netherlands    & Statistics Netherlands (CBS)            & Owner-occupied house price index \\
-  Norway         & Statistics Norway                       & House price index \\
-  Sweden         & Statistics Sweden                       & Real estate price index \\
-  \midrule
-  % Eastern Europe
-  Croatia        & Croatian National Bank                  & House price index \\
-  \midrule
-  % Asia-Pacific
-  Australia      & Australian Bureau of Statistics (ABS)   & Residential property price index \\
-  Japan          & Japan Real Estate Institute              & Urban land price index \\
-  South Korea    & Kookmin Bank                            & Housing purchase price index \\
-  New Zealand    & REINZ / QVNZ                            & House price index \\
-  \midrule
-  % Other
-  South Africa   & ABSA Bank                               & House price index \\
-  Israel         & Central Bureau of Statistics Israel     & Dwelling price index \\
-\end{longtable}
-\normalsize
+This report does not reproduce the national source documentation for the
+IHPD. That documentation is maintained by the team that constructs the
+database, is revised whenever a source changes, and would go stale here. It
+is available in two places:
 
-\noindent\small\textit{Note: Sources reflect those documented in \citet{mack2011}
-and the Dallas Fed Appendix~A. Some country series have been revised or
-extended since the original 2011 publication. Consult the current Dallas Fed
-Appendix~A for the definitive source list.}
+\begin{itemize}
+  \item \citet{mack2011}, Section~4, which treats each economy in turn,
+        giving the reference series, the historical series used to extend it,
+        the source of the PDI and working-age population data, the PCE
+        deflator used, and the specific frequency-conversion, splicing and
+        adjustment decisions applied. Appendices~A and~B of the same paper
+        tabulate the national sources and summarise the reported frequency,
+        units, geographic coverage, property type, property vintage and
+        priced unit of each national series.
+
+  \item The Dallas Fed's own country-source appendix, maintained alongside
+        the data at
+        \url{https://www.dallasfed.org/~/media/documents/research/international/houseprice/appendixA.pdf}.
+\end{itemize}
+
+\noindent Readers needing to know what a particular country's series
+actually measures --- which is necessary before drawing conclusions from a
+single-country result --- should go to those sources rather than to this
+report.
+
+\subsection*{Coverage in the current release}
+
+Table~\ref{tab:country-coverage} lists the economies in the release
+documented by this version, with the sample span of each. The two aggregate
+series are constructed as described in Section~\ref{sec:database}.
+
+\begin{table}[ht]
+  \centering
+  \caption{Economies and sample span, current release}
+  \label{tab:country-coverage}
+  \small
+  \begin{tabular}{llll}
+    \toprule
+    Economy & Span & Economy & Span \\
+    \midrule
+    Australia      & 1975\,Q1-- & Netherlands    & 1975\,Q1-- \\
+    Belgium        & 1975\,Q1-- & New Zealand    & 1975\,Q1-- \\
+    Canada         & 1975\,Q1-- & Norway         & 1975\,Q1-- \\
+    Colombia       & 1975\,Q1-- & Portugal       & 1975\,Q1-- \\
+    Croatia        & 1975\,Q1-- & Slovenia       & 1975\,Q1-- \\
+    Denmark        & 1975\,Q1-- & South Africa   & 1975\,Q1-- \\
+    Finland        & 1975\,Q1-- & South Korea    & 1975\,Q1-- \\
+    France         & 1975\,Q1-- & Spain          & 1975\,Q1-- \\
+    Germany        & 1975\,Q1-- & Sweden         & 1975\,Q1-- \\
+    Ireland        & 1975\,Q1-- & Switzerland    & 1975\,Q1-- \\
+    Israel         & 1975\,Q1-- & United Kingdom & 1975\,Q1-- \\
+    Italy          & 1975\,Q1-- & United States  & 1975\,Q1-- \\
+    Japan          & 1975\,Q1-- & Luxembourg     & 1975\,Q1-- \\
+    \bottomrule
+  \end{tabular}
+  \normalsize
+\end{table}
+
+\noindent Every series spans the full sample without interior gaps. As
+Section~\ref{subsec:limitations} sets out, this reflects the splicing,
+interpolation and backcasting applied during construction rather than
+uniform reporting by national sources since 1975, and the early part of each
+series should be read accordingly.
