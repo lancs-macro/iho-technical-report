@@ -1,130 +1,335 @@
-\section{Methodology}
+\section{Econometric Methodology}
 \label{sec:methodology}
 
-The Observatory applies two complementary econometric frameworks to detect
-and date-stamp periods of housing market exuberance.
+\subsection{The Toolkit}
 
-% ── 4.1 GSADF ────────────────────────────────────────────────────────────────
-\subsection{The GSADF Test}
+The Observatory maintains three econometric tools, each answering a different
+question about the same data.
+
+\begin{enumerate}
+  \item \textbf{Is there exuberance, and when?} The GSADF test and its BSADF
+        date-stamping procedure \citep{phillips2015a, phillips2015b} detect
+        mildly explosive dynamics in a series and locate the episodes in
+        time. This is the Observatory's headline indicator, applied to every
+        economy in the database each quarter
+        (Section~\ref{subsec:gsadf}).
+
+  \item \textbf{Is it justified by fundamentals?} The PSY-IVX decomposition
+        \citep{shi2021} separates the price-to-rent ratio into a component
+        explained by fundamentals and a residual, and tests the residual for
+        explosive behaviour. This distinguishes prices that are rising fast
+        from prices that are rising fast \emph{without} fundamental support
+        (Section~\ref{subsec:psyivx}).
+
+  \item \textbf{What is happening now?} A mixed-frequency dynamic factor
+        model uses monthly indicators to nowcast the current quarter's real
+        house price growth, ahead of the official release
+        (Section~\ref{subsec:nowcast}).
+\end{enumerate}
+
+\noindent The first two are applied to the published IHPD series; the third
+exists because those series arrive with a lag.
+
+% ── GSADF ────────────────────────────────────────────────────────────────────
+\subsection{Detecting Exuberance: the GSADF Test}
 \label{subsec:gsadf}
 
-The \textit{Generalised Supremum Augmented Dickey--Fuller} (GSADF) test
-\citep{phillips2015a, phillips2015b} is a recursive, right-tailed unit root
-test designed to detect mildly explosive autoregressive behaviour in time
-series. It extends the earlier SADF test of \citet{phillips2015a} with
-improved power for detecting multiple explosive episodes within a single
-sample. The test has been applied to international house prices by
-\citet{pavlidis2016} and \citet{pavlidis2018}.
+\subsubsection{Motivation}
+
+A rapid rate of real house price appreciation does not by itself imply that
+prices have decoupled from fundamentals. The concern is narrower: that price
+increases come to be driven by the expectation of further increases. If
+enough buyers share that expectation, their purchases push prices up and
+appear to confirm it, and the market stays misaligned until sentiment turns.
+Behaviour of this kind is modelled as an autoregressive process with a root
+slightly greater than unity --- mildly explosive, a small departure from
+martingale behaviour consistent with the submartingale property used to model
+rational bubbles \citep{phillips2015a, phillips2015b}. Detecting it is
+therefore a right-tailed unit root testing problem, and the difficulty is
+that such episodes are periodic: they begin, collapse, and may recur within
+one sample, which defeats a test run once over the full sample.
 
 \subsubsection{Estimation}
 
-For sub-sample $[r_1, r_2] \subset [0, 1]$ (fractions of the full sample),
-the test fits an ADF-type regression:
+For a sub-sample running from fraction $r_1$ to fraction $r_2$ of the
+observations, with window size $r_w = r_2 - r_1$, the procedure estimates by
+OLS an ADF-type regression
 \begin{equation}
   \label{eq:adf}
   \Delta y_t = \alpha_{r_1, r_2}
              + \beta_{r_1, r_2}\, y_{t-1}
              + \sum_{j=1}^{k} \phi_j\, \Delta y_{t-j}
-             + \varepsilon_t,
+             + \varepsilon_t ,
 \end{equation}
-where $k$ is the lag order selected by an information criterion. The
-null hypothesis is $H_0\colon \beta = 0$ (unit root) against the
-right-tailed alternative $H_1\colon \beta > 0$ (explosive root).
-
-The GSADF statistic is the supremum of the $\mathrm{ADF}_{r_1}^{r_2}$
-statistics over all feasible sub-sample pairs:
+and tests $H_0\colon \beta = 0$ against the right-tailed alternative
+$H_1\colon \beta > 0$. Holding the endpoint $r_2$ fixed and expanding the
+window back from a minimum size $r_0$ gives a sequence of statistics whose
+supremum is the SADF statistic. Taking the supremum of those in turn over all
+endpoints gives the generalised statistic,
 \begin{equation}
   \label{eq:gsadf}
-  \mathrm{GSADF}(r_0) = \sup_{\substack{r_2 \in [r_0, 1] \\
+  \mathrm{GSADF}(r_0) = \sup_{\substack{r_2 \in [r_0,\, 1] \\
                                         r_1 \in [0,\, r_2 - r_0]}}
-                        \mathrm{ADF}_{r_1}^{r_2},
+                        \mathrm{ADF}_{r_1}^{r_2}.
 \end{equation}
-where $r_0$ is the minimum window size. Critical values are obtained by
-Monte Carlo simulation.
 
-\subsubsection{Date-Stamping: the BSADF Sequence}
+Allowing both endpoints to vary is what gives the test power against
+repeated, periodically collapsing episodes, and is the respect in which it
+improves on the SADF test. Critical values have no standard distribution and
+are obtained by Monte Carlo simulation under the unit-root null. The
+application to international housing markets specifically is developed in
+\citet{pavlidis2016}.
 
-The \textit{Backward SADF} (BSADF) sequence enables date-stamping of
-exuberance episodes. For each end-point $r_2$:
+\subsubsection{Date-stamping}
+
+Detection and dating are separate steps. Dating uses the backward SADF
+sequence: for each endpoint $r_2$,
 \begin{equation}
   \label{eq:bsadf}
   \mathrm{BSADF}_{r_2}(r_0)
-    = \sup_{r_1 \in [0,\, r_2 - r_0]} \mathrm{ADF}_{r_1}^{r_2}.
+    = \sup_{r_1 \in [0,\, r_2 - r_0]} \mathrm{ADF}_{r_1}^{r_2},
 \end{equation}
-A period $t$ is classified as \textit{explosive} when
-$\mathrm{BSADF}_{r_2}$ exceeds the right-tailed critical value at the
-chosen confidence level (95\,\%, 90\,\%, or 80\,\%).
+and an observation is classified as explosive when its BSADF statistic
+exceeds the corresponding critical value. Runs of such observations define an
+episode, with a start, peak and end date. The Observatory requires an episode
+to persist for a minimum duration before reporting it, which suppresses
+isolated single-quarter crossings.
 
-\subsubsection{Application to House Price Data}
+The minimum window $r_0$ is why the BSADF sequences begin later than the data
+themselves: no statistic is defined until enough observations have
+accumulated to estimate the initial regression.
 
-The Observatory applies the GSADF test to two series for each country.
-The first is the real house price index (RHPI), which captures
-inflation-adjusted price dynamics in isolation. The second is the
-house-price-to-income ratio (RHPI/RPDI), which anchors prices to a
-measure of household purchasing power and thereby tests for exuberance
-relative to income fundamentals. Running both series in parallel allows
-the Observatory to distinguish episodes where nominal price growth is
-mirrored by real income gains from those where prices are rising faster
-than fundamentals would support.
+\subsubsection{Application}
 
-\paragraph{Software.}
-The \texttt{exuber} \textsf{R} package \citep{vasilopoulos2022} implements
-GSADF estimation, Monte Carlo critical values, and BSADF date-stamping:
+The tests are run on two series per economy. The first is the real house
+price index, which isolates inflation-adjusted price dynamics. The second is
+the price-to-income ratio, RHPI/RPDI, which anchors prices to household
+purchasing power. Running both matters: an episode that appears in real
+prices but not in the ratio is one in which incomes kept pace, while an
+episode in both is one in which they did not.
 
-\begin{lstlisting}[caption={GSADF estimation with \texttt{exuber}}]
-install.packages("exuber")
+\paragraph{Implementation.}
+Estimation uses the \texttt{exuber} \textsf{R} package
+\citep{vasilopoulos2022}, which implements the recursive tests, the
+simulated critical values and the date-stamping procedure. The package uses
+the matrix inversion lemma in the recursive least squares step, which makes
+estimation across a full panel fast enough to re-run each quarter.
+
+\begin{lstlisting}[caption={Estimation and date-stamping with \texttt{exuber}}]
 library(exuber)
 
-result <- radf(price_series)
-cv     <- radf_cv(nrow(price_series))
-datestamp(result, cv)
+# rhpi: a data frame of Date plus one column per economy
+est <- radf(rhpi, lag = 1)
+
+# Stored Monte Carlo critical values for this sample size
+cv <- radf_crit[[NROW(rhpi)]]
+
+# Test statistics against critical values, and episode dates
+tidy_join(est, cv)
+augment_join(est, cv)
+datestamp(est, cv, min_duration = 2)
 \end{lstlisting}
 
-% ── 4.2 PSY-IVX ──────────────────────────────────────────────────────────────
-\subsection{The PSY-IVX Approach}
-\label{subsec:psyivx}
+\noindent The Observatory estimates with lag order $k = 1$. Critical values
+are taken from \texttt{radf\_crit}, the package's stored table of simulated
+values indexed by sample size, rather than simulated afresh at each release,
+which keeps results reproducible across quarters.
 
-The PSY-IVX method \citep{shi2021} decomposes the price-to-rent ratio into
-fundamental and non-fundamental (speculative) components. Unlike the GSADF
-test, which examines prices in isolation, PSY-IVX explicitly models the role
-of economic fundamentals in driving house prices.
-
-\subsubsection{Two-Step Procedure}
-
-\paragraph{Step 1 --- Fundamental component estimation.}
-The long-run relationship between the price-to-rent ratio and economic
-fundamentals (interest rates, income, user cost of capital) is estimated
-using IVX estimation \citep{shi2021}, which is robust to persistent and
-potentially explosive regressors.
-
-\paragraph{Step 2 --- Exuberance testing.}
-Recursive right-tailed unit root tests of the PSY type are applied to the
-non-fundamental residual from Step~1. Explosive dynamics in the residual
-indicate speculative pricing that is decoupled from fundamentals. PSY-IVX
-results are published at \url{https://housing-fever.com/}.
-
-% ── 4.3 Reporting ────────────────────────────────────────────────────────────
-\subsection{Confidence Levels and Reporting}
+% ── Reporting ────────────────────────────────────────────────────────────────
+\subsection{Reporting Conventions}
 \label{subsec:reporting}
 
-Both methods report exuberance indicators at three confidence levels,
-summarised in Table~\ref{tab:confidence}.
+Results are reported against simulated critical values at the 90\,\%, 95\,\%
+and 99\,\% levels, and read as in Table~\ref{tab:confidence}. The 95\,\% level
+is the threshold at which the Observatory reports evidence of exuberance;
+the band between 90\,\% and 95\,\% is reported as a signal warranting caution
+rather than as a detection.
 
 \begin{table}[ht]
   \centering
-  \caption{Confidence levels for exuberance classification}
+  \caption{Interpretation of the BSADF statistic}
   \label{tab:confidence}
-  \begin{tabular}{cl}
+  \begin{tabular}{lp{9cm}}
     \toprule
-    Level & Interpretation \\
+    Statistic & Interpretation \\
     \midrule
-    95\,\% & Strong evidence of explosive dynamics \\
-    90\,\% & Moderate evidence \\
-    80\,\% & Early warning signal \\
+    Above 95\,\% critical value
+      & Evidence of mildly explosive behaviour at conventional significance
+        levels. \\[4pt]
+    Between 90\,\% and 95\,\%
+      & Caution warranted; not sufficient evidence to declare an episode at
+        conventional levels. \\[4pt]
+    Below 90\,\%
+      & No evidence of an episode. \\
     \bottomrule
   \end{tabular}
 \end{table}
 
-Quarterly reports provide country-level exuberance date-stamps, aggregate
-heatmaps across all 25 countries, and historical context (e.g., the early
-2000s global episode, the 2020--22 pandemic-era price surge).
+A date-stamped episode is therefore a statement about a sequence of
+statistics exceeding a threshold, not a claim that a bubble has been
+identified and will burst. The test detects a statistical signature; the
+economic interpretation of that signature is a separate question, and one
+that the decomposition in Section~\ref{subsec:psyivx} is intended to inform.
+
+% ── PSY-IVX ──────────────────────────────────────────────────────────────────
+\subsection{Separating Fundamentals: the PSY-IVX Approach}
+\label{subsec:psyivx}
+
+The GSADF test asks whether a price series is explosive. It does not ask
+why. A price-to-rent ratio can rise explosively because rents are expected to
+rise, or because interest rates have fallen, without any speculative
+component at all. The PSY-IVX approach of \citet{shi2021} addresses this by
+modelling the fundamental part first and testing only what is left.
+
+\subsubsection{Step 1: the fundamental component}
+
+The object of interest is the price-to-rent ratio, constructed from the
+house price index and a rent index, and the fundamentals considered are the
+long-term interest rate and the rent series itself. Because these regressors
+are highly persistent, and potentially explosive, conventional estimation is
+unreliable: standard inference with persistent predictors is size-distorted.
+Estimation therefore uses the IVX method of \citet{magdalinos2009} and
+\citet{kostakis2015}, which instruments the persistent regressors with a
+mildly integrated transformation and restores valid inference across the
+range of persistence encountered in practice. It is implemented in the
+\texttt{ivx} \textsf{R} package \citep{ivx}.
+
+The relationship is estimated on a training sample --- the Observatory uses
+data up to 2019 --- and the resulting coefficients are then applied to the
+full sample. Cumulating the fitted growth rates from the initial observation
+gives the fundamental path of the ratio; the difference between the observed
+and fundamental paths is the non-fundamental residual. Fixing the
+coefficients on a training sample matters: it means the fundamental path for
+recent years is a genuine out-of-sample projection, rather than a fit that
+has already absorbed the episode being tested for.
+
+\subsubsection{Step 2: testing the residual}
+
+The recursive right-tailed tests of Section~\ref{subsec:gsadf} are then
+applied to the non-fundamental residual, with the same date-stamping
+procedure and the same minimum-duration requirement. Explosive dynamics in
+the residual indicate movements in the price-to-rent ratio that the
+fundamentals do not account for. Running the same tests on the ratio itself
+alongside the residual makes the comparison direct: an episode present in the
+ratio but absent from the residual is one that fundamentals explain.
+
+\subsubsection{Coverage}
+
+The decomposition requires rent and long-term interest rate series of
+comparable quality to the house price data, which are available for fewer
+countries than the IHPD itself covers. It is currently produced for a subset
+of economies, and published at \url{https://housing-fever.com/} rather than
+on the main platform. Extending the coverage is discussed in
+Section~\ref{sec:roadmap}.
+
+% ── Nowcasting ───────────────────────────────────────────────────────────────
+% NOTE FOR REVIEW: Erik has offered to own this subsection. The draft below is
+% reconstructed from the published nowcast report at
+% int.housing-observatory.com/nowcasting.html and should be checked against the
+% current model specification before release.
+\subsection{Nowcasting Real House Prices}
+\label{subsec:nowcast}
+
+\subsubsection{Motivation}
+
+The IHPD is published with a lag of roughly three months
+(Section~\ref{subsec:release}). For a monitoring platform this is a real
+constraint: at the moment a release appears, the most recent quarter it
+describes is already over. Higher-frequency indicators of housing activity
+--- permits, starts, sales, transaction prices --- are available monthly and
+with a much shorter lag. A nowcasting model exploits them to estimate the
+current quarter's real house price growth before the official figure exists,
+and the resulting estimate is reported alongside the quarterly monitoring
+analysis.
+
+\subsubsection{Variables}
+
+The target is quarterly real house price growth. Predictors combine quarterly
+and monthly series; Table~\ref{tab:nowcast-vars} gives the specification for
+the United States, which is the template applied elsewhere. Series are
+seasonally adjusted with X-13ARIMA-SEATS where the source does not already
+provide adjustment, and transformed to period-on-period log growth rates.
+
+\begin{table}[ht]
+  \centering
+  \caption{Nowcast model variables, United States specification}
+  \label{tab:nowcast-vars}
+  \small
+  \begin{tabular}{llll}
+    \toprule
+    Mnemonic & Variable & Sector & Frequency \\
+    \midrule
+    RHPI & Real house price index (target)          & Housing  & Quarterly \\
+    GDP  & Real GDP                                  & Activity & Quarterly \\
+    ASP  & Average sales price, new houses sold      & Housing  & Monthly \\
+    PER  & Building permits, new private single-family & Housing & Monthly \\
+    HOU  & Housing starts, new private single-family & Housing  & Monthly \\
+    HSN  & New one-family houses sold                & Housing  & Monthly \\
+    \bottomrule
+  \end{tabular}
+  \normalsize
+\end{table}
+
+\subsubsection{Model}
+
+The estimator is a mixed-frequency dynamic factor model, estimated by
+classical methods. A single latent factor $f_t$, defined at monthly
+frequency, drives the common movement of all series; each observed series
+loads on the factor and carries an idiosyncratic component of its own.
+
+The quarterly target is linked to its unobserved monthly counterpart by the
+standard triangular aggregation for growth rates,
+\begin{equation}
+  \label{eq:agg}
+  x_{Q,t} = \tfrac{1}{3} x_{M,t} + \tfrac{2}{3} x_{M,t-1} + x_{M,t-2}
+          + \tfrac{2}{3} x_{M,t-3} + \tfrac{1}{3} x_{M,t-4},
+\end{equation}
+while the monthly series are related to the factor by
+\begin{align}
+  \label{eq:dfm}
+  x_{M,t}   &= \gamma_{M}\, f_t + e_{M,t},  \\
+  y_{M_j,t} &= \gamma_{M_j} f_t + e_{M_j,t}, \qquad j = 1, \dots, J,
+\end{align}
+with the factor and the idiosyncratic components each following autoregressive
+processes,
+\begin{equation}
+  \label{eq:dfm-dynamics}
+  f_t = \phi_1 f_{t-1} + \phi_2 f_{t-2} + \varepsilon_{f,t},
+  \qquad
+  e_{j,t} = \psi_{j,1} e_{j,t-1} + \psi_{j,2} e_{j,t-2} + \eta_{j,t}.
+\end{equation}
+
+Substituting \eqref{eq:dfm} into \eqref{eq:agg} expresses the observed
+quarterly series as a weighted sum of current and lagged factors and
+idiosyncratic terms. The system is cast in state-space form and estimated
+with the Kalman filter, which handles the mixed frequencies and the resulting
+ragged edge --- months for which some indicators have been published and
+others have not --- as a missing data problem, and which is what allows the
+nowcast to be updated as each new monthly indicator arrives. Confidence
+intervals are obtained by wild bootstrap with Rademacher multipliers.
+
+\subsubsection{Benchmarks and validation}
+
+The model is assessed against two benchmarks: a random walk, and an AR(1).
+Validation has two parts. The first is in-sample comparison of fitted against
+observed values. The second, and the more informative, is a pseudo
+out-of-sample exercise on an expanding window: the model is estimated through
+a given quarter, used to forecast one step ahead, and the forecast compared
+with the realised value, iterating forward across a decade of quarters.
+Accuracy is summarised by root mean squared error.
+
+The exercise is pseudo rather than genuine out-of-sample because it uses
+revised data throughout, whereas a forecaster working in real time would have
+seen the unrevised vintage. Given that IHPD observations are themselves
+revised retrospectively (Section~\ref{subsec:limitations}), this caveat is
+not merely formal, and a fully real-time evaluation using archived vintages
+would be a natural extension.
+
+\paragraph{Relationship to the database's own nowcasts.}
+The Dallas Fed also nowcasts, using the BSTS model of
+Section~\ref{subsec:construction}, in order to fill missing current
+observations so that a release is complete. The two serve different purposes
+and should not be conflated. The BSTS nowcasts are univariate, internal to
+the database, and are replaced by observed data in later vintages. The model
+described here is multivariate, external to the database, and exists to
+anticipate the release itself.
