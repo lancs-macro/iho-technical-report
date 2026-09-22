@@ -1,112 +1,138 @@
 \section{Data Access and Retrieval}
 \label{sec:data-access}
 
-\subsection{Source Data}
+\subsection{Source Files}
 
-The IHPD raw data are published by the Globalization Institute of the Federal
-Reserve Bank of Dallas at:
+The IHPD is published by the Globalization Institute of the Federal Reserve
+Bank of Dallas at
 \begin{center}
   \url{https://www.dallasfed.org/research/international/houseprice}
 \end{center}
 
-Two Excel files are released each quarter, described in
-Table~\ref{tab:release-files}.
+Each release consists of two Excel workbooks, described in
+Table~\ref{tab:release-files}. The filename encodes the last quarter
+included, not the release date: \texttt{hp2504.xlsx} is the vintage whose
+final observation is 2025\,Q4, published in the first full week of January
+2026 under the schedule in Table~\ref{tab:release-schedule}.
 
 \begin{table}[ht]
   \centering
-  \caption{Dallas Fed IHPD quarterly release files}
+  \caption{IHPD quarterly release files}
   \label{tab:release-files}
   \begin{tabular}{lp{9cm}}
     \toprule
     File & Contents \\
     \midrule
-    \texttt{hp\textit{YYMM}.xlsx}
-      & HPI, RHPI, PDI, and RPDI series for all 25 countries.
-        One worksheet per country. \\[4pt]
-    \texttt{hpta\textit{YYMM}.xlsx}
-      & BSADF sequences and GSADF/SADF test statistics for each country,
-        pre-computed by the Dallas Fed team. \\
+    \texttt{hp\textit{YYQ}.xlsx}
+      & The data. One worksheet per variable --- \texttt{HPI},
+        \texttt{RHPI}, \texttt{PDI}, \texttt{RPDI} --- with quarters in rows
+        and economies in columns, plus the two aggregate columns. A
+        \texttt{Note} sheet carries citation details and flags which series
+        contain forecast values. \\[4pt]
+    \texttt{hpta\textit{YYQ}.xlsx}
+      & Pre-computed exuberance statistics: GSADF and SADF statistics with
+        95\,\% critical values by country, and BSADF sequences for two
+        indicators (real house prices, and the ratio of RHPI to RPDI).
+        Separate sheets report results for lag orders 1 and 4. \\
     \bottomrule
   \end{tabular}
 \end{table}
 
-The filename encodes the release year and month: \texttt{hp2504.xlsx}
-is the file released in April~2025 (\texttt{25}\,=\,year,
-\texttt{04}\,=\,month), containing data through 2025\,Q4 (the most recent
-completed quarter at time of publication). The most recent release archived
-in this project is \texttt{data/raw/hp2504.xlsx} and
-\texttt{data/raw/hpta2504.xlsx}.
+\noindent Note that the layout is by variable, not by country: a single
+worksheet holds all economies for one variable. The BSADF sequences in the
+\texttt{hpta} file begin later than the data, because the recursive procedure
+requires a minimum initial estimation window (Section~\ref{subsec:gsadf}).
 
-\subsection{Manual Download}
-
-Files are available for direct download from the Dallas Fed database page
-linked above. Only the current release is linked on the main page; historical
-files are not archived by Dallas Fed. The Observatory retains all historical
-release files under \texttt{data/raw/}.
+Only the current release is linked from the Dallas Fed page. Earlier
+vintages remain retrievable programmatically, as described below, and the
+Observatory additionally archives release files it has used under
+\texttt{data/raw/}.
 
 \subsection{Programmatic Access via \texttt{ihpdr}}
+\label{subsec:ihpdr}
 
-The \texttt{ihpdr} \textsf{R} package \citep{ihpdr} provides programmatic
-access to the current IHPD release, fetching data directly from the Dallas
-Fed server and returning tidy data frames.
+The \texttt{ihpdr} \textsf{R} package \citep{ihpdr} downloads a release
+directly from the Dallas Fed server and returns it as a tidy data frame,
+handling the workbook parsing and the wide-to-long reshaping.
 
-\begin{lstlisting}[caption={Downloading IHPD data with \texttt{ihpdr}}]
+\begin{lstlisting}[caption={Retrieving IHPD data with \texttt{ihpdr}}]
 install.packages("ihpdr")
 library(ihpdr)
 
-raw   <- hpdr_raw()    # HPI, RHPI, PDI, RPDI for all countries
-sadf  <- hpdr_sadf()   # GSADF/SADF test statistics
-bsadf <- hpdr_bsadf()  # BSADF sequences for date-stamping
+# Current release, all economies, all four variables
+full_data <- ihpd_get()
+
+# A specific vintage, identified as in the filename (YYQ)
+older <- ihpd_get(version = "2303")
+
+# Available vintages, and the economies in the current release
+ihpd_versions()
+ihpd_countries()
 \end{lstlisting}
+
+\noindent \texttt{ihpd\_get()} returns one row per economy-quarter, with the
+columns in Table~\ref{tab:data-structure}. Because the \texttt{version}
+argument accepts any archived vintage, real-time exercises that require the
+data as they stood at a past release can be run without maintaining a local
+archive.
+
+\begin{table}[ht]
+  \centering
+  \caption{Structure of \texttt{ihpd\_get()} output}
+  \label{tab:data-structure}
+  \begin{tabular}{llp{8.5cm}}
+    \toprule
+    Column & Type & Description \\
+    \midrule
+    \texttt{Date}    & Date    & Quarter start date \\
+    \texttt{country} & character & Economy name \\
+    \texttt{hpi}     & numeric & Nominal house price index (2005\,=\,100) \\
+    \texttt{rhpi}    & numeric & Real house price index (2005\,=\,100) \\
+    \texttt{pdi}     & numeric & Nominal per working-age capita disposable income \\
+    \texttt{rpdi}    & numeric & Real per working-age capita disposable income \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
 The package is available on CRAN
 (\url{https://cran.r-project.org/web/packages/ihpdr/}) and GitHub
 (\url{https://github.com/kvasilopoulos/ihpdr}).
 
-\subsection{Data Structure}
+\subsection{The Observatory Data API}
+\label{subsec:api}
 
-The raw Excel file contains one worksheet per country. Each sheet lists
-quarterly observations from the earliest available date for that country
-through the current release quarter. The \texttt{ihpdr} package consolidates
-these into a single long-format data frame. Table~\ref{tab:data-structure}
-describes the output of \texttt{hpdr\_raw()}.
+The Observatory publishes its own processed outputs --- not only the source
+data, but the estimated statistics behind the dashboard --- as JSON over
+HTTP, versioned by release:
+\begin{center}
+  \url{https://api.housing-observatory.com/datasets/int/index.json}
+\end{center}
 
-\begin{table}[ht]
-  \centering
-  \caption{Structure of \texttt{hpdr\_raw()} output}
-  \label{tab:data-structure}
-  \begin{tabular}{llp{9cm}}
-    \toprule
-    Column & Type & Description \\
-    \midrule
-    \texttt{date}    & Date    & Quarter start date (\texttt{YYYY-MM-01}) \\
-    \texttt{country} & Factor  & Country name \\
-    \texttt{hpi}     & numeric & Nominal house price index (2005\,=\,100) \\
-    \texttt{rhpi}    & numeric & Real house price index (2005\,=\,100) \\
-    \texttt{pdi}     & numeric & Nominal per capita disposable income (2005\,=\,100) \\
-    \texttt{rpdi}    & numeric & Real per capita disposable income (2005\,=\,100) \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-The output of \texttt{hpdr\_sadf()} returns the GSADF and SADF test statistics
-per country. The output of \texttt{hpdr\_bsadf()} returns the full BSADF
-sequence with one row per country--quarter observation.
+The index document lists available releases, most recent first. Each release
+then exposes the series and estimation objects used by the dashboard, for
+example \texttt{rhpi.json} and \texttt{pti.json} for the two indicator
+series, and the corresponding fitted test objects. This is the interface the
+dashboard itself consumes, so anything visible on the platform can be
+reproduced from it without re-running the estimation.
 
 \subsection{Quarterly Update Workflow}
 
-Each quarter, the Observatory follows a fixed procedure to incorporate the
-new data release:
+Each release is incorporated through a fixed sequence:
 
 \begin{enumerate}
-  \item Dallas Fed publishes new \texttt{hp\textit{YYMM}.xlsx} and
-        \texttt{hpta\textit{YYMM}.xlsx} files on the database page.
-  \item Raw files are downloaded and archived in \texttt{data/raw/}.
-  \item Exuberance statistics are re-estimated using the \texttt{exuber}
-        package (Section~\ref{subsec:gsadf}).
-  \item The dashboard and quarterly monitoring report are regenerated and
-        published to the Observatory website.
-  \item This technical report is updated to the next \textsc{minor} version
-        (e.g., \texttt{v1.0.0} $\to$ \texttt{v1.1.0}) and the changelog
-        (Appendix~\ref{app:changelog}) is updated accordingly.
+  \item The Dallas Fed publishes the new \texttt{hp} and \texttt{hpta}
+        workbooks on the schedule in Table~\ref{tab:release-schedule}.
+  \item The release is retrieved with \texttt{ihpd\_get()} and archived.
+  \item The two indicator series are constructed: the real house price index,
+        and the price-to-income ratio RHPI/RPDI.
+  \item Exuberance statistics are re-estimated with \texttt{exuber}
+        (Section~\ref{subsec:gsadf}) and the PSY-IVX decomposition is
+        re-estimated for the countries it covers
+        (Section~\ref{subsec:psyivx}).
+  \item Results are written to the data API
+        (Section~\ref{subsec:api}), from which the dashboard reads.
+  \item The quarterly monitoring report and the nowcast report are
+        regenerated and published.
+  \item This report is updated and its changelog
+        (Appendix~\ref{app:changelog}) extended.
 \end{enumerate}
