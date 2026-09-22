@@ -1,100 +1,110 @@
-\section{Website and Outputs}
+\section{Platform and Outputs}
 \label{sec:website}
 
-\subsection{Main Platform}
+\subsection{Overview}
 
-The International Housing Observatory is publicly accessible at
-\url{https://int.housing-observatory.com/}. The platform provides
-real-time monitoring of housing market exuberance across 25 countries
-and is updated quarterly following each new IHPD data release from the
-Dallas Fed. It combines three components: an interactive dashboard for
-country-level and cross-country analysis, a quarterly PDF monitoring
-report, and a companion platform (\url{https://housing-fever.com/})
-for fundamental-based decompositions using the PSY-IVX methodology.
+The Observatory publishes at \url{https://int.housing-observatory.com/}.
+The platform has four public outputs --- an interactive dashboard, a
+quarterly monitoring report, a nowcast report, and the Housing Fever
+companion site --- all driven by the same quarterly estimation pipeline
+(Section~\ref{sec:data-access}) and all served from the same data API
+(Section~\ref{subsec:api}).
 
 \subsection{Interactive Dashboard}
 
-The dashboard visualises:
+The dashboard is the platform's primary interface. It presents, by economy:
+
 \begin{itemize}
-  \item BSADF sequences plotted against Monte Carlo critical values,
-        by country and confidence level;
-  \item shaded exuberance episodes overlaid on real house price and
-        price-to-income series;
-  \item cross-country heatmaps showing exuberance status by quarter.
+  \item BSADF sequences plotted against their critical values, with the
+        periods classified as explosive shaded;
+  \item real house price and price-to-income series with the same episodes
+        overlaid, so that a statistical episode can be read against the
+        movement in the underlying series;
+  \item tables of ADF, SADF and GSADF statistics against critical values at
+        the 90\,\%, 95\,\% and 99\,\% levels;
+  \item date-stamp tables giving the start, peak, end and duration of each
+        detected episode;
+  \item cross-country views summarising exuberance status across the panel
+        for a given quarter.
 \end{itemize}
-Users can select individual countries, switch between the RHPI and RHPI/RPDI
-indicators, and adjust the confidence level (95\,\%, 90\,\%, 80\,\%).
+
+Users can switch between the two indicators --- real house prices and the
+price-to-income ratio --- and inspect the aggregate series alongside
+individual economies. The dashboard is built in Shiny and reads its inputs
+from the data API, so it reflects whatever release has most recently been
+processed.
 
 \subsection{Quarterly Monitoring Reports}
 
-A PDF monitoring report is published each quarter following the IHPD data
-release. Each report opens with a country-level exuberance summary showing,
-for each of the 25 economies, whether the GSADF test rejects the unit-root
-null at the 95\,\%, 90\,\%, or 80\,\% confidence level for the current
-quarter, together with the BSADF date-stamp of the episode's start.
+A PDF monitoring report accompanies each release. Its structure is
+consistent across quarters: an executive summary, a review of global price
+and affordability developments, per-economy detail, and comparative sections
+placing the most recent real house price and real income developments side by
+side across the panel.
 
-The core of each report is a set of BSADF sequence plots for both the real
-house price index (RHPI) and the house-price-to-income ratio (RHPI/RPDI).
-Each plot overlays the BSADF statistic on its Monte Carlo critical value
-bands, shading the periods classified as explosive. These plots allow readers
-to assess not only whether exuberance is currently detected but also how the
-current episode compares in duration and intensity to historical ones.
+The reports are where the statistical output is given economic reading. A
+date-stamped episode in a single country is of limited interest on its own;
+what the reports add is context --- how the current episode compares in
+duration and intensity with that country's own history, and whether it is
+isolated or part of a synchronised movement across economies, as in the
+early-2000s boom, the 2008--09 bust, and the 2020--22 pandemic-era surge.
+Reports are archived by quarter on the platform.
 
-Cross-country heatmaps provide a compact view of exuberance status across all
-25 economies simultaneously, enabling the identification of synchronised
-global episodes --- such as the early-2000s housing boom, the 2008--09
-bust, and the 2020--22 pandemic-era surge. The commentary section contextualises
-the current quarter's findings within these longer historical patterns and
-flags any country-level developments of note.
+\subsection{Nowcast Reports}
 
-Reports are published at \url{https://int.housing-observatory.com/} and
-archived there by quarter.
+The nowcast report at
+\url{https://int.housing-observatory.com/nowcasting.html} publishes the
+output of the model in Section~\ref{subsec:nowcast}: the current-quarter
+estimate with bootstrap confidence intervals, the transformed input series,
+in-sample fit, and the rolling out-of-sample RMSE comparison against the
+random walk and AR(1) benchmarks. Reporting the validation alongside the
+nowcast is deliberate --- a point estimate for a quarter that has not yet
+been published is only interpretable next to evidence on how well the model
+has done at the same task in the past.
 
 \subsection{Companion Platform: Housing Fever}
 
-The companion platform at \url{https://housing-fever.com/} applies the
-PSY-IVX methodology of \citet{shi2021} (Section~\ref{subsec:psyivx}) to
-decompose real house prices into fundamental and non-fundamental
-(speculative) components. The fundamental component is estimated from the
-long-run equilibrium relationship between the price-to-rent ratio and
-economic drivers including interest rates, income, and the user cost of
-capital, using the IVX estimator, which is robust to persistent and
-explosive regressors. The non-fundamental residual is then subjected to
-recursive right-tailed unit root tests to identify periods of speculative
-excess.
+Housing Fever, at \url{https://housing-fever.com/}, publishes the PSY-IVX
+decomposition of Section~\ref{subsec:psyivx}. For each economy covered it
+shows the observed price-to-rent ratio against its estimated fundamental
+path, the non-fundamental residual, and the episodes date-stamped in each.
 
-This decomposition complements the GSADF-based analysis on the main
-Observatory platform: while the GSADF test signals exuberance in raw or
-inflation-adjusted price levels, the PSY-IVX approach distinguishes whether
-that exuberance is driven by economic fundamentals or by speculative
-dynamics that are decoupled from them. The platform is updated in line with
-the quarterly IHPD release cycle.
+The division of labour between the two sites follows the division between
+the methods. The main platform answers whether prices are behaving
+explosively, for the full panel. Housing Fever asks whether that behaviour is
+accounted for by fundamentals, for the smaller set of economies where the
+required rent and interest rate data support the question.
 
 \subsection{Open-Source Software}
 
-Table~\ref{tab:software} summarises the \textsf{R} packages associated with
-the Observatory.
+The estimation pipeline is built from packages that are themselves public,
+so that the Observatory's results can be reproduced independently
+(Table~\ref{tab:software}).
 
 \begin{table}[ht]
   \centering
-  \caption{Open-source \textsf{R} packages}
+  \caption{Open-source \textsf{R} packages used by the Observatory}
   \label{tab:software}
-  \begin{tabular}{lp{7.5cm}p{3.5cm}}
+  \begin{tabular}{lp{7cm}p{3.2cm}}
     \toprule
     Package & Purpose & Reference \\
     \midrule
     \texttt{ihpdr}
-      & Download IHPD data, GSADF statistics, BSADF sequences
+      & Retrieve IHPD releases and archived vintages
       & \citet{ihpdr} \\[4pt]
     \texttt{exuber}
-      & Estimate GSADF/BSADF; date-stamp explosive episodes
-      & \citet{vasilopoulos2022} \\
+      & Recursive right-tailed unit root tests; simulated critical values;
+        date-stamping
+      & \citet{vasilopoulos2022} \\[4pt]
+    \texttt{ivx}
+      & IVX estimation with persistent regressors, used in the PSY-IVX
+        decomposition
+      & \citet{ivx} \\
     \bottomrule
   \end{tabular}
 \end{table}
 
-Both packages are available on CRAN
+\noindent \texttt{ihpdr} and \texttt{exuber} are on CRAN
 (\url{https://cran.r-project.org/web/packages/ihpdr/},
-\url{https://cran.r-project.org/web/packages/exuber/}) and on GitHub
-(\url{https://github.com/kvasilopoulos/ihpdr},
-\url{https://github.com/kvasilopoulos/exuber}).
+\url{https://cran.r-project.org/web/packages/exuber/}); development versions
+of all three are on GitHub under \url{https://github.com/kvasilopoulos}.

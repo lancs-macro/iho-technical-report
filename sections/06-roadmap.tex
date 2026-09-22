@@ -1,0 +1,58 @@
+\section{Planned Extensions}
+\label{sec:roadmap}
+
+This report is a living document, and this section records what is expected
+to change. Items are listed as agreed priorities or as proposals under
+consideration; the changelog in Appendix~\ref{app:changelog} records what has
+actually been delivered in each version.
+
+\subsection{Database}
+
+\paragraph{Additional economies.}
+Extending coverage to further economies --- house prices, personal income and
+rents --- is the current priority for the database. Candidates under
+discussion include Slovakia and China. Each addition requires a national
+source that can be reconciled with the FHFA benchmark on the criteria in
+Section~\ref{subsec:construction}, and historical series sufficient to extend
+it back towards the start of the sample; the constraint is generally the
+availability of the historical series rather than the current one.
+
+\paragraph{Nominal series in local currency.}
+All series are currently published as indices on a 2005 base, which supports
+comparison of dynamics but not of levels, and which makes reported figures
+harder to interpret in absolute terms. Publishing nominal price data in local
+currency alongside the indices would make the figures more directly readable,
+at the cost of introducing a series that is explicitly not comparable across
+countries. The presentational separation between the two would need care.
+
+\subsection{Econometric Toolkit}
+
+\paragraph{Extending the nowcast.}
+The nowcast model of Section~\ref{subsec:nowcast} is currently specified for
+a limited set of economies. Extending it to the United Kingdom and Spain is
+proposed as the next step. The binding requirement is monthly housing
+indicators of comparable coverage and timeliness to those used in the
+existing specification; where the available indicators differ, the
+specification will need to be adapted rather than transferred directly.
+
+\paragraph{Extending the fundamentals decomposition.}
+The PSY-IVX decomposition covers fewer economies than the exuberance tests,
+limited by the availability of rent and long-term interest rate series
+(Section~\ref{subsec:psyivx}). Widening that coverage would allow the
+fundamentals question to be asked for a larger part of the panel.
+
+\paragraph{Additional models.}
+Further additions to the toolkit have been raised in principle. These are at
+the stage of establishing whether there is appetite for broadening the
+Observatory's methodological scope, rather than of specific proposals, and
+will be recorded here as they are agreed.
+
+\subsection{Real-time Evaluation}
+
+Both the nowcast validation (Section~\ref{subsec:nowcast}) and any assessment
+of the exuberance indicators currently use revised data. Because IHPD
+observations are revised retrospectively
+(Section~\ref{subsec:limitations}), and because archived vintages are
+available through \texttt{ihpd\_get()}, a genuine real-time evaluation is
+feasible and would give a more honest measure of how the Observatory's
+indicators perform at the moment they are published.
