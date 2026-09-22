@@ -1,0 +1,1400 @@
+                          Federal Reserve Bank of Dallas
+                  Globalization and Monetary Policy Institute
+
+                                Working Paper No. 165
+
+http://www.dallasfed.org/assets/documents/institute/wpapers/2013/0165.pdf
+
+Episodes of Exuberance in Housing Markets:
+         In Search of the Smoking Gun*
+
+Efthymios Pavlidis                                                       Alisa Yusupova
+Lancaster University                                                Lancaster University
+
+Iván Payá                                                                      David Peel
+Lancaster University                                                Lancaster University
+
+Enrique Martínez-García                                                   Adrienne Mack
+Federal Reserve Bank of Dallas                                         Mutual of Omaha
+
+                                           Valerie Grossman
+                                    Federal Reserve Bank of Dallas
+
+                           December 2013
+                          Revised: June 2015
+
+Abstract
+In this paper, we examine changes in the time series properties of standard housing market
+indicators (real house prices, price-to-income ratios, and price-to-rent ratios) for a large set
+of countries to detect episodes of explosive dynamics. Dating exuberance in housing markets
+provides a timeline as well as empirical content to the narrative connecting housing
+exuberance to the global 200809 recession. For our investigation, we employ two recursive
+univariate unit root tests developed by Phillips et al. (2011) and Phillips et al. (2015). We also
+propose a novel extension of the Phillips et al. (2015) test to a panel setting in order to
+exploit the large cross-sectional dimension of our international dataset. Statistically
+significant periods of exuberance are found in most countries. Moreover, there is also strong
+evidence of an unprecedented period of exuberance in the early 2000s that eventually
+collapsed around 200607, preceding the 200809 global recession. We find that long-term
+interest rates, credit growth and global economic conditions help to predict (in-sample)
+episodes of housing exuberance. We conclude that global macro and financial factors explain
+(partly) the synchronization of exuberance episodes that we detect in the data in the 2000s.
+
+JEL codes: C22, G12, R31
+
+* Efthymios G. Pavlidis, e.pavlidis@lancaster.ac.uk, Alisa Yusupova, a.yusupova@lancaster.ac.uk, Ivan
+Paya, i.paya@lancaster.ac.uk, and David Peel, d.peel@lancaster.ac.uk, from Lancaster University
+Management School. Enrique Martínez-García, enrique.martinez-garcia@dal.frb.org, and Valerie
+Grossman, valerie.grossman@dal.frb.org, from the Federal Reserve Bank of Dallas. Adrienne Mack,
+Mutual of Omaha, adrienne.mack@ymail.com, worked on the paper while at the Dallas Fed. The
+International House Price Database is available at http://www.dallasfed.org/institute/houseprice/index.cfm.
+An earlier draft circulated as "Monitoring Housing Markets for Periods of Exuberance. An Application of
+the Phillips et al. (2012, 2013) GSADF Test on the Dallas Fed International House Price Database." All
+remaining errors are ours alone. The views in this paper are those of the authors and do not necessarily
+reflect the views of the Federal Reserve Bank of Dallas or the Federal Reserve System.
+1 Introduction
+
+The latest boom and bust in international housing markets has generated a renewed interest in the dynamics
+of house prices. A view shared by many academics and policy makers is that the latest boom period in
+housing was associated with house prices departing from their intrinsic values which led to a misallocation of
+resources, distorted investment patterns, and eventually precipitated the 2008 09 global recession. On this
+basis, in the aftermath of the crisis, international organizations and central bankers have become increasingly
+more concerned about developments in housing markets across the world (e.g., IMF established the Global
+Housing Watch and the Federal Reserve Bank of Dallas created the International House Price Database).
+Central banks have also become more aware of the role of domestic housing markets in ...nancial stability
+and the real economy (see, e.g., the 2014 U.K. stress testing exercise of the Bank of England).
+
+    In this paper we analyze changes in the time series properties of house prices over the last four decades
+in an attempt to shed light on three research questions: Firstly, when did house price run-ups turn into
+episodes of exuberance (displaying explosive dynamics) in domestic housing markets, secondly, was there
+synchronization across countries that led to global exuberance and, ...nally, which were the fundamental
+factors that aided in the emergence of housing exuberance. By addressing these research questions we aim
+at improving our understanding of housing markets in a way that facilitates the development of better
+monitoring mechanisms and the design of more e¤ective and proactive policies.
+
+    An appealing feature of our empirical analysis is the use of panel data from the International House Price
+Database of the Federal Reserve Bank of Dallas (Mack and Martínez-García (2011)) to detect and date-
+stamp explosive autoregressive behavior in housing markets. This dataset has a large panel dimension (22
+countries), which allows us to have a unique, international perspective on the evolution of housing markets.1
+
+    With respect to our ...rst research question, we employ two univariate econometric tests (namely, the sup
+ADF , SADF , and the Generalized sup ADF , GSADF ) recently developed by Phillips et al. (2011) and
+Phillips et al. (2015) in order to examine whether real house prices and standard long-run anchors of the
+housing market, such as price-to-income and price-to-rent ratios, exhibit periods of mild explosive behavior.2
+The SADF and GSADF are right-tailed unit root tests that perform recursive ADF regressions to test
+for explosiveness. Their recursive nature makes the SADF and GSADF tests attractive in our context
+for two reasons. First, the tests enable us to identify in which (if any) periods a series displayed explosive
+behavior and, thus, date the emergence of exuberance in domestic housing markets. Second, they exhibit
+higher power in the presence of boom and bust episodes than standard integration/cointegration tests and
+tests that allow for a single (permanent) change in persistence.3
+
+    A timeline of events emerges from the corresponding dating procedure which suggests that the latest
+boom-bust cycle was unusually widespread across countries and evolved in three phases: A ...rst phase
+
+    1 We complement the Dallas Fed dataset with housing rents from the OECD for 16 of the 22 countries for which there is
+consistent data over the same sample period (Girouard et al. (2006)).
+
+    2 Mildly explosive behavior is modeled by an autoregressive process with a root that exceeds unity, but remains within the
+vicinity of one. This represents a small departure from martingale behavior, but is consistent with the submartingale property
+often used in the rational bubbles literature (see section 2 for further details). Phillips and Magdalinos (2007a), Phillips and
+Magdalinos (2007b) and Phillips and Magdalinos (2012) provide a large sample asymptotic theory for this class of processes
+that enables econometric inference in this case, unlike for purely explosive processes.
+
+    3 The SADF and GSADF tests better detect mildly explosive behavior in time series data than standard methods such as
+unit root/cointegration tests (e.g., Diba and Grossman (1988)), but also variance bound tests (e.g., LeRoy and Porter (1981),
+Shiller (1981)), speci...cation tests (e.g., West (1987)), and Chow and CUSUM-type tests (e.g., Homm and Breitung (2012)).
+Few studies have implemented these techniques in the context of housing markets (e.g., Phillips and Yu (2011); Yiu et al.
+(2013)), but only on domestic markets.
+
+                                                                      1
+of origination connected with the U.S. experience during the second half of the 1990s; a second phase
+of propagation that is characterized by widespread and synchronized episodes of exuberance across very
+di¤erent housing markets during the ...rst half of the 2000s; and a ...nal phase where the episode of exuberance
+burst within a short period of time and was followed by the severe contraction in economic activity of the
+2008 09 global recession. In light of the substantial di¤erences across domestic housing markets and the
+non-tradability of housing, the pattern of near-simultaneous explosive behavior in the ...rst half of the 2000s
+is a particularly interesting ...nding.
+
+    However, the SADF and GSADF are univariate testing procedures and, thus, only allow us to draw
+conclusions at the country level. To address our second research question, we propose a novel extension
+of the GSADF procedure to a panel setting inspired by the work of Im et al. (2003) which exploits the
+large cross-sectional dimension of the International House Price Database in order to draw inferences for
+the global housing market. The extension is easy to compute and, like the univariate methods, provides
+a date-stamping strategy. The results for our Panel GSADF test provide a very clear picture of global
+exuberance in housing markets in the period preceding the global 2008 09 recession between 2000 and
+2006.
+
+    Having identi...ed periods of explosive behavior at both the domestic and the international levels, we
+turn to our third research question which deals with the factors that contribute to increase the likelihood
+of exuberance emerging in housing. A widely used explanation for the presence of boom and bust episodes
+is the existence of housing bubbles (see, e.g., Case and Shiller (2003); Mayer (2011); Shiller (2015)). In a
+rational expectations framework, rational bubbles can arise simply due to market participants'expectations
+of future price increases (Flood and Hodrick (1990)). This type of bubble processes follow explosive paths
+which makes asset prices diverge from their fundamental values and induces exuberance in housing markets.
+On the basis of this rationale, several authors have employed integration and cointegration tests to examine
+the presence of house price bubbles (see, e.g., Hott and Monnin (2008); Mikhed and Zemcik (2009b); André
+et al. (2014)).
+
+    As we show in the following section, non-stationary dynamics in house prices may also arise from causes
+other than bubbles, such as explosive dynamics in economic fundamentals and time-varying discount rates.
+For this reason, although we recognize that bubbles can cause explosive behavior in house prices, we refrain
+from using the term bubbles in the interpretation of our ...ndings. Cappozza et al. (2004), for example, ...nd
+that the time series properties of house prices in 62 United States metro areas depend on a set of economic
+variables that proxy for information costs, supply costs, and expectations.4 Agnello and Schuknecht (2011)
+and Rousová and van den Noord (2011), among other recent studies, look at fundamental predictors of
+housing booms and busts as well as turning points in the housing cycle of OECD countries. According
+to their ...ndings, domestic credit and interest rates are amongst the most important predictors of booms
+and busts, while macro aggregates (like unemployment) can be helpful in predicting peaks and troughs.
+In related research, Chen (2009) and Nyberg (2013) examine which macroeconomic and ...nancial variables
+impact the future likelihood of a bull and bear market. By analyzing data for 18 OECD countries, they ...nd
+evidence that asset price booms, characterized by rapid price appreciation above estimated trends, generally
+are preceded by similarly rapid expansions in monetary aggregates and ination. They also ...nd that ...nancial
+
+    4 The existing empirical evidence points out that house prices may temporarily deviate from fundamentals (e.g., the time
+series and cross-section evidence in Clayton (1996); Hwang and Quigley (2006); Mikhed and Zemcik (2009a); Cappozza et al.
+(2004); Adams and Fuss (2010)) and the importance of the bank lending channel in housing (e.g., Mian and Su... (2009); Pavlov
+and Wachter (2011); Berkovec et al. (2012)).
+
+                                                                      2
+variables are useful predictors, especially for bear markets.
+    We contribute to this literature by assessing whether the probability of a housing market being in a state
+
+of exuberance depends on a set of macroeconomic and ...nancial variables that have been reported to be
+important drivers of house prices. Our results provide evidence in favor of in-sample predictability with the
+best predictors being long-run interest rates, private credit growth, demand-side factors (such as per capita
+real disposable income growth) and global economic conditions. These results highlight the important ripple
+e¤ects of declining long-term interest rates in the synchronization of housing market exuberance and also
+conform with the anecdotal evidence that during the boom years prior to the 2008 09 global recession,
+international investors-- reaping the bene...ts of strong global growth-- fuelled house price run-ups across
+many di¤erent countries.
+
+    The remainder of the paper proceeds as follows: Section 2 outlines the standard asset-pricing model of
+housing and illustrates how explosive behavior in house prices may arise. Section 3 describes the SADF and
+GSADF testing procedures, as well as the extension of the latter to a panel setting. The following section
+presents and discusses the empirical results for the the univariate and panel unit root tests and the panel
+probit on the likelihood of an episode of exuberance occurring. Special attention is paid to the U.S., the
+U.K. and Spain due their economic size and signi...cance, and because these countries exemplify the distinct
+patterns observed during the three main phases of the timeline of events that we describe in the paper.
+Finally, Section 5 provides concluding remarks.
+
+2 House Prices, Fundamentals and Rational Bubbles
+
+A conventional framework for the study of explosive behavior in housing markets is provided by the standard
+asset-pricing model with risk neutral agents (see, e.g., Clayton (1996); Hiebert and Sydow (2011)).5 In this
+framework, the price of housing can be derived from the following no-arbitrage condition,
+
+|{z}                     =     |Et (R{zt+1})            ;  (1)
+
+constant risk-free rate     expected return on housing
+
+where > 0 denotes the (for time being constant) discount rate-- the expected net return on an alternative
+investment opportunity-- while Et is the expectations operator based on all information available up to time
+t, and Rt+1 is the return on housing at time t + 1 de...ned as,
+
+Rt+1                     Pt+1 + Ft+1  1;                   (2)
+                               Pt
+
+where Pt denotes the house price, and Ft is the stream of payo¤s (pecuniary or otherwise) derived from
+housing.
+
+    We refer to Ft as the economic fundamentals of the housing market, and work out our analysis with two
+related speci...cations. One general speci...cation of Ft includes the payo¤ stream Xt, which is given by the
+observed economic rents of housing, including housing services, and another component Ut that is either
+
+    5 The asset-pricing approach to housing builds on the extensive rational bubbles literature (see, e.g., the seminal work of
+Blanchard (1979) and Blanchard and Watson (1982)).
+
+                            3
+unobserved or reects mismeasurement of the housing rents, i.e.,
+
+                                                         Ft = Xt + Ut:                                                                                  (3)
+
+The other speci...cation of Ft relates the payo¤ stream of housing rents Xt to macroeconomic fundamentals
+through a demand equation for rental housing but retains an unobserved (or mismeasurement) term Ut.
+Under a set of constraints on preferences, we can derive a linear expenditure system where the demand for
+rental housing linearly relates rents Xt to macroeconomic fundamentals such as disposable income Yt, i.e.,
+
+                                                 Ft = F + Yt + Ut:                                                                                      (4)
+
+The Appendix provides details on the derivation of this relationship which captures the a¤ordability deter-
+minants of housing.6
+
+    Using the de...nition of the return on housing Rt in (2) and re-arranging the no-arbitrage condition in
+(1), yields the following expression for house prices,7
+
+                                                         1                                                                                              (5)
+                                                 Pt = 1 + Et [Pt+1 + Ft+1] ;
+
+which indicates that the price today must be equal to the discounted present-value of the expected funda-
+
+mentals plus the re-sale price of housing tomorrow. Recursive substitution of this asset pricing equation
+
+yields the standard present-value model for the price of housing (see, e.g., Clayton (1996)).
+
+By recursively substituting T periods forward, equation (5) can be re-written as
+
+                    "  XT                        1j                                    #"         1T                #
+
+           Pt = Et                              j=1 1 +                           Ft+j + Et 1 +              Pt+T :                                     (6)
+
+According to the above expression, the house price at time t is a function of the expected discounted ow
+
+of all future payo¤s up to time T plus the discounted re-sale value of the house at time T . Letting T go to
+
+                                                                                    1  T
+                                                                                  1+
+in...nity and imposing the transversality lim Et                                          Pt+T = 0 to rule out non-fundamental behavior
+
+                                                                            T !1
+
+(bubbles), the unique solution to the expectational di¤erence equation in (5) yields
+
+                                                 "X1                                   1j         #
+
+                       Pt = Et                                                    j=1 1 +         Ft+j ;                                                (7)
+
+where Pt is referred to as the fundamental price of housing due to the fact that it is a function solely
+of economic fundamentals Ft and the discount rate .8 In this case, the housing price corresponds to its
+
+fundamental-based price-- i.e., Pt = Pt .
+    The prediction that house prices are driven solely by economic fundamentals depends crucially on the
+
+6 We implicitly use this demand equation for rental housing to relate house prices to personal disposable income. In doing
+
+so, however, the de...nition of fundamentals has to be augmented with a particular speci...cation of the rental housing demand.
+
+7 Log-linear approximations are also commonly used but may be less relevant with nonstationary data where sample means
+
+do not converge to population constants (see, e.g., Campbell and Shiller (1989) and Chapter 7 in Campbell et al. (1997)).
+
+Further discussion on these approximations can be found in Lee and Phillips (2011). In this paper, we work with levels. Using
+
+logs does not alter qualitatively the results.
+
+    8 For  the standard dividend discount model  in which the payo¤                       stream  fXt gt1=1   grow  s at a constant rate   see Gordon   and
+Shapiro    (1956). Blanchard and Watson (1982)   and Campbell et al.                      (1997)  examine    more   general processes for  fXt gt1=1 .
+
+                                                                                  4
+transversality condition. In the absence of this condition, there exist in...nite forward solutions to the di¤er-
+
+ence equation for the price of housing which are of the form (see, e.g., Sargent (1987); Diba and Grossman
+
+(1988); LeRoy (2004))
+
+                                      Pt = Pt + Bt;                        (8)
+
+where Pt is the fundamental-based price of housing determined in (7) and Bt is a non-fundamental, bubble
+term that satis...es the submartingale property
+
+                                  Et (Bt+1) = (1 + )Bt:                    (9)
+
+Since the discount factor is positive ( > 0), the bubble term Bt is on expectation explosive. Making the
+discount factor t > 0 either stationary or integrated of order 1 is not going to alter the implications of the
+submartingale in (9).
+
+    A rational bubble occurs when expectations of future price increases rather than fundamentals drive
+current house prices up (see, e.g., Case and Shiller (2003)). Hence, the emergence of such a bubble creates
+exuberance in the housing market. Intuitively, in the presence of a bubble, buyers are willing to pay prices
+increasingly higher than the fundamental-based price Pt because they expect to be compensated through
+future price increases at a rate that equals the discount rate > 0.
+
+    The fact that the bubble term is explosive has important implications for empirical studies. If economic
+fundamentals follow either a stationary or an integrated process of order 1, which is a typical assumption
+in the literature, then the only reason that house prices can display explosive dynamics is because rational
+bubbles exist. Given that, one can test for rational bubbles by simply applying right-tailed unit root tests
+to house prices in order to detect and date-stamp periods of (mildly) explosive behavior in the time series.
+However, the results of such tests must be interpreted with caution since they are only indicative, not
+conclusive. As we show next, factors other than bubbles can also give rise to explosive dynamics in house
+prices.
+
+Explosive Fundamentals. Following Campbell and Shiller (1987), we combine equations (7) and (8) to
+
+obtain the following expression for house prices,
+
+                                                   "  X1  1j   #
+
+                       1          1+
+                       Pt = Ft +      Et                       Ft+j + Bt;  (10)
+                                                      j=1 1 +
+
+where is the di¤erence operator. A plausible assumption is that the economic rents on housing, Ft, follow
+a general autoregressive process of order 1,
+
+                          Ft = Ft 1 + t; t W N 0; 2 ;                      (11)
+
+where t is a white noise process. The stochastic process in (11) is stationary for j j < 1, integrated of order
+one for = 1, and explosive for > 1. In the absence of bubbles (i.e., if Bt = 0 for all t), equation (8)
+
+                                                      5
+implies that the house price equates its fundamental-based price, so equations (10) (11) imply that9
+
+                                 Pt = Pt = 1 (1                      1+          1
+                                                                 )                  Ft:                           (12)
+                                                                     1+
+
+It follows from (12) that house prices Pt can display explosive dynamics, even if there is no bubble, due to
+explosive dynamics in fundamentals-- i.e. > 1. In this case, exuberance in the housing market is inherited
+from fundamental factors which might not be directly observable.
+
+    It is worth noting that, irrespective of the value of , the ratio of house prices to fundamentals
+
+                                         Pt = 1 (1 ) 1 +                      1                                   (13)
+
+                                         Ft                      1+
+
+is non-explosive in the absence of bubbles. On the contrary, in the presence of bubbles, house prices increase
+
+in expectation faster than fundamentals causing their ratio to explode. This implies that right-tailed unit
+
+root tests applied to price-to-fundamental ratios are more informative about rational bubbles than tests
+
+applied to house prices alone. For this reason, we also examine the price-to-rent and the price-to-income
+
+ratios in our empirical analysis.10
+
+It should be noted that working with price-to-fundamental ratios does not make the results of right-
+
+tailed unit root tests conclusive for the presence of a bubble. A reason for this is because we do not generally
+
+observe  all  fundamentals,  so  rather  than  applying  our  tests  to  the  unobservable  price-to-fundamental  ratio  Pt
+                                                                                                                         Ft
+
+we rely on the observable price-to-rent        Pt  and price-to-income   Pt   ratios.11  Hence, even if there is evidence
+                                               Xt                        Yt
+
+of explosive behavior in such observable ratios, we cannot truly rule out the possibility that explosiveness
+
+is inherited from the unobserved component of fundamentals Ut-- a de...ciency that plagues virtually all
+
+empirical studies.
+
+Time-varying Discount Rates. Another factor that can cause exuberance in the housing market is time
+variation in the discount rate . Similarly to economic fundamentals, the trajectory of the discount rate can
+have an important e¤ect on the characteristics of the fundamental-based price of housing. For simplicity, we
+re-consider the asset pricing model of housing in (5) but with a time-varying discount rate, i.e.,
+
+                                                   1      Et [Pt+1 + Ft+1] ;                                      (14)
+                                             Pt = 1 +
+                                                         t
+
+and set = 1 so that the fundamentals process in (11) follows a random walk process, i.e.,
+
+                                         Ft = Ft 1 + t; t W N 0; 2 :                                              (15)
+
+    9 For a discussion of a more general solution with log-linear approximation methods see Engsted et al. (2012).
+  10 The price-to-income ratio provides a metric of house prices relative to the ability of households to pay (see, e.g., Himmelberg
+
+et al. (2005); Girouard et al. (2006)) and, thus, it incorporates one of the key determinants of the demand for housing.
+  11 We note that, apart from income and rent, there are other fundamental drivers of housing prices, such as the cost of
+
+foregone interest, the cost of property taxes and maintenance costs (see, e.g., the discussion in Himmelberg et al. (2005)). Lack
+
+of consistent and comparable data across countries for fundamental factors like this remains a limitation for applied research
+
+in housing.
+
+                                                              6
+We are interested in a scenario where there is a gradual and anticipated decline in interest rates over a
+certain period of time. This change is described by12
+
+                               8
+                               <> 1 + 0, for 0 s k;
+
+                      1+  t+s  = :>  (1 +   t+s+1) g, for       k+1  s < k0;                                       (16)
+                                     1+    , for s k0;
+
+where 0 < k < k0 < 1 de...nes the time window of decline for the discount rate, and g 1 determines the
+gross rate of decline. This interest rate speci...cation collapses to the constant discount rate case whenever
+g = 1, and implies 0 > whenever g > 1. The time-variation in (16) captures the idea that declining rates
+may have been an important factor in the run-up of house prices leading to the 2008 09 global recession
+(in line with Bernanke (2005)'s saving glut theory).
+
+    Imposing the transversality condition to rule out non-fundamental bubbles, the unique solution to the
+present value model for house prices is given by
+
+                                        Pt = Pt = t 1Ft;                                                           (17)
+
+where t 1 obeys the following di¤erence equation,
+
+                               (1 + t) t 1 = (1 + t) :                                                             (18)
+
+Combining the solution in (17) with the speci...cation of fundamentals in (15), we derive the following process
+
+for the house price,
+
+                      Pt = t 1 Pt 1 + "t; "t          WN        0;   2   2    :                                    (19)
+                                                                     t1
+                               t2
+
+Equation (19) shows the potential impact of time variation in the discount rate on the persistence and
+volatility of house prices.13
+
+    In the constant discount rate case where g = 1, t = 1 and house prices inherit the unit root of
+fundamentals. Furthermore, house price volatility is that of the fundamentals scaled by a constant related to
+
+the discount rate. The solution in the general case where g > 1 can be characterized by backward induction
+as follows: For s k0, the solution corresponds to the case where the low discount rate remains constant
+with t+s = 1 . By taking t+k0 = 1 as given and using the speci...cation of the discount rate in (16) and the
+di¤erence equation in (18), we can recover t+k0 1. In turn, we can similarly use t+k0 1 to back out t+k0 2
+and so on until we recover the entire trajectory back to time t.14
+
+Figure 1 illustrates the impact of time variation in the discount rate t given in (16) on the time series
+
+12 The recursive representation of the discount rate is equivalent to the following alternative characterization,
+
+                                     8  (1 +  ) gk0   k, for 0  s    k;
+                                     <                               s < k0;
+                                        (1 + ) gk0 s, for k + 1
+                          1+   t+s = :  1 + , for s k0:
+
+  13 For a discussion on the characteristics of the volatility process in house prices with data from the International House
+Price Database see Mack and Martínez-García (2012). These authors provide empirical evidence of an increase in house price
+volatility that is consistent with the stylized implications of declining discount rates laid out here.
+
+  14 We can also show that the persistence term t 1 in the house price equation is bounded below by g and above by gk0 k
+                                                                                                                 t2
+
+over the period from t up to t + k0.
+
+                                                   7
+features of the house price series Pt in (19) with a simple numerical example.15 Our ...ndings suggest that
+declines in interest rates can rationalize (at least qualitatively) run-ups in house prices, the explosiveness
+in the time series and the increased volatility without having to appeal to non-fundamental explanations
+(rational bubbles).
+
+                                                        [INSERT FIGURE 1]
+
+    In short, the above analysis highlights the importance of taking into consideration all three factors
+(rational bubbles, time variation in the discount rate, and explosive fundamentals) when explaining changes
+in the time series properties of house prices.
+
+3 Testing for Episodes of Explosive Behavior
+
+This sections describes the econometric methods that we employ to test for explosive behavior and provides
+technical details for their estimation. The ...rst part of the section deals with univariate tests-- the supremum
+ADF (SADF ) of Phillips et al. (2011) and the generalized SADF (GSADF ) of Phillips et al. (2012) and
+Phillips et al. (2015)-- and the second part with our proposed extension to a multivariate setting.
+
+3.1 The Univariate SADF and GSADF Procedures
+
+Consider the following Augmented Dickey-Fuller (ADF ) regression equation
+
+                   yt = ar1;r2 +   r1;r2 yt  1+  Xk            j          yt j + t;  t iid N (0;  2        );              (20)
+                                                               r1 ;r2                             r1
+                                                       j=1                                            ;r2
+
+where yt  denotes  a generic time  series  (using the  notation    of     the  previous section, yt   can be   either Pt,  Pt  or
+                                                                                                                           Xt
+
+Pt  ),  yt j for j = 1; :::; k are the di¤erenced lags of the time series, and t is the error term. Moreover, r1
+Yt
+
+and r2 denote fractions of the total sample size that specify the starting and ending points of a subsample
+
+period, k is the maximum number of lags included in the speci...cation, and ar1;r2 ,                  r1;r2 and  j         with
+                                                                                                                 r1 ;r2
+
+j = 1; :::; k are regression coe¢ cients.
+
+    The emergence of explosive behavior in house prices de...nes a period of exuberance and is indicated by a
+
+shift from a random walk-- under the assumption that fundamentals are I (1)-- to mildly explosive behavior.
+
+Therefore, we are interested in testing the null hypothesis of a unit root in yt, H0 : r1;r2 = 0, against the
+alternative of mildly explosive behavior, H1 : r1;r2 > 0. Let
+
+                                             ADFrr12   =        br1 ;r2                                                    (21)
+                                                            s.e. ( br1;r2 )
+
+denote the test statistic corresponding to this null hypothesis. Setting r1 = 0 and r2 = 1 yields the standard
+ADF test statistic, ADF01. The limit distribution of ADF01 is given by
+
+                                                       R1   W  dW      ;                                                   (22)
+
+                                                         0
+
+                                                       R1   W  2  1
+                                                                  2
+                                                         0
+
+15 For the numerical example, we set = 0:02, g = 1:0002774397, k0 k = 70, and 2 = 0:01.
+
+                                                            8
+where W is a Wiener process. The ADF test compares the ADF01 statistic with the right-tailed critical
+value from its limit distribution. When the test statistic exceeds the corresponding critical value, the unit
+root hypothesis is rejected in favor of the alternative of explosive behavior.
+
+    Although widely employed, the standard ADF test has extremely low power in detecting episodes of
+explosive behavior when these episodes end with a large drop in prices, i.e., in the presence of boom-bust
+dynamics. For example, it is well established that nonlinear dynamics, such as those displayed by episodes
+of explosiveness that are periodically collapsing, frequently lead to ...nding spurious stationarity even though
+the process is inherently explosive (see, e.g., Evans (1991)).16
+
+    In order to deal with the e¤ect of a collapse in house prices on the test's performance, Phillips et al.
+(2011) proposed a recursive procedure based on the estimation of the ADF regression in (20) on subsamples
+of the data. Normalizing the end of the original sample to T = 1, the authors propose estimating (20) using
+a forward expanding sample with the end of the sample period r2 increasing from r0 (the minimum window
+size for the ...xed initial window) to one (the last available observation). For this procedure, the beginning of
+the sample is held constant at r1 = 0, and the expanding window size of the regression (over the normalized
+sample) is denoted by rw = r2 r1. Then, while the starting point of the estimation is kept ...xed at r1 = 0,
+the ADF regression is recursively estimated, while incrementing the window size, r2 2 [r0; 1], by adding one
+additional observation at a time. Each estimation yields an ADF statistic denoted as ADF0r2 .
+
+    The Phillips et al. (2011) test statistic, called sup ADF (SADF ), is de...ned as the supremum value of
+the ADF0r2 sequence expressed as follows:
+
+SADF (r0) = sup ADF0r2 :                                                                              (23)
+
+                             r2 2[r0 ;1]
+
+Under the null hypothesis of a random walk, the limit distribution of the SADF statistic is given by
+
+  sup        RR0r0r22WWd2W12 :                                                                        (24)
+
+r2 2[r0 ;1]
+
+Similar to the standard ADF test, when the SADF statistic exceeds the right-tailed critical value from its
+
+limit distribution, the unit root hypothesis is rejected in favor of explosive behavior.
+
+    The SADF test performs well when there is a single boom-bust episode within the sample. Simula-
+
+tion experiments in Homm and Breitung (2012) show that the SADF test outperforms alternative testing
+
+methods-- such as the modi...ed versions proposed by Bhargava (1986), Busetti and Taylor (2004), and Kim
+
+(2000) and Kim et al. (2002)-- in the presence of a single change in the persistence from a random walk to
+an explosive process.17
+
+    More recently, Phillips et al. (2015) derive a new unit root test, the Generalized SADF (GSADF ), that
+
+covers a larger number of subsamples than the SADF by allowing both the ending point, r2, and the starting
+point, r1, to change. This extra exibility on the estimation window results in substantial power gains in
+
+  16 Evans (1991) show using simulation methods that standard unit root and cointegration tests cannot reject the null of no
+explosive behavior, when such periodically collapsing episodes are present in the data. Price increases during the boom followed
+by a decline during the correction phase make it look like a mean-reverting (stationary) process. Intuitively, this is the reason
+why many non-recursive unit root tests wrongly suggest that processes that incorporate periodically collapsing boom-bust
+episodes are stationary-- as indicated by Evans (1991).
+
+  17 These approaches are used to test a permanent change in persistence from a random walk to an explosive process. As a
+consequence, they perform well only in cases where the series becomes explosive but never bursts in-sample.
+
+             9
+comparison to the SADF . Furthermore, it makes the GSADF test consistent with multiple boom-bust
+episodes within a given time series-- while the SADF test is consistent only with a single episode.
+
+    The GSADF statistic is de...ned as
+
+                             GSADF (r0) =                             sup              ADFrr12 :                             (25)
+                                                                                                                             (26)
+                                                         r22[r0;1];r12[0;r2 r0]
+
+Under the null hypothesis, the limit distribution of the GSADF statistic is
+
+                             8                                                                              9
+                             ><>>                                                                           W (r1)] =>>>
+                                       1  rw  [W  (r2)2  W (r1)2 rw]             R r2  W  (r)dr[W  (r2)              >;>> ;
+         sup                           2
+                                                                                   r1
+r2 2[r0 ;1];r1 2[0;r2
+                       r0 ]  >:>>                            R r2                hR r2             i2  1=2
+                                                                                             (r)dr
+                                                  rw1=2  rw    r1  W  (r)2dr         r1   W
+
+where the window size of each estimation is rw = r2 r1. Again, rejection of the unit root hypothesis in
+favor of explosive behavior requires that the test statistic exceeds the right-tailed critical value from its limit
+distribution given by (26).
+
+The Date-Stamping Strategy. If the null of a unit root in yt is rejected, then the SADF and GSADF
+procedures can be used to obtain an exact chronology of exuberance in the housing market. The identi-
+...cation of periods where house prices (or price-to-fundamental ratios) displayed mildly explosive behavior
+is particularly important since it is a necessary condition for shedding light on the factors and develop-
+ments that led to the 2008 09 global recession. We focus on the date-stamping strategy associated with
+the GSADF procedure due to its good power properties and it's consistency in the presence of multiple
+boom-bust episodes.
+
+    Phillips et al. (2012) and Phillips et al. (2015) recommend a dating strategy under the GSADF approach
+based on the backward sup ADF statistic, i.e.,18
+
+                                          BSADFr2 (r0) =              sup ADFrr12 :                                          (27)
+
+                                                                   r12[0;r2 r0]
+
+The origination date of the period of exuberance is de...ned as the ...rst observation for which the BSADF
+
+statistic exceeds its critical value,
+
+                                                  n                                          o
+
+                       rbe = inf                         r2 : BSADFr2 (r0) > scubr2T c ;                                     (28)
+
+                                  r2 2[r0 ;1]
+
+and the termination date as the ...rst observation after rbe for which the BSADF falls below its critical value,
+
+                                                  n                                          o
+
+                       rbf = inf                         r2 : BSADFr2 (r0) < scubr2T c ;                                     (29)
+
+                                   r2 2[rbe ;1]
+
+where scubr2T c is the 100 (1 ) % critical value of the sup ADF based on br2T c observations and is the
+chosen signi...cance level. The consistency of the above dating strategy in the presence of one or two explosive
+
+  18 The backward sup ADF (BSADF ) statistic relates to the GSADF statistic as follows,
+
+                                                         GSADF (r0) = sup fBSADFr2 (r0)g :
+
+                                                                                                             r2 2[r0 ;1]
+
+                                                             10
+periods that are periodically collapsing is established in Phillips et al. (2015).
+
+Technical Details. The computation of the SADF , GSADF and BSADF test statistics necessitates
+the selection of the minimum window size r0 and the autoregressive lag length k. Regarding the minimum
+window size, this has to be large enough to allow initial estimation but it should not be too large to avoid
+missing short episodes of exuberance. We follow Phillips et al. (2012) and set the minimum size equal to 36
+observations. This minimum window size is also close to the size suggested by the rule of thumb of Phillips
+
+                                       p
+et al. (2015), r0 = 0:01 + 1:8= T .19
+
+    With respect to the autoregressive lag length k, we evaluate our results primarily for two cases, k equal
+to 1 and 4.20 Our ...ndings do not appear very sensitive to the lag length speci...cation and, for this reason,
+we only report results for k = 4. More sophisticated lag length selection procedures based on information
+criteria (such as the Modi...ed Information Criteria of Ng and Perron (2001)) and sequential hypothesis
+testing (see, e.g., Ng and Perron (1995)) could, in principle, be applied but with a higher computational
+cost. Moreover, Phillips et al. (2012) show that such procedures can result in severe size distortions, and a
+reduction in power of both the SADF and GSADF tests. That is, they frequently lead to rejecting the null
+hypothesis when in fact the time series follows a unit root process, and not rejecting the null when the time
+series is explosive.
+
+    The implementation of the unit root tests also requires the limit distributions of the SADF , GSADF
+and BSADF test statistics. These distributions are non-standard and depend on the minimum window size.
+Hence, critical values have to be obtained through Monte Carlo simulations. We obtain ...nite sample critical
+values by generating 2000 replications of a driftless random walk process with N (0; 1) errors.21
+
+    Finally, the researcher may choose to neglect very short periods of exuberance by setting a minimum
+duration period. Phillips et al. (2015) recommend a minimum duration of log (T ) =T . Since all our house
+price time series have 154 quarterly observations, the minimum duration that we adhere to in our empirical
+evaluation corresponds to 5 quarters.
+
+3.2 The Panel GSADF Procedure
+
+The International House Price Database of the Federal Reserve Bank of Dallas has a large cross-sectional
+dimension of 22 countries. The SADF and GSADF tests described in the previous sub-section, however, can
+only be applied country by country and, hence, cannot exploit the panel nature of our dataset. To the best
+of our knowledge, there is no sequential right-tailed unit root test for panel data in the literature. Inspired
+by the work of Im et al. (2003), we propose an extension of the GSADF test procedure to heterogeneous
+panels.22
+
+    Consider the panel version of the ADF regression equation in (20),
+
+yi;t = ai;r1;r2 +  i;r1;r2 yi;t  1+  Xk   j         yi;t j + i;t;                   (30)
+                                          i;r1 ;r2
+                                     j=1
+
+  19 Exploring alternative minimum window sizes can be computationally demanding since for each r0 new critical values must
+be computed.
+
+  20 The choice of a ...xed lag length is appealing because it allows us to employ a recursive least squares approach which
+
+substantially reduces the computational cost of estimation.
+  21 Using asymptotic critical values doesn't qualitatively change our results. Asymptotic values are provided in Phillips et al.
+
+(2015).
+  22 We are grateful to an anonymous referee for motivating this extension.
+
+                                 11
+where i = 1; : : : ; N , denotes the country index, and the remaining variables are de...ned as in the previous
+sub-section. We are interested in testing the null hypothesis of a unit root H0 : i;r1;r2 = 0 for all N
+countries against the alternative of explosive behavior in a subset of countries, H1 : i;r1;r2 > 0 for some
+i. This alternative allows for i;r1;r2 to di¤er across countries and, in that sense, is more general than
+approaches based on the homogeneous alternative hypothesis.
+
+    We propose a panel unit root test computed by taking the average of the individual BSADF statistics
+at each time period. To facilitate the analysis, we adjust the notation for univariate test statistics to include
+the country index i,
+
+     ADFir;2r1                          =  s.e.  bi;r1 ;r2    )  ;  (31)
+                                                  ( bi;r1;r2        (32)
+
+     SADFi;0(r0) = sup ADFir;20;
+
+                                      r2 2[r0 ;1]
+
+and
+
+     BSADFi;r2 (r0) =                            sup ADFir;2r1 :    (33)
+                                                                    (34)
+                                           r12[0;r2 r0]
+
+The panel BSADF can now be de...ned as
+
+                                     1 XN
+     Panel BSADFr2 (r0) = N i=1BSADFi;r2 (r0):
+
+The Panel BSADF statistic is particularly appealing because it measures the degree of overall exuberance
+in international housing markets. Having de...ned the Panel BSADF , the de...nition of the Panel GSADF
+follows naturally. It is simply the supremum of the Panel BSADF , i.e.,
+
+     Panel GSADF (r0) = sup Panel BSADFr2 (r0):                     (35)
+
+                                        r2 2[r0 ;1]
+
+    The results of Maddala and Wu (1999) and Chang (2004) show that the distribution of panel unit root
+tests based on mean unit root statistics is not invariant to cross-sectional dependence of the error terms i.
+In light of the ample evidence of strong ...nancial linkages across countries (see, e.g., Lane and Milesi-Ferretti
+(2003)), the assumption of uncorrelated shocks seems unrealistic even for international housing markets. In
+order to draw inferences in this context, we adopt a sieve bootstrap approach that is designed speci...cally to
+allow for cross-sectional error dependence. Details of the sieve bootstrap can be found in the Appendix.
+
+    Dating episodes of exuberance in the global housing market can be performed by comparing the Panel
+BSADF with the sequence of bootstrap critical values. The origination date is set equal to the ...rst
+observation that the Panel BSADF statistic exceeds the 100 (1 ) % critical value obtained from the
+bootstrap procedure, and the termination date is set equal to the ...rst observation that the Panel BSADF
+falls below the 100 (1 ) % critical value.
+
+4 Empirical Evidence on International House Prices
+
+The sources and methodology used to construct the 22-country panel of house prices and personal disposable
+income from the International House Price Database are documented in Mack and Martínez-García (2011).
+
+                                        12
+The data on real house prices and real personal disposable income per capita is reported quarterly, deated
+with the PCE deator, and covers the period from the ...rst quarter of 1975 to the second quarter of 2013.
+From this data, we construct an a¤ordability index for housing as the ratio (in percent) of real house prices
+over real personal disposable income per capita for each country. For 16 out of the 22 countries that we
+consider, a quarterly index of real housing rents is also available from the OECD (see Girouard et al. (2006)).
+We use this rent index to construct the price-to-rent ratio for the 16 countries with available data.
+
+                                                     [INSERT FIGURES 2 & 3]
+
+    The sample period covered in our dataset includes several recessions, which makes it ideal for contrasting
+the timeline of the boom and bust in international housing markets prior to the 2008 09 global recession
+against the experience during previous periods of contraction in economic activity. The median, lower and
+upper quartile of house prices of all 22 countries are displayed in Figure 2. We observe from the ...gure that
+for the median country, real house prices troughed in the mid-1990s and peaked around 2006. Furthermore,
+we can see that the run-up in real house prices during this period is widespread-- an observation that has
+fueled the view that the latest boom-bust episode in housing had a part in the 2008 09 global recession.
+This view is further supported by the fact that the time evolution of the ratios of house prices to their long-
+run anchors (income and rents) display similar patterns (see Figure 3). This motivates our ...rst research
+question of whether there is formal statistical evidence that substantiates the claim that housing markets
+were exuberant prior to the global recession.
+
+4.1 Empirical Findings: A Chronology of Exuberance in International Housing
+       Markets
+
+Table 1 reports results for the SADF and GSADF tests on real house prices, the price-to-income ratio and
+the price-to-rent ratio. A comparison of the results of the two methods reveals large di¤erences. Starting
+with the GSADF test, there is strong evidence of exuberance in real house prices with the null hypothesis
+of a unit root being rejected for all countries but three: Finland, Italy and South Korea. The evidence in
+favor of mildly explosive behavior remains strong when we look at the price-to-income ratio (the null cannot
+be rejected only for Finland, Italy, South Korea and Norway) and the price-to-rent ratio (the null cannot
+be rejected only for Germany, France and Italy). Turning to the SADF test, we observe that the number
+of rejections of the unit root hypothesis is substantially smaller than that for the GSADF , which is in line
+with the higher power of the latter. In particular, the SADF test cannot reject the null for more than half
+of the countries of our sample (12 out of the 22) when we examine real house prices. When we look at the
+price-to-income and price-to-rent ratios, the evidence in favor of exuberance becomes even weaker with fewer
+rejections. Overall, these results indicate that episodes of explosive behavior were widespread across a large
+number of countries and that powerful testing procedures are required to detect them.23
+
+                                                         [INSERT TABLE 1]
+
+  23 National house price indices aggregate across dwelling types and diverse locations within a country which may impact on
+the performance of the econometric tests described in the previous section. In order to examine the e¤ect of aggregation on the
+properties of the SADF and GSADF tests, we have conducted a large simulation experiment based on the S&P/Case-Shiller
+10-City Composite Home Price Index and its constituent series. The results of the simulation experiment (which are available
+upon request from the authors) illustrate that aggregating lowers the power of both the SADF and GSADF tests. The e¤ect is
+much larger for the SADF test than for the GSADF test, which gives us another reason to prefer the latter in our econometric
+strategy.
+
+                                                                     13
+    We now turn to the chronology of exuberance. Figure 4 and Figure 5 show the periods during which
+the series under examination displayed explosive dynamics (i.e., the periods during which the estimated
+BSADF statistics exceed the corresponding 95% critical values). Focusing on the results for real house
+prices, three phases can be identi...ed in connection with the latest boom and bust episode in international
+housing markets.
+
+    In the ...rst phase, between the mid-1990s and the early 2000s, real house prices became explosive in the
+U.S. and Ireland. There were also concurrent episodes detected for Norway and Switzerland at the time,
+but those seemed to have evolved and eventually collapsed on their own.
+
+    In the second phase of the boom period, i.e., by the early-to-mid 2000s, the number of countries with
+explosive real house prices shot up to 18 (out of a total of 22). This near-simultaneous exuberance in house
+prices is particularly interesting given the substantial di¤erences across domestic housing markets and the
+non-tradability of housing. As evident from ...gures 4 and 5, this phenomenon has no precedent at least in
+our sample period. A potential explanation for the ...rst two phases, is that the boom in house prices that
+originated in the U.S. propagated to international housing markets with perceived greater opportunities or
+lower risks. The pattern of propagation observed in the data and the high synchronization suggest that a
+common factor may have contributed to house price exuberance spreading across countries. In this regard,
+ripple e¤ects from the decline in world interest rates experienced during the 2000s and housing bubbles are
+prime candidates (see, e.g., Case and Shiller (2003)).
+
+    In the third and ...nal phase, the run-up in house prices started to be perceived as not sustainable, and
+uncertainty about real economic activity in both the U.S. and around the world grew. The episode ended
+with a collapse of house prices around 2006, making apparent the economic implications of the boom and
+bust for the U.S. and the world.
+
+    Looking at the results for price-to-fundamental ratios, we observe a similar pattern to real house prices.
+Perhaps not surprisingly, however, the periods of explosive dynamics in the price-to-fundamental ratios
+are somewhat shorter. For the U.S., in particular, we observe that the house-price-to-income ratio did
+not become explosive until the early 2000s. The fact that U.S. real house prices were explosive in the late
+1990s but the house-price-to-income ratio was not implies that explosiveness may have been driven in part by
+economic fundamentals. This conclusion is in line with the strong growth (partly due to the new information
+technologies) in U.S. income in the 1990s.
+
+                                                     [INSERT FIGURES 4 & 5]
+
+    There is an unusual synchronization in the episodes of explosive behavior across most of the countries in
+the sample since the early-to-mid-2000s. This period of near simultaneous exuberance was pervasive across
+very di¤erent housing markets whose fundamentals where not necessarily aligned, and it is unprecedented
+given the sample period and country coverage in our dataset. An overall picture of the behavior of inter-
+national housing markets is given by the results for the Panel GSADF test. The Panel GSADF statistics
+are statistically signi...cant for both real house prices and price-to-fundamental ratios which provides strong
+evidence in favor of global exuberance in our sample.
+
+    What is more interesting is the time evolution of the three panel BSADF statistics displayed in Figure 6.
+Irrespective of the variable under examination (real house prices, the price-to-income ratio and the price-to-
+rent ratio), the results demonstrate in a clear manner the three phases of the housing market: the BSADF
+statistics start below their critical values at the beginning of the sample, they increase rapidly after the
+
+                                                                     14
+mid-1990s and eventually exceed their critical values during the second phase starting in the early 2000s,
+with the period of global exuberance in housing markets continuing until 2006 07 at which point it quickly
+collapsed in all three statistics (near-)simultaneously.
+
+                                                        [INSERT FIGURE 6]
+
+The Cases of the U.S., the U.K. and Spain. Having established the emergence of global exuberance
+in housing markets, we now return to the experiences of individual countries and, speci...cally, the U.S., the
+U.K. and Spain. This choice is based on the economic size and signi...cance of these countries, and because
+they exemplify the distinct patterns observed during the three main phases of the timeline of events that we
+describe in our paper. As can be seen from Figures 7, 8 and 9, the real house price appreciation has been
+very signi...cant for these three countries since the mid-1990s, with the run-up in the U.K. and Spain being
+larger over time than that in the U.S. This sets Spain and the U.K. apart, but as our evidence shows, it does
+not mean that explosive behavior is somehow a weaker phenomenon for the U.S.
+
+                                                    [INSERT FIGURES 7 to 9]
+
+    Figures 7 to 9 show the estimated BSADF statistics for the three countries together with 95% critical
+values. Focusing on real house prices, we observe that during the period of global exuberance leading to the
+2008 09 global recession, the U.S. played the leading role with the U.K. and Spain following.
+
+    In spite of the di¤erences between the housing markets of Spain and the U.K., our ...ndings show that both
+countries went through a near simultaneous period of exuberance during the second phase of the timeline--
+although the U.K. also experienced an echo before the ...nal collapse ahead of the 2008 09 recession.
+This pattern of strong synchronization in housing exuberance across countries is in line with the view that
+exuberance in real house prices in the U.S. migrated and ampli...ed the e¤ect of domestic factors in these two
+(otherwise very di¤erent and distant) housing markets.
+
+4.2 The Predictive Ability of Macro and Financial Variables
+
+Having established a timeline of exuberance in international housing markets, we employ a pooled probit
+
+model to assess the in-sample predictive ability of macroeconomic and ...nancial variables. The probit model
+
+is described by
+
+                 P (EXUi;t = 1) = xi0;t ;                    (36)
+
+where ( ) is the standard normal cumulative distribution function, xi;t is a vector of predictors for all
+i = 1; :::; N , and EXUi;t is the dependent binary variable for all i = 1; :::; N that takes the value of 1 if there
+is evidence of exuberance in country i and 0 otherwise, i.e.,24
+
+                           (
+
+                 EXUi;t =     0; if BSADFi;t (r0) < scut ;   (37)
+                              1; if BSADFi;t (r0) > scut :
+
+    Our choice of predictors is based partly on the theoretical model of house price determination discussed
+
+in section 2-- particularly in regards to the role of time-variation in interest rates and related ...nancial
+
+  24 The variability of EXUt within a country is limited because the GSADF methodology does not detect many episodes of
+exuberance. An advantage of the pooled probit model is that, by incorporating the full variability across countries, it increases
+the number of episodes leading to more tightly identi...ed results.
+
+                              15
+variables. We also include a number of macro factors which the existing literature has found to be relevant
+for predicting booms and busts (or turning points of the housing cycle). A detailed description of the dataset
+is provided by Grossman et al. (2014). This dataset is complemented with OECD and BIS data, also with
+national and other sources, whenever necessary.
+
+    Among the ...nancial predictors, we consider the spread between the long and short term interest rates.
+The spread proxies the slope of the yield curve and indicates market expectations of future policy rates.
+We also include long-term interest rates to proxy for mortgage rates and the e¤ect they may have on the
+likelihood of a period of exuberance. Long-term rates also provide a ...nancial measure of the opportunity
+costs of investing in housing.
+
+    In addition, using OECD data, we consider quarter-over-quarter changes in stock markets in part because
+we expect stock prices to be forward-looking and, therefore, to reect the pro...tability of alternative asset
+classes. Furthermore, stock market appreciation is related to changes in households'...nancial wealth.
+
+    We incorporate measures of domestic nominal credit growth to the private sector from the BIS in quarter-
+over-quarter growth rates as well as the current account to GDP ratio and the quarter-over-quarter changes
+in the current account. An expansion of private credit can lead to asset price and housing booms and capital
+inows from abroad can fuel a rapid expansion of domestic credit. Hence, we aim to determine whether
+periods of exuberance can be predicted not just from the extent of the preceding credit expansion, but also
+from whether the funding arises externally.
+
+    We also examine quarter-over-quarter changes in real personal disposable income per capita and, based
+on OECD data, of real housing rents too. Housing rents proxy for time-variation in the expected returns
+on housing-- the relationship between house prices and rents is at the core of our asset-pricing model of
+housing determination. Regarding real personal disposable income, this variable is meant to capture key
+demand-side fundamentals that are conventionally viewed as anchoring the housing market over the long
+run.
+
+    As indicators of the state of the business cycle, we use the unemployment rate from national sources,
+real GDP growth (quarter-over-quarter) and CPI ination (quarter-over-quarter). These variables are not
+generally viewed as leading indicators, but they can have predictive power on future consumption and
+investment on housing. Moreover, we use the updated quarterly average of the global indicator of real
+economic activity proposed by Kilian (2009) and oil prices on the West Texas Intermediate from the Wall
+Street Journal to account for global economic developments.
+
+    Due to the fact that we do not have data on rent and private credit growth for all countries, our
+...nal dataset consists of a subset of 14 countries that have experienced at least one period of exuberance
+in-sample and for which we have all available data: Australia, Belgium, Canada, Switzerland, Germany,
+Denmark, Spain, Finland, France, the U.K., Ireland, Japan, Netherlands, and the U.S. To specify the pooled
+probit model, we start with a general speci...cation including all our explanatory variables. This model is
+sequentially reduced by deleting after each iteration the insigni...cant variable with the highest p-value until
+all remaining variables appear statistically signi...cant.
+
+                                                         [INSERT TABLE 2]
+
+    The estimation results for the ...nal speci...cation of the pooled probit model with and without random
+e¤ects can be found in Table 2. Overall, there is evidence that ...nancial and macro variables, at least in-
+sample, have predictive power for exuberance. Our ...ndings suggest that the factors that matter for predicting
+
+                                                                     16
+an episode of exuberance are: First, mortgage costs and access to mortgage credit, which are proxied by long-
+term rates and credit growth to the private sector. Foreign savings/disavings and the current account also
+play a role. Second, demand-side factors of the housing market and, in particular, per capita real disposable
+income growth and the unemployment rate. Third, domestic and global macroeconomic conditions, where
+domestic conditions are proxied by domestic real GDP growth, while global economic conditions are proxied
+with the index of global economic activity of Kilian (2009).
+
+    These results support the important role of declining long-term interest rates in the synchronization
+of domestic housing markets, in line with the predictions of our stylized asset-pricing model. Current
+account changes also matter lending some empirical support to the view that international capital ows may
+contribute to the propagation of exuberance across countries. Moreover, our evidence highlights that global
+economic conditions contribute positively to the likelihood of exuberance-- a ...nding that seems to conform
+with the anecdotal evidence that during the boom years prior to the 2008 09 global recession, international
+investors-- reaping the bene...ts of strong global growth-- turned their attention increasingly towards housing
+markets for investment, fueling housing price run-ups across many di¤erent countries.
+
+    The last row of Table 2 also reports McFadden's pseudo R2 for the probit model with and without
+random e¤ects. The estimates for the pseudo R2 are 0:230 and 0:252, respectively, which suggests that
+although the macro and ...nancial variables examined have strong predictive content, there is ample room for
+other explanatory factors. According to the theoretical analysis of section 2, unobserved fundamentals and
+rational housing bubbles may well be such factors.
+
+5 Concluding Remarks
+
+In this paper, we employed two econometric procedures, namely the SADF and GSADF , developed recently
+by Phillips et al. (2011) and Phillips et al. (2015) in order to examine whether house prices and price-to-
+fundamental ratios exhibited explosive behavior during the last four decades and, if so, to identify the exact
+periods of exuberance. An appealing feature of our study is the use of data from the International House
+Price Database of the Federal Reserve Bank, which has a large cross-sectional dimension and, therefore,
+allows a unique, international look at the behavior of housing markets.
+
+    A consistent timeline of events emerges from our empirical evidence suggesting that the latest boom-
+bust cycle in international housing markets was unusually widespread and evolved in three phases: One of
+origination that can be related to the U.S. experience primarily during the second half of the 1990s; a second
+phase of propagation that is characterized by widespread and synchronized episodes of exuberance across
+very di¤erent housing markets during the ...rst half of the 2000s; and a ...nal phase where this episode of
+global exuberance burst within a short period of time from the severe contraction in economic activity of
+the 2008 09 global recession.
+
+    In order to exploit the cross-sectional dimension of our dataset, we also propose an extension of the
+GSADF test to a panel setting. This extension is appealing because it allows to draw general conclusions
+about international housing markets. Moreover, it is straightforward to implement and, like the SADF and
+GSADF , allows dating periods of exuberance. The results of the Panel GSADF test provide further support
+to the view that exuberance in housing markets prior to the 2008 09 global recession was an international
+phenomenon.
+
+                                                                     17
+    Finally, we examined whether macroeconomic and ...nancial variables impact the likelihood of exuberance
+in housing markets. In particular, we employed a panel probit model with a large number of predictors that
+have been suggested in the literature to be important determinants of housing cycles. Our results suggest
+that long-run interest rates, credit growth, demand-side factors (such as per capita real disposable income
+growth), as well as domestic and global macroeconomic conditions impact the likelihood of a housing market
+being in a state of exuberance. These ...ndings provide (at least partially) an explanation for the widespread
+exuberance detected in the early- and mid-2000s.
+
+                                                                     18
+                          Appendix
+
+A Demand Equation for Rental Housing
+
+Consider the maximization of the Stone-Geary utility function with housing units rented, Ht, and consump-
+tion of other goods, Ct, i.e.,25
+
+                                     U (Ht; Ct) = (Ht H ) (Ct C )1 ; 0 < < 1;
+
+subject to the intratemporal budget constraint,
+
+                          Ct + xtHt = Yt;
+
+where the price of the consumption good is normalized to one. Xt xtHt is the housing rents-- rental
+expenditures-- paid and xt the rental rate per unit rented, Yt refers to disposable income, and 0 < < 1,
+ H and C are preference parameters.
+
+    From ...rst-order conditions, the Stone-Geary utility function subject to the standard intratemporal budget
+constraint gives a linear expenditure system where the demand for rental housing takes the following form:
+
+                          Ht = H + xt (Yt xt H C ) ;      (38)
+
+or in expenditure terms,
+
+                          Xt xtHt = Yt + (1 ) H xt    C:  (39)
+
+Under the assumption that in equilibrium the units rented are constant (i.e., Ht = H) and normalized to one,
+the demand equation that determines housing rents in (39) reduces to an a¢ ne transformation of disposable
+
+income Yt, i.e.,
+
+                          Xt = xt = F + Yt+1;             (40)
+
+where  1 (1 ) H and F     1 (1 ) H C .
+
+  25 While the Stone-Geary reduces to the Cobb-Douglas utility function whenever the parameters H and C are both set equal
+to zero, the speci...cation permits both the rental rate elasticity and the income elasticity to vary with both rental rates and
+income-- unlike the Cobb-Douglas where both elasticities are constant or the constant elasticity of substitution utility function
+for which the income elasticity is constant.
+
+                                                                     19
+B The Panel GSADF Test
+
+The bootstrap procedure consists of the following steps:
+
+1. For each country, impose the null hypothesis of a unit root and ...t the restricted ADF regression
+
+equation,                                              Xk
+
+                        yi;t = ai;r1;r2 +                  j=1    j           yi;t j + i;t;
+                                                                  i;r1 ;r2
+
+to obtain coe¢   cient  estimates (bai;r1;r2 , and  bj          for j = 1; : : : ; k) and residuals (bi).
+
+                                                      i;r1 ;r2
+
+2. Create a residual matrix with typical element bt;i.
+
+3. In order to preserve the covariance structure of the error term, generate bootstrap residuals           b    by
+                                                                                                           i;t
+
+sampling with replacement raws from the residuals matrix.
+
+4. Use the bootstrap residuals and the estimated coe¢ cients to generate recursively bootstrap samples
+
+for ...rst di¤erences,                                 Xk
+
+                        yib;t  =  bai;r1;r2         +        j=1  bj          yib;t j + bi;t;
+
+                                                                    i;r1 ;r2
+
+and for levels,                                        Xt
+
+                                  yib;t             =        p=1  yib;p:
+
+5. Compute the sequence of Panel BSADF statistics and the Panel GSADF statistic for yib;t.
+
+6. Repeat steps (3) to (5) a large number of times to obtain the empirical distribution of the test statistics
+   under the null of a unit root.
+
+                                                       20
+References
+
+   Adams, Z. and R. Fuss (2010). Macroeconomic Determinants of International Housing Markets. Journal
+       of Housing Economics 19, 38­50.
+
+   Agnello, L. and L. Schuknecht (2011). Booms and Busts in Housing Markets: Determinants and Implica-
+       tions. Journal of Housing Economics 20, 171­190.
+
+   André, C., L. A. Gil-Alana, and R. Gupta (2014). Testing for Persistence in Housing Price-to-Income and
+       Price-to-Rent Ratios in 16 OECD Countries. Applied Economics 46 (18), 2127­2138.
+
+   Berkovec, J., Y. Chang, and D. A. McManus (2012). Alternative Lending Channels and the Crisis in U.S.
+       Housing Markets. Real Estate Economics 40 (s1), S8­S31.
+
+   Bernanke, B. S. (2005). The Global Saving Glut and the U.S. Current Account De...cit.
+       At the Sandridge Lecture, Virginia Association of Economists, Richmond, Virginia.
+       http://www.federalreserve.gov/boarddocs/speeches/2005/200503102/.
+
+   Bhargava, A. (1986). On the Theory of Testing for Unit Roots in Observed Time Series. Review of
+       Economic Studies 53, 369­384.
+
+   Blanchard, O. and M. Watson (1982). Crisis in the Economics Financial Structure, Chapter Bubbles,
+       Rational Expectations, and Financial Markets, pp. 295­315. Lexington Books, Lexington, Mass.
+
+   Blanchard, O. J. (1979). Speculative Bubbles, Crashes and Rational Expectations. Economics Letters 3,
+       387­389.
+
+   Busetti, F. and A. Taylor (2004). Tests of Stationarity Against a Change in Persistence. Journal of
+       Econometrics 123, 33­66.
+
+   Campbell, J., A. Lo, and A. MacKinlay (1997). The Econometrics of Financial Markets. Princeton, NJ:
+       Princeton University Press.
+
+   Campbell, J. and R. Shiller (1987). Cointegration and Tests of Present Value Models. Journal of Political
+       Economy 95, 1062­1088.
+
+   Campbell, J. and R. Shiller (1989). The Dividend-Price Ratio and Expectations of Future Dividends and
+       Discount Factors. Review of Financial Studies 1, 195­228.
+
+   Cappozza, D. R., P. H. Hendershott, and C. Mack (2004). An Anatomy of Price Dynamics in Illiquid
+       Markets: Analysis and Evidence from Local Housing Markets. Real Estate Economics 32 (1), 1­32.
+
+   Case, K. E. and R. J. Shiller (2003). Is There a Bubble in the Housing Market? Brookings Papers on
+       Economic Activity 34 (2), 299­362.
+
+   Chang, Y. (2004). Bootstrap Unit Root Tests in Panels with Cross-sectional Dependency. Journal of
+       Econometrics 120 (2), 263­293.
+
+   Chen, S.-S. (2009). Predicting the Bear Stock Market: Macroeconomic Variables as Leading Indicators.
+       Journal of Banking and Finance 33 (2), 211­223.
+
+   Clayton, J. (1996). Rational Expectations, Market Fundamentals and Housing Price Volatility. Real Estate
+       Economics 24, 441­470.
+
+                                                                     21
+Diba, B. and H. Grossman (1988). Explosive Rational Bubbles in Stock Prices. American Economic
+    Review 78, 520­530.
+
+Engsted, T., T. Pedersen, and C. Tanggaard (2012). The Log-Linear Return Approximation, Bubbles,
+    and Predictability. Journal of Financial and Quantitative Analysis 47, 643­665.
+
+Evans, G. W. (1991). Pitfalls in Testing for Explosive Bubbles in Asset Prices. American Economic
+    Review 81 (4), 922­930.
+
+Flood, R. and R. Hodrick (1990). On Testing for Speculative Bubbles. Journal of Economic Perspectives 4,
+    85­101.
+
+Girouard, N., M. Kennedy, P. van den Noord, and C. André (2006). Recent House Price Developments: The
+    Role of Fundamentals. OECD Economics Department Working Papers No. 475 . OECD Publishing.
+
+Gordon, M. and E. Shapiro (1956). Capital Equipment Analysis: The Required Rate of Pro...t. Management
+    Science 3 (1), 102­110.
+
+Grossman, V., A. Mack, and E. Martínez-García (2014). A New Database of Global Economic Indicators.
+    The Journal of Economic and Social Measurement 39 (3), 163­197.
+
+Hiebert, P. and M. Sydow (2011). What Drives Returns to Euro Area Housing? Evidence from a Dynamic
+    Dividend-Discount Model. Journal of Urban Economics 70 (2-3), 88­98.
+
+Himmelberg, C., C. Mayer, and T. Sinai (2005). Assessing High House Prices: Bubbles, Fundamentals
+    and Misperceptions. Journal of Economic Perspectives 19 (4), 67­92.
+
+Homm, U. and J. Breitung (2012). Testing for Speculative Bubbles in Stock Markets: A Comparison of
+    Alternative Methods. Journal of Financial Econometrics 10 (1), 198­231. Winter.
+
+Hott, C. and P. Monnin (2008). Fundamental Real Estate Prices: An Empirical Estimation with Interna-
+    tional Data. Journal of Real Estate Finance and Economics 36, 427­450.
+
+Hwang, M. and J. M. Quigley (2006). Economic Fundamentals in Local Housing Markets: Evidence from
+    U.S. Metropolitan Regions. Journal of Regional Science 46, 425­453.
+
+Im, K. S., M. H. Pesaran, and Y. Shin (2003). Testing for Unit Roots in Heterogeneous Panels. Journal
+    of Econometrics 115 (1), 53­74.
+
+Kilian, L. (2009). Not All Oil Price Shocks Are Alike: Disentangling Demand and Supply Shocks in the
+    Crude Oil Market. American Economic Review 99 (3), 1053­1069.
+
+Kim, J.-Y. (2000). Detection of Change in Persistence of a Linear Time Series. Journal of Econometrics 95,
+    97­116.
+
+Kim, J.-Y., J. Belaire-Franch, and R. Amador (2002). Corrigendum to `Detection of Change in Persistence
+    of a Linear Time Series'. Journal of Econometrics 109, 389­392.
+
+Lane, P. R. and G. Milesi-Ferretti (2003). International Financial Integration. Working paper 03/86, IMF.
+Lee, J. H. and P. C. Phillips (2011). Asset Pricing with Financial Bubble Risk. Working Paper, Yale
+
+    University .
+LeRoy, S. (2004). Rational Exuberance. Journal of Economic Literature XLII, 783­804.
+
+                                                                  22
+LeRoy, S. and R. Porter (1981). The Present-Value Relation: Tests Based on Implied Variance Bounds.
+    Econometrica 49, 555­577.
+
+Mack, A. and E. Martínez-García (2011). A Cross-Country Quarterly Database of Real House Prices: A
+    Methodological Note. Globalization and Monetary Policy Institute Working Paper no. 99 . December,
+    Federal Reserve Bank of Dallas.
+
+Mack, A. and E. Martínez-García (2012). Increased Real House Price Volatility Signaled Break from the
+    Great Moderation. Federal Reserve Bank of Dallas Economic Letter 7 (1).
+
+Maddala, G. and S. Wu (1999). A Comparative Study of Unit Root Tests with Panel Data and a New
+    Simple Test. Oxford Bulletin of Economics and Statistics 61 (S1), 631­652.
+
+Mayer, C. (2011). Housing Bubbles: A Survey. Annual Review of Economics 3, 559­577.
+Mian, A. and A. Su... (2009). The Consequences of Mortgage Credit Expansion: Evidence from the U.S.
+
+    Mortgage Default Crisis. The Quarterly Journal of Economics 124 (4), 1449­1496.
+Mikhed, V. and P. Zemcik (2009a). Do House Prices Reect Fundamentals? Aggregate and Panel Data
+
+    Evidence. Journal of Housing Economics 18, 140­149.
+Mikhed, V. and P. Zemcik (2009b). Testing for Bubbles in Housing Markets: A Panel Data Approach.
+
+    Journal of Real Estate Finance and Economics 38, 366­386.
+Ng, S. and P. Perron (1995). Unit Root Tests in ARMA Models with Data-Dependent Methods for the
+
+    Selection of the Truncation Lag. Journal of the American Statistical Association 90, 268­281.
+Ng, S. and P. Perron (2001). Lag Length Selection and the Construction of Unit Root Tests with Good
+
+    Size and Power. Econometrica 69, 1519­1554.
+Nyberg, H. (2013). Predicting Bear and Bull Stock Markets with Dynamic Binary Time Series Models.
+
+    Journal of Banking and Finance 37 (9), 3351­3363.
+Pavlov, A. and S. Wachter (2011). Subprime Lending and Real Estate Prices. Real Estate Economics 39 (1),
+
+    1­17.
+Phillips, P. C. and T. Magdalinos (2007a). Limit Theory for Moderate Deviations From a Unit Root.
+
+    Journal of Econometrics 136, 115­130.
+Phillips, P. C. and T. Magdalinos (2007b). The Re...nement of Econometric Estimation and Test Proce-
+
+    dures: Finite Sample and Asymptotic Analysis, Chapter Limit Theory for Moderate Deviations from
+    a Unit Root under Weak Dependence, pp. 123­162. Cambridge University Press, Cambridge.
+Phillips, P. C. and T. Magdalinos (2012). Mildly Explosive Autoregression under Weak and Strong De-
+    pendence. Journal of Econometrics 169 (2), 179­187.
+Phillips, P. C., S.-P. Shi, and J. Yu (2012). Testing for Multiple Bubbles. Cowles Foundation Discussion
+    Papers 1843 . Cowles Foundation for Research in Economics, Yale University.
+Phillips, P. C., S.-P. Shi, and J. Yu (2015). Testing for Multiple Bubbles: Historical Episodes of Exuberance
+    and Collapse in the S&P 500. International Economic Review forthcoming.
+Phillips, P. C., Y. Wu, and J. Yu (2011). Explosive Behavior in the 1990's Nasdaq: When Did Exuberance
+    Escalate Asset Values? International Economic Review 52 (1), 201­226.
+
+                                                                  23
+Phillips, P. C. and J. Yu (2011). Dating the Timeline of Financial Bubbles During the Subprime Crisis.
+    Quantitative Economics 2 (3), 455­491.
+
+Rousová, L. and P. van den Noord (2011). Predicting Peaks and Troughs in Real House Prices. OECD
+    Economics Department Working Papers No. 882.
+
+Sargent, T. (1987). Macroeconomic Theory. Boston: Academic Press.
+Shiller, R. J. (1981). Do Stock Prices Move Too Much to be Justi...ed by Subsequent Changes in Dividends?
+
+    American Economic Review 71, 421­436.
+Shiller, R. J. (2015). Irrational Exuberance. Revised and Expanded Third Edition. Princeton University
+
+    Press.
+West, K. D. (1987). A Speci...cation Test for Speculative Bubbles. Quarterly Journal of Economics 102 (3),
+
+    553­580.
+Yiu, M. S., J. Yu, and L. Jin (2013). Detecting Bubbles in Hong Kong Residential Property Market.
+
+    Journal of Asian Economics 28, 115­124.
+
+                                                                  24
+C Tables and Figures
+
+               Table 1: Results for the Univariate SADF and GSADF Tests
+
+Panel A: Test Statistics
+
+               Real House Prices       Price-to-Income Ratio  Price-to-Rent Ratio
+
+Country        SADF GSADF              SADF  GSADF            SADF GSADF
+
+Australia      2:23        6:18        1:08  2:57             2:21       6:40
+
+Belgium              0:97  2:98        0:25  2:92             0:03       3:41
+
+Canada               0:32  3:76        1:13  2:16             0:11       3:78
+
+Switzerland    1:64        2:3         1:20  2:08             0:47       1:90
+
+Germany              0:59  2:10        0:57  2:55             0:51       0:85
+
+Denmark        1:31        2:83        0:03  1:76             0:37       2:98
+
+Spain                0:39  3:34        0:01  1:84             0:16       2:20
+
+Finland              0:94        1:45  0:89  0:96             1:70       1:70
+
+France         1:35        2:21        0:03  2:46             0:36       1:48
+
+United Kingdom 1:83        3:34        1:50  2:65             0:26       3:02
+
+Ireland        2:59        3:71        2:01  2:19             2:33       4:54
+
+Italy                1:28        0:38  1:52  0:85             1:93       0:26
+
+Japan          1:66        3:76        0:88  4:63             1:44       2:24
+
+South Korea          1:11        0:32  0:49  0:49
+
+Luxembourg     1:65        3:89        0:27  1:59
+
+Netherlands          0:43  4:13        0:17  3:13             1:49       3:55
+
+Norway               0:85  1:75        0:22  0:31
+
+New Zealand    1:77        2:35        0:43  3:10             2:82       3:89
+
+Sweden               0:18  3:79        0:23  3:34
+
+United States  1:52        3:81        0:78  3:47             0:55       3:64
+
+South Africa         0:92  3:93        1:35  3:44
+
+Croatia              0:03  1:64        0:87  2:23
+
+Panel B: Critical Values
+
+90%            0:98        1:54        0:98  1:54             0:98       1:54
+
+95%            1:25        1:80        1:25  1:80             1:25       1:80
+
+99%            1:89        2:39        1:89  2:39             1:89       2:39
+
+Note: *, ** and *** denote statistical signi...cance at the 10, 5 and 1 percent signi...cance level respectively. All results are for
+autoregressive lag length k=4.
+
+                                       25
+Table 2: Estimation Results for the Pooled Probit Model
+
+Long-term Interest Rates                           0:166     0:221
+Private Credit Growth                              0:222     0:207
+Current Account Growth (In Units)                             0:005
+Real Per Capita Personal Disposable Income Growth    0:004   0:223
+Unemployment Rate                                  0:209      0:130
+Real GDP Growth                                     0:073    0:176
+Global Economic Conditions                         0:169      0:014
+Random-E¤ects                                      0:014
+McFadden's R2                                                      Yes
+                                                         No     0:252
+                                                      0:230
+
+Note: *, ** and *** denote statistical signi...cance at the 10, 5 and 1 percent signi...cance level, respectively. We ...t a probit
+model with constant term (...rst column) and a random-e¤ects probit model (second column). The balanced panel includes 14
+countries with at least one period of exuberance in-sample and complete data from the ...rst quarter of 1975 to the second
+quarter of 2013 on interest rate spreads, long-term rates, changes in stock market valuations, private credit growth, the
+current account over GDP ratio, growth in the current account, growth in real per capita disposable income, growth in real
+rents, the unemployment rate, real GDP growth, headline CPI ination, changes in the West Texas Intermediate index of oil
+prices, and the updated measure of global economic conditions of Kilian (2009). We only report the results of a parsimonious
+speci...cation of each model after recursively eliminating the non-statistically signi...cant variables with the highest p-values.
+Hence, the speci...cation reported in the table only includes long-term rates, private credit growth, current account growth,
+real per capita personal disposable income growth, the unemployment rate, real GDP growth, and Kilian (2009)'s global
+conditions measure. Standard errors are adjusted for country-clusters.
+
+26
+Figure 1: Real House Prices: The Dynamic E¤ects of an Anticipated Decline in the Discount Rate
+                                                               27
+                   Figure 2: Real House Prices: Cross-Country Characteristics
+Figure 3: Price-to-Income Ratio and Price-to-Rent Ratio: Cross-Country Characteristics
+
+                                                         28
+Figure 4: Date-Stamping with Real House Prices and the Price-to-Income Ratios
+ Figure 5: Date-Stamping with Real House Prices and the Price-to-Rent Ratios
+                                                    29
+Figure 6: Date-Stamping Global Periods of Exuberance
+                                   30
+Figure 7: Date-Stamping with U.S. Real House Prices
+                                  31
+Figure 8: Date-Stamping with U.K. Real House Prices
+                                  32
+Figure 9: Date-Stamping with Spain Real House Prices
+                                   33
+

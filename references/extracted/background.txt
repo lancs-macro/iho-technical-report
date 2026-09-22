@@ -1,0 +1,766 @@
+2 Background Information
+
+2.1 House Price Data: Sorting Out the Sources
+
+Even when data for a given country can be identified through national sources, problems with the
+time series length or geographic coverage are often present. One must also be aware of
+conceptual and methodological differences in the construction of the house price indexes, in the
+data aggregation, in the treatment of seasonality, and in the release of the data. These differences
+across sources in part reflect the segmentation and heterogeneity that characterizes the housing
+market, but more generally arise from the different motivations that drive the economic agents
+collecting the primary data that we combine in the database.
+
+The data available from national sources comes from several sources:
+
+    A. Private banks, insurers and financial institutions--mortgage or insurance data is often not
+         publicly available and the sample depends on the geographical footprint of these
+         institutions;
+
+    B. Real estate agencies--real estate quotes may differ from actual transaction prices and that
+         could bias the construction of the price index, while their sample depends on the
+         geographical footprint of these institutions;
+
+    C. Land register/tax offices--tax avoidance motives may bias the results, and could vary
+         over time, over locations and depending on the characteristics of the dwellings;
+
+    D. Official institutions not directly participating in the housing or mortgage/insurance
+         markets (Central Banks, National Statistical Offices, international organizations);
+
+    E. Others not directly involved in the housing or mortgage/insurance markets (newspapers,
+         universities).
+
+We select data from national public sources--primarily from central banks, statistical offices or
+other non-government organizations not directly involved in the housing market transactions--to
+minimize the impact of the potential bias from the collection of data by market participants. We
+also use data from private organizations (e.g., newspapers, real estate agencies) and even from
+international organizations (e.g., BIS) in some cases. It is worth pointing out that we rely on
+publicly available, primary sources in constructing this dataset in order to facilitate both the
+replication of the country series as well as the wider dissemination of the panel itself. In some
+instances, we use historical data to extend the series back to the first quarter of 1975. A few of
+the historical series were obtained upon request from national sources (as indicated in the
+country descriptions below) or through secondary sources documented in the literature. To the
+best of our knowledge, the historical series that we use can also be independently recovered by
+the interested scholars--without further restrictions.
+
+Housing is a heterogeneous good. Quality can vary due to a dwelling's location and its
+characteristics (e.g., size, property type, new versus existing, date of construction, etc.). The
+quality of the property differs across locations and over time due to owner modifications as
+well--a house purchased ten years ago and sold today may be quite different as a result of
+renovations undertaken and maintenance (or lack thereof). The dwelling characteristics and
+quality proxies that can be used to control for those differences depend on what is feasible to
+obtain by the source of the primary data and what is necessary for its own purposes. The
+approach used to control for quality and dwelling characteristics could introduce some cross-
+country heterogeneity in the house price indexes as well. The use of few or no explanatory
+variables may result in an omitted variable bias whereby prices may fluctuate partly because of
+changes in the composition of houses being transacted. Both problems may well be present to
+some extent in our dataset, as standardizing the approach and the controls across countries is
+beyond the scope of our work.
+As housing stock data is generally unavailable, house price indexes are constructed with a
+sample of the stock of houses actually sold over the sample period. Transactions in the housing
+market occur infrequently and tend to be unequally distributed across locations. Hence, the
+sample size and representativeness of the data can be a concern--more so depending on the
+methodology applied to construct the house price indexes. Several house price index
+construction methods have been widely utilized attempting to control for sample size as well as
+for the quality and characteristics of the dwellings (see Section 2.1.3 below for further details):
+the repeat sales method, the stratification or mix adjustment method, the sale price-appraisal ratio
+(SPAR) method, and the hedonic regression method. Not all sources collect enough explanatory
+variables to implement all these methods, so the choice of methodology in each country is partly
+determined by those data limitations. Lack of enough disaggregated data also prevents us from
+reconstructing the country house price indexes under a common methodology to correct for the
+biases and inconsistencies that heterogeneity along this dimension introduces in our panel.
+
+Prices from around the world, all under one roof.
+2.1.1 Selection of Comparable House Price Series
+
+The real-time, quarterly database on international house prices currently contains indexes for 23
+countries going back to the first quarter of 1975 on (nominal and real) house prices and (nominal
+and real) personal disposable income (PDI) per working age (15/16-64) population.1 We use the
+Personal Consumption Expenditure (PCE) deflator for every country to express the nominal
+house price and PDI series in real terms.2 The notion of personal disposable income available to
+the household sector that we adopt (the PDI) and its measurement in the national accounts are
+explained in greater detail in Section 2.2 below.
+
+The house price data differs significantly across countries due to characteristics such as the
+property type, the area covered, the property vintage, or the priced unit. Moreover, as
+emphasized earlier, differences also arise due to the diverse methodologies applied to construct
+the indexes in each country, due to the data aggregation procedures used, the frequency of the
+data releases or even the treatment of seasonality by the source. With the aim to facilitate further
+research on international house prices, the database we construct is guided by the goal of
+minimizing the country differences arising from the heterogeneous characteristics of the
+available sources while doing the least possible violence to the data itself.
+
+To attain this goal we favor the selection of aggregate indexes that share multiple similarities in
+common with our benchmark rather than attempting the more intrusive (and perhaps impractical)
+approach of reconstructing the indexes from disaggregated data under a common methodology.
+We choose a representative series from multiple, publicly available sources after sorting out the
+data for each country for comparability in terms of concept and methodology. Then, we
+homogenize the country series--as best as possible--in regards to frequency, seasonal
+adjustment, and to correct for the presence of breaks or outliers in the data.
+
+Selecting closely comparable house price indexes and extending the country series back to 1975
+makes the panel more suitable for international comparisons across countries and across time.
+We select country series that are closely aligned with the features of the FHFA quarterly
+nationwide house price index for existing single-family houses (formerly called OFHEO house
+price index) in the U.S. A brief description of all house price series is given in this paper
+discussing the similarities and differences in the data country-by-country. We make note of the
+features in which discrepancies still persist, and adjust the data along other dimensions to make
+the reported measures more comparable. We do not attempt to change the primary source data
+whenever it cannot be reconciled in some aspects with the FHFA reference series by a
+
+1 The OECD defines working-age population as equivalent to the economically-active population; a concept
+proposed by the International Labor Organization (ILO). As such, working-age population comprises of "all persons
+of either sex above a specified age" who supply labor for production purposes (whether employed, unemployed, or
+seeking work for the first time). The specified age above which population can be counted as economically active is
+often determined by law, and may differ across countries. For most countries the working age is 15-64. The notable
+exceptions are the U.S. (which is 16 and over) and Belgium (which is 15 and over). We do not correct for these
+differences in the definition of working-age population because these differences, in fact, can affect the supply of
+labor for production purposes and therefore are economically-relevant.
+2 PCE deflator data are obtained from the most recent OECD Economic Outlook database available at the time of an
+update. The first release is based on OECD Economic Outlook database 89. The PCE deflator for South Africa is
+obtained from national sources.
+straightforward transformation. The transformations that we do apply to the data are discussed in
+
+the next section of the paper. Some heterogeneity is inevitable under our approach--especially in
+concept and methodology.3
+
+2.1.2 Other Resources Available on House Prices
+
+Three major international conferences have been hosted over the past 10 years in order to discuss
+housing indicators and the different methodologies to construct them:
+
+- October 27-28, 2003 ­ BIS-IMF Conference on Real Estate Indicators and Financial
+
+Stability ­ http://www.bis.org/publ/bppdf/bispap21.htm
+
+- November 6-7, 2006 ­ OECD-IMF Workshop on Real Estate Price Indexes
+
+- November 11-12, 2009 ­ Eurostat-IFC-IAOS Conference on Residential Property Price
+
+Indices                                                                ­
+
+http://epp.eurostat.ec.europa.eu/portal/page/portal/conferences/introduction/2009/rppi_co
+
+nference
+
+The ideas, methods and sources argued about during those meetings can be a valuable reference
+for understanding the measurement of house prices across countries. Other useful references on
+methodology are Eurostat (2012) and the highly-regarded handbook on residential property price
+indexes from Eurostat; International Labour Organization; International Monetary Fund;
+Organisation for Economic Co-operation and Development; United Nations Economic
+Commission for Europe; World Bank (2013). The latter represents the most current overview of
+conceptual and practical issues related to the compilation and construction of house price
+indexes. The handbook is coordinated by the Statistical Office of the European Union (Eurostat),
+and published jointly under the responsibility of six international organizations: the International
+Labour Organization (ILO), the International Monetary Fund (IMF), the Organisation for
+Economic Co-operation and Development (OECD), the Statistical Office of the European Union
+(Eurostat), the United Nations Economic Commission for Europe (UNECE), and the Inter-
+Secretariat Working Group on Price Statistics (IWGPS) from the World Bank.
+
+In regards to sources of international data, there already exist a number of compilations of
+international house price series available. One of the most comprehensive repositories of
+international house price data, publicly available, is maintained by the Bank for International
+Settlements (BIS) at http://www.bis.org/statistics/pp.htm. It includes three datasets. The detailed
+dataset has nominal residential property prices for 58 advanced and emerging countries at
+present, as released by the source (without attempting to homogenize them). For most countries
+the dataset contains several series (especially if a breakdown is available, or data is available
+from multiple compilers). Since June 2014 a dataset with the selected (nominal and real)
+residential property price series, and one containing long (nominal) series (with a starting date of
+1970) have been additionally published beyond the detailed one. These new datasets contain a
+single selected series for each country that is the closest to nationwide coverage. It typically
+covers all types of dwellings in markets for both new and existing dwellings in the country as a
+whole. The long series have been constructed for a smaller set of countries by back-calculating
+
+3 The most notable deviation being Japan where, as customary, we use land prices as a proxy for the unavailable
+house price statistics.
+
+Prices from around the world, all under one roof.
+the selected ones with historical data with limited coverage for earlier periods. Since September
+
+2016, the BIS has published a dataset on commercial property prices. Finally, a short note on
+
+recent developments is also published on a quarterly basis:
+
+http://www.bis.org/statistics/pp_residential.pdf. Panel data can also be obtained from
+
+international organizations--like the OECD at http://www.oecd.org/statistics/, or Eurostat which
+
+provides standardized quarterly series since 2005 for all European Union member states at
+
+http://appsso.eurostat.ec.europa.eu/nui/show.do?dataset=prc_hpi_q&lang=en.4 The IMF
+
+combines the OECD dataset with other sources for non-OECD member countries to construct a
+
+Global House Price Index with a total of 51 advanced and emerging economies with varying
+
+concept  and  coverage,  as                                      illustrated  here:
+
+http://www.imf.org/external/pubs/ft/fandd/2013/12/picture.htm.5
+
+Data can also be obtained directly from official and public national sources. Private compilations
+of house price data for a variety of countries also exist, e.g., the Global Property Guide (GPG)
+website at http://www.globalpropertyguide.com/real-estate-house-prices/ is a very valuable
+reference and one of the most comprehensive on the existing sources by country.6 GPG collects
+detailed house price data for 60 countries, including all series available for each. Other sources
+include Knight Frank surveys 55 countries since 2006 to produce a global house price index.
+More information about Knight Frank's research on real estate can be found at
+http://my.knightfrank.com/research-reports/global-house-price-index.aspx. Another private
+source of international house price data, although access to their series may require a
+subscription, is the website of Trading Economics at http://www.tradingeconomics.com/country-
+list/housing-index. The Economist makes its data available at
+http://www.economist.com/houseprices. The Economist tracks house prices since 2002 and its
+readers can compare 21 markets on a number of house price indicators. The time-series data of
+The Economist, GPG and Knight Frank do not always extend as far back in time or is easily
+accessible for research purposes.
+
+4 A quarterly version of the OECD data has been used in a number of cross-country studies as well (see, e.g., OECD
+(2005) , Girouard et al. (2006), and André (2010))). The OECD cross-country dataset came about with the same
+intent of making heterogeneous national sources more comparable. Differences appear partly because our coverage
+is not limited to OECD countries and because we restrict ourselves to use only publicly available sources that can be
+independently replicated.
+5 For further background on the IMF data sources, see also Igan and Loungani (2012).
+6 See a summary of definitions and sources used by GPG at: http://www.globalpropertyguide.com/investment-
+analysis/House-Price-Data-and-Sources.
+2.1.3 More in Depth: Different Approaches to Construct a House Price Index
+
+Summary of Standard Methodologies to Construct a House Price Index
+
+    - Repeat sales method:
+         The repeat sales method compares the prices of dwellings that are sold more than once
+
+within sample. It is generally implemented pooling all the repeat sales data over all periods under
+observation in a regression. Methodological problems include: (a) small sample size as at least
+two transactions on the same property are needed in sample, but housing transactions are
+infrequent; (b) bias due to quality changes over time (e.g. as a result of depreciation,
+maintenance, renovations). The repeat sales method is used by the FHFA to construct the U.S.
+series that we use for reference.
+
+    - Stratification and mix-adjustment method:
+         The method relies on the stratification of transactions data by groups with similar
+
+characteristics in the sample, rather than tracking individual dwellings. The average transaction
+prices of every grouping in each period are then used as the price for dwellings with those same
+characteristics (even though the properties in the group are changing over time). The overall
+price index is then constructed by aggregating across all groups. This allows for larger samples,
+but stratification is still subject to a quality bias problem similar to the repeat sales method. A
+post-stratification of samples is then usually applied to control for the changes over time in the
+quality of the dwellings sold. The method including quality controls is known as mix adjustment.
+
+    - Sale price-appraisal ratio (SPAR) method:
+         The SPAR method combines transaction price data with appraisal information on the
+
+dwelling to calculate a transaction price-to-appraisal ratio. This ratio is used to control for the
+quality across properties and over time. This method may be applied on all available data, not
+just on the subset of dwellings reporting repeat sales. However, implementing this method
+requires access to a database on official property valuations providing appraisals of properties
+(such as through matched real estate taxation data, matched mortgage valuation data, etc.).
+
+    - Hedonic regression method:
+         The hedonic regression methods (which can be combined with all other methods) are
+
+econometric models to account for the heterogeneous characteristics of the dwellings and for
+quality changes over time. The standard method models dwelling prices as a function of the
+characteristics of the property and a set of time dummy variables. As data on all sample periods
+are pooled together, this method controls for quality bias and can be applied to samples that
+include non-repeat sale transaction prices. The hedonic imputation method constructs a house
+price index based on dwelling characteristics using the predicted value to impute a price on
+periods in which there are no transactions. In the housing market where sales are infrequent this
+allows the sample of dwellings to remain stable over time.
+
+Prices from around the world, all under one roof.
+2.2 Personal Disposable Income Data: Measuring Households' Income in the National
+       Accounts
+
+In addition to house price index data, we also collect series on personal disposable income
+(PDI)--which represent the income resources "at hand" for the household sector for current
+purchases--for each country, expressed per working-age population. PDI series are also reported
+in real terms with the personal consumption expenditure (PCE) deflator. PDI is generally the
+preferred measure to assess the affordability of housing, and therefore, an economically relevant
+variable for the study of housing demand and the determinants of house prices.
+
+For all countries, PDI data is collected from national sources. In the U.S., the information on PDI
+can be found in the National Income and Product Accounts (NIPA) produced by the Bureau of
+Economic Analysis (BEA).7 Other countries report their national accounts and income
+distribution through their official statistical offices. All of the countries in the international house
+price database currently follow the United Nation's System of National Accounts (UNSNA),
+which establishes international guidelines for national accounting. This provides some
+consistency on the sources, although the implementation may still differ from country to country.
+
+Heterogeneity arises most notably because some countries do not incorporate all the guidelines
+of UNSNA in their national accounts. Differences emerge from country-specific departures from
+UNSNA guidelines which we generally cannot correct for. Hence, while we rely on commonly
+reported (publicly available) data in order to obtain or derive the PDI per capita measures,
+consistency across countries exists to the extent that the reporting countries adopt similar
+UNSNA guidelines to construct their national accounts. We discuss those differences further in
+Section 2.2.1 below.
+
+We also illustrate the different methods of extracting PDI data from various national account
+aggregates and describe the relevant accounting identities that relate to those aggregates,
+allowing for a more comprehensive interpretation of the data.
+
+2.2.1 Differences in the Adoption of the United Nations' System of National Accounts (UNSNA)
+
+The United States NIPAs have not adopted all of the guidelines for national accounting set forth
+by the UNSNA, and this occurs with other countries included in the international house price
+database as well. However, the differences between the NIPAs and UNSNA in the definition of
+gross domestic product (GDP) appear small--as discussed in Mead, Moses, and Moulton
+(2004)8--and the same is expected for other countries. Although the impact should not be
+overestimated, the differences are more significant when we compare the aggregate components
+of GDP or gross national product (GNP). In particular, we highlight here the differences that
+occur in the classification of certain groups (unincorporated firms and nonprofit institutions
+
+7 For more details about the NIPAs, see Seskin and Parker (1998).
+8 Once a year, the BEA prepares annual estimates on a UNSNA basis in response to a questionnaire from the
+Organisation for Economic Co-operation and Development (OECD). These estimates can be found at
+http://bea.gov/national/sna.htm, and are published by international organizations such as the OECD. While it
+improves the comparability of U.S. national accounts statistics with those of other countries, the exercise does not
+extend to quarterly data. These estimates, therefore, do not reconcile the methodological differences that exist in the
+quarterly data even among OECD member states.
+serving households (NPISHs)) and in the presentation of the national accounts, as they affect the
+derivations of PDI.
+
+    A. In regards to differences in classification: unincorporated firms or enterprises are, in
+         principle, included in the UNSNA in the household sector, but appear in the business
+         sector in the NIPAs.9 Nonprofit institutions serving households (NPISHs)10 are classified
+         in the UNSNA either in the non-financial or the financial corporation sectors, but
+         included in the household sector in the NIPAs. Other countries follow the same practice
+         and bundle households with NPISHs together--for example, France. For measuring
+         national income, however, the institutions classification used in the NIPAs changes to
+         conform more closely with the UNSNA guidelines, which somewhat mitigates cross-
+         country differences in the PDIs.
+
+         The NIPAs define the personal sector to include households and the income that is earned
+         by, or transferred to, households and all NPISHs, as well as the income of unincorporated
+         enterprises (including owner-occupied housing). The personal sector is thus closer
+         conceptually to the combination of the UNSNA household sector, which includes
+         unincorporated enterprises, and the NPISH sector, which is included in the UNSNA
+         corporation sector. As a result, the main discrepancy that remains is due to the
+         classification of NPISHs. For most countries in the international house price database, the
+         personal sector includes NPISHs, while other countries adhering to the UNSNA
+         guidelines would exclude them from the household sector.11 We adopt the NIPA
+         classification of the personal sector as the reference, but do not attempt to adjust for
+         discrepancies in the classification of NPISHs further as they generally represent a tiny
+         share of the economy.
+
+    B. In regards to differences in presentation: The UNSNA household disposable income
+         (HDI) and the NIPA disposable personal income (DPI) are calculated using different
+         methods. Both income measures include all sources of personal income, less
+         contributions for social insurance and personal taxes. The NIPA measure includes interest
+         and other transfers paid by persons, which are excluded from the UNSNA measure. The
+         NIPA measure also includes pension fund contributions but does not include pension
+         fund benefits, while the UNSNA measure excludes pension fund contributions and
+
+9 A corporation is a firm or enterprise with a legal identity separate from that of its owners and limited liability.
+Unincorporated firms or enterprises have no distinction between the firm and its owners, which are personally liable
+in case of bankruptcy. One of the major legal requirements to become a corporation is the publication of a complete
+set of accounts--there are also differences in taxation. The published accounts of corporations help to construct the
+national accounts of the corporate sector. Unincorporated enterprises tend to be small or medium-sized, and play an
+important role in agriculture and occupations requiring advanced technical knowledge which can be pursued in self-
+employment (such as the so-called liberal professions in law, medicine, architecture, engineering, etc.). Their output
+contribution remains limited by the fact that as they expand, small firms tend to either disappear or transform
+themselves into corporations.
+10 NPISHs are owners of unincorporated enterprises or firms, nonprofit institutions that primarily serve individuals,
+religious organizations, private trust funds, and private noninsured welfare funds. For additional information, see
+Mead, McCully, and Reinsdorf (2003).
+11 Statistical offices that include NPISHs in the personal sector are those of the U.S., Australia, Belgium,
+Switzerland, Germany, the U.K., Israel, Korea, Norway, New Zealand, and Eurostat--which serves as our PDI
+source for Denmark, Spain, Finland, Ireland, Italy, Luxembourg, the Netherlands, and Sweden.
+
+Prices from around the world, all under one roof.
+         includes pension fund benefits instead. Again, while we adopt the definition of disposable
+         personal income from the NIPAs as our reference for the PDI, we do not attempt to
+         correct for the discrepancies between HDI and DPI across countries any further.
+
+         Another difference arises because the national income (NI), which corresponds to the
+         sum of all incomes, does not equal the net national product (NNP = GNP ­ depreciation
+         of capital) given that the components are measured independently. In the NIPAs, the
+         difference between GDP and GDI is called the statistical discrepancy. Not all other
+         countries incorporate such an item in the income side. This is because one or more
+         expenditure or income categories included are absorbing the difference as a residual or
+         because the discrepancy is allocated to the income components of the national accounts.
+         The distribution of the statistical error could affect the derivations of the PDI measures,
+         but correcting for it goes beyond the scope of this project.
+
+2.2.2 From Gross Domestic Product to National Income
+
+GDP is the broadest measure of a country's economic activity. It represents the total final goods
+and services produced by the factors of production within a country for a given period, at market
+prices. GDP can be calculated using three separate approaches: the product (or value-added)
+approach, the income approach, and the expenditure approach. These three approaches must
+result in equivalent measures of economic activity (PRODUCT = EXPENDITURE = INCOME),
+up to a statistical discrepancy. These relationships implied by the circular flow model are the
+basis for national accounting which tracks the flow of final goods and services from firms to
+final consumers, the opposing flow of expenditure payments from final consumers to firms, and
+the flow of factor payments (income) from firms to their providers of productive goods and
+services. National accounting also explicitly describes the participation of government as well as
+the linkages of an economy with the rest of the world.
+
+The production approach measures output from the value-added of all goods and services
+produced in the economy. The goods and services that are produced are also consumed. The
+expenditure approach measures output from the value of total expenditures. Personal
+consumption expenditures (PCE) largely includes goods and services purchased for final use
+(excluding illegal transactions) in the market economy, but a portion of goods and services are
+incorporated through imputed values--the most important of which is rental value of owner-
+occupied housing. Goods and services consumed by the public sector are represented by
+government purchases. Gross private domestic investment measures capital purchases made by
+businesses. Net exports reflect the domestic consumption of goods and services produced abroad
+and the foreign consumption of domestically produced goods and services.12
+
+The income approach measures the payments generated by participation in the production
+process--it adds up the remuneration to the different factors of production (such as labor and
+
+12 The NIPAs show GDP as the sum of personal consumption expenditures, gross private domestic investment, net
+exports of goods and services, and government consumption expenditures and gross investment. The UNSNA shows
+GDP, instead, as the sum of final consumption expenditures (by households, NPISHs, and government), gross
+capital formation (including gross fixed capital formation, change in inventories, and acquisitions less disposals of
+non-financial, non-produced assets) from private and government sources, and net exports of goods and services.
+capital). However, not all income generated within an economy's borders is received by its own
+citizens. Gross national product (GNP) controls for this. It is equal to GDP minus factor
+payments received by foreign citizens from domestic production plus factor payments earned by
+domestic citizens from foreign production. We illustrate the different components under the
+income and expenditure approach in Figure 1 below.
+
+Net national product (NNP) obtained from the product approach equals GNP minus depreciation
+of fixed assets (also referred to in the NIPAs as consumption of fixed capital).13 National income
+(NI) is the aggregate of all factor payments from the income side. NI can be calculated directly
+from its income components and, to explore it further, we adopt the NIPA definitions as a
+reference. It includes factor remuneration: employee compensation, proprietors' income, rental
+income of persons, corporate profits, and net interest. It also takes account of the effect of
+government policies on income through business current transfer payments, taxes on production
+and imports less government subsidies, and current surplus of government enterprises. The
+difference between NNP and NI amounts to statistical error and omissions.
+
+2.2.2.1 Income vs. Expenditure Accounting Identities
+
+From income side: GDP = C + G + S ­ NFP,
+From expenditure side: GDP = C + G + I + NX,
+
+         where GDP = gross domestic product,
+                  C = private consumption,
+                  G = government expenditures and investment,
+                  S = national (gross) saving,
+                  I = private (gross) investment,
+                  NFP = net factor payments from abroad,
+                  NX = net exports.
+
+2.2.2.2 National Income Accounting Identity
+
+Gross National Product: GNP = GDP + NFP.
+National Income: NI = GNP ­ capital depreciation (consumption of fixed capital) ­ statistical
+discrepancy.
+
+13 Capital consumption adjustment for corporations and for nonfarm sole proprietorships and partnerships is the
+difference between capital consumption based on income tax returns and capital consumption measured at straight-
+line depreciation, consistent service lives, and replacement cost. The tax return data are valued at historical costs and
+reflect changes over time in service lives and depreciation patterns as permitted by tax regulations. Inventory
+valuation adjustment represents the difference between the book value of inventories used up in production and the
+cost of replacing them.
+
+Prices from around the world, all under one roof.
+     Figure 1. Composition of U.S. Annual GDP (Current $, 1975-2012)
+
+     GDP: Income Account               GDP: Expenditure Account
+
+Percent of GDP                                                       Percent of GDP
+                                           Government investment
+100             Taxes less subsidies*
+                                                                                     100
+85   Consumption of fixed capital         Government expenditures
+
+70   Net operating surplus*                                                          85
+
+                  Proprietors' income  Private fixed capital formation
+55                                                                                   70
+
+40                                      Change in private inventories
+
+                                                                                     55
+
+                                       Private consumption of services
+                                                                                     40
+
+25              Wages                                                                                                            25
+
+                                       Private consumption of goods                                                              10
+
+10
+
+     Statistical discrepancy
+
+-5   Net factor income abroad          Net exports                                                                               -5
+
+Source: U.S. Bureau of Economic Analysis, National Income and Product Accounts of the United States, and author's calculations.
+
+* Taxes less subsidies refers to taxes on production and imports less subsidies. Net operating surplus (NOS) corresponds to the income
+
+generated by either a corporation or government enterprise net of labor compensation and taxes on production and imports. NOS includes
+
+rental income, net interest payments from businesses, corporate profits, business current transfers, and current surplus of government
+
+enterprises. The term proprietor's income or mixed income is used to denote income generated by individual owners or self-employed
+
+individuals since wage income and NOS of unincorporated enterprises owned by households are often undistinguishable.
+
+2.2.3 From National Income to Personal Disposable Income
+
+The NIPA concept of disposable personal income is used as reference for the international house
+price database. In the NIPA, personal income corresponds to the components of national income
+that are actually received by the household sector in the form of factor payments and current
+transfers. Households receive income by directly participating in the production of goods and
+services. This is measured by wages and salaries, proprietors' income, and rental income of
+persons. Personal income does not include employer contributions and employee and self-
+employed contributions for government social insurance programs (social security and pensions,
+unemployment), so this is deducted from the employee compensation component of the national
+accounts. Households also participate in the production of goods and services through direct
+ownership or indirect financing of the stock of capital. The capital and financial income
+generated is distributed back to households in the form of personal dividend income and personal
+interest income.
+
+The amount of income received is derived from the income earned in production after adjusting
+to reflect current transfers. Adjustments are made for transfers from businesses and the
+government, since including transfers among individuals would lead to double-counting in
+personal income. Moreover, certain nonmonetary types of income are included as part of
+personal income--in particular, the estimated net rental value to owner-occupants of their
+homes, but also certain services such as those provided complementary and without payment by
+financial intermediaries. Undistributed corporate profits are not received by the household sector
+and, therefore, not included in personal income. If undistributed profits are added to personal
+income, it is considered private income instead--that's the only difference between personal
+income and private income.
+
+Personal disposable income (PDI) is the part of the personal income retained by the household
+sector (including the NPISHs according to the NIPA guidelines) after subtracting all direct taxes
+(income taxes, estate and gift taxes, and property taxes plus other miscellaneous receipts) levied
+by the government. PDI measures the amount of income that is actually available for current
+spending or saving. Under the income approach, it is calculated by subtracting personal current
+taxes from personal income. The income approach method reflects the sources of PDI. In turn,
+the expenditure approach measures the uses of PDI. Under the expenditure approach, the PDI
+can be computed as the sum of household final consumption expenditure (including interest and
+transfer payments) and household savings.14
+
+While the definition of PDI that we use for reference is that of the NIPAs, it should be noted that
+discrepancies arise in the definition across countries due to differences in the national accounting
+methodology that each country follows as discussed in Section 2.2.1 above. Real income is the
+nominal PDI divided by a general price index--the personal consumption expenditure (PCE)
+deflator--at a given base period. Per capita income is the ratio of PDI over the total working age
+(15/16-64) population of the country.
+
+2.2.3.1 National Income by Institutional Sector15
+
+The fundamental national income accounting identities are stated in Section 2.2.2.1 and Section
+2.2.2.2 above. In here, we provide a basic description of how the different income components
+are allocated and become disposable income of the household (personal) sector, the corporate
+sector, and the government sector illustrating the economic relationships that exist among them
+in the national accounts. A complementary illustration that describes these accounting and
+economic relationships in the context of the circular flow model can be found in Figure 2 below.
+
+14 Adjustments for changing equity in pension fund reserves can also be included to insure the balance of net
+contributions does not enter into household savings. PDI is also the total amount of final consumption of goods and
+services that the household sector is able to afford in a given period (abstracting from capital transfers) without
+having to change their financial and non-financial asset position or their liabilities (changes that would be reflected
+in the Flow of Funds).
+15 In defining these accounting identities, for illustration purposes only (to keep the presentation simple) we abstract
+from business current transfer payments (net) and current surplus of government enterprises as these income sources
+tend to be small in the national accounts. Unlike what is recommended by the guidelines of UNSNA, the NIPAs
+correct the measure of disposable personal income including personal interest payments (INTh) but we abstract from
+that item here as well to keep the identities simple. For similar reasons, we do not distinguish explicitly between
+government consumption and investment expenditures as it is done in the NIPAs.
+
+Prices from around the world, all under one roof.
+National Income: NI = GNP ­ depreciation ­ statistical discrepancy = PDI + DIcorp + DIgov
+  Personal Disposable Income: PDI = (NI ­ und ­ DIVgov)­(Tcorp + TY + T)+(TR ­ SSC)+INTgov
+  Corporate Disposable Income: DIcorp = NI ­ all factor payments outside the firm = und
+  Government Disposable Income: DIgov = (Tcorp + TY + T) + DIVgov ­ (TR ­ SSC) ­ INTgov
+         where NI = national income,
+                  PDI = personal disposable income,
+                  DIcorp = disposable income retained by the corporate sector,
+                  DIgov = disposable income of the government,
+                  und = undistributed profits (essentially retained earnings),
+                  DIVgov = government dividend receipts,
+                  Tcorp = profit tax liability,
+                  TY = taxes on production and imports less subsidies,
+                  R = Tcorp + TY = other government revenue,
+                  T = personal taxes,
+                  TR = transfer payments--specifically, gov't social benefit payments to persons,
+                  SSC = contributions for social insurance,
+                  INTgov = net government interest payments.
+
+2.2.3.2 Savings-Investment Identity
+
+The income side of the national accounts is by construction reconciled with the expenditure side.
+Hence, the disposable income received by the different sectors has to be either invested or saved.
+The following economic relationships describe the linkages between disposable income and
+expenditures as well as between national savings and the current account (foreign savings).
+
+National (gross) Saving: S = Spvt + Scorp + Sgov = GNP ­ C ­ G
+National (net) Saving: Snet = S ­ capital depreciation = (NI + statistical discrepancy) ­ C ­ G
+
+  Personal Saving:16 Spvt = PDI ­ C
+  Corporate Saving: Scorp = DIcorp + capital depreciation = und + capital depreciation
+  Government Saving: Sgovt = DIgov ­ G
+
+         where GNP = gross national product,
+                  C = private consumption,
+                  G = government expenditures and investment,
+                  S = national (gross) saving.
+
+Balance of Payments: CA = NX + NFP
+         where CA = current account,
+                  NFP = net factor payments from abroad,
+                  NX = net exports.
+
+Savings-Investment Identity: S = I + CA
+         where S = national (gross) saving,
+                  I = private (gross) investment.
+
+16 Personal saving is defined in the NIPAs as Spvt = PDI ­ Personal Outlays, where Personal Outlays = C ­ Personal
+Interest Payments ­ Personal Current Transfer Payments. Personal interest payments (INTh) and personal current
+transfers are generally very small, so we abstract from them in these equations without too much loss of generality.
+We illustrate the relation of GDP, GNP, net national product, national income, personal income,
+personal disposable income, and personal saving using annual U.S. data for the year 2012 in
+Table 1 and Table 2 below. This offers a more detailed description of the income and
+expenditure accounts under the NIPA guidelines than the stylized linkages described in Section
+2.2.3.1 and Section 2.2.3.2.
+
+Table 1. U.S. Income and Expenditure Account Tables from NIPA
+
+                               Income Account                                                 Expenditure Account
+
+                              Item                          2012* % of GDP                    Item                               2012* % of GDP
+
+Gross domestic product (GDP)                                16244.6 100% Gross domestic product                                  16244.6   100%
+                                                                                                                                 11149.6   69%
+Plus: Receipts of factor income from the rest of the world  818.6           Personal consumption expenditures                     3769.7   23%
+                                                                                                                                  7379.9   45%
+Less: Payments of factor income to the rest of the world    565.7           Personal consumption of goods                                  19%
+                                                                                                                                    3167   16%
+Equals: Gross national product (GNP)                        16497.4 102%    Personal consumption of services                      2548.1    4%
+                                                                                                                                           15%
+Less: Consumption of fixed capital                          2542.9          Government purchases                                    618.9  15%
+                                                                                                                                  2475.2    0%
+Equals: Net national product (NNP)                          13954.6 86%     Government expenditures                               2409.1    -3%
+
+Less: Statistical discrepancy                               -17             Government investment                                    66.1
+                                                                                                                                  -547.2
+Equals: National income (NI)                                13971.6 86%     Gross private domestic investment                     2195.9
+                                                                                                                                  2743.1
+Compensation of employees                                   8611.6 53%      Private fixed capital formation
+
+Wages and salaries                                          6926.8          Change in private inventories
+
+Wages and salaries, dispersed to employees                  6906.0          Net exports of goods and services
+
+Wages and salaries, accrued but not dispersed               20.8            Equals: Exports
+
+Supplements to wages and salaries                           1684.9          Less: Imports
+
+Contributions for social insurance                          950.7
+
+Other labor income                                          734.2
+
+Proprietors' income                                         1224.9 8%
+
+Rental income of persons                                    541.2 3%
+
+Corporate profits                                           2009.5 12%
+
+Profits tax liability                                       434.8
+
+Profits after tax                                           1574.7
+
+Net dividends                                               770.3
+
+Undistributed profits                                       804.3
+
+Net interest                                                439.6 3%
+
+Business current transfer payments (net)                    106.9 1%
+
+To persons (net)                                            41.4
+
+To government (net)                                         70.6
+
+To rest of the world (net)                                  -5.1
+
+Taxes on production and imports less subsidies              1065.6 7%
+
+Current surplus of government enterprises                   -27.7 0%
+
+Source: U.S. Bureau of Economic Analysis, National Income and Product Accounts of the United States, and author's calculations.
+
+*Current dollars.
+
+Table 2. Personal Disposable Income by Its Components from NIPA
+
+                               Income Account                                                 Expenditure Account
+
+                              Item                          2012* % of GDP                    Item                               2012* % of GDP
+
+Personal income                                             13431.1 83%
+
+Wages and salaries, dispersed to employees                  6906.0 43%
+
+Other labor income                                          734.2 5%
+
+Proprietors' income                                         1224.9 8%
+
+Rental income of persons                                    541.2 3%
+
+Personal dividend income                                    757.0 5%
+
+Net dividends from corporate profits                        770.3
+
+Less: Government dividend receipts                          22.8
+
+Personal interest income                                    992.6 6%
+
+Net interest                                                439.6
+
+Plus: Personal interest payments                            172.7
+
+Plus: Government interest payments                          431.5
+
+Less: Government interest receipts                          115.9
+
+Transfer payments to persons                                2375.1 15%
+
+Business current transfer payments, to persons (net)        41.4
+
+Plus: Government social benefit payments to persons         2329.2
+
+Less: Personal current taxes                                1480.4 9%
+
+Equals: Personal disposable income (PDI)**                  11950.8 74% Personal disposable income (PDI)                         11950.8 74%
+
+                                                                            Personal outlays                                     11460.3 71%
+
+                                                                            Personal consumption expenditures                    11149.6 69%
+
+                                                                            Personal interest payments                           172.7 1%
+
+                                                                            Personal current transfer payments                   168 1%
+
+                                                                            Personal savings                                     490.5 3%
+
+Source: U.S. Bureau of Economic Analysis, National Income and Product Accounts of the United States, and author's calculations.
+
+*Current dollars.
+
+**PDI can also be computed from national income (NI). PDI = NI - wages and salaries accrued but not dispersed - contributions to social insurance - profits
+
+tax liability - government dividend receipts - undistributed profits + net government interest payments + personal interest payments - net business current
+
+transfer payments to government and rest of the world - taxes on production and imports less subsidies - current surplus of government enterprises - personal
+
+current taxes.
+
+Prices from around the world, all under one roof.
+2.2.4 More in Depth: The Circular Flow and Personal Disposable Income
+
+Understanding personal disposable income (PDI) in the NIPAs is further illustrated in the
+following stylized representation of the circular flow of the economy, which emphasizes how the
+different income sources enter into or are excluded from the PDI measure that we take as
+reference for the work on the international house price database (see Figure 2). A stylized
+description of the accounting identities underlying Figure 2 can be found in Section 2.2.3.1 and
+Section 2.2.3.2.
+
+  Figure 2. A Circular Flow Representation of the Sources of Personal Disposable Income
+

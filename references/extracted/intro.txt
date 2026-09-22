@@ -1,0 +1,61 @@
+      "Not everything that can be counted counts, and not everything that counts can be counted."
+                                                                                     Albert Einstein (attributed)
+
+    IPA transcription: "/nt `vri ðæt khæn bi `khawntd khawnts, n nt `vri ðæt khawnts
+                                                                                            khæn bi `khawntd/"
+
+                                                                                  `ælbrt `ajnstajn ( `trbjtd)
+
+1 Introduction
+
+Econometric research on panel data suggests that studies based solely on a given time series
+could be biased by not incorporating the information content of the cross-section. Not only can
+panel data provide additional information, it also gives greater sample variation that can be
+exploited to obtain more precise parameter estimates--see, e.g., Baltagi (2008) on this point.
+While this is well-known in theory, the use of panel data has many limitations. The heterogeneity
+and noise of international data sources has always complicated and even restrained the scope of
+panel data analysis (and the use of related econometric techniques) in empirical work on
+housing.
+
+Those same data limitations have skewed the evidence available to guide the theoretical work on
+the macroeconomic effects of housing and the determinants of house prices--especially on open-
+economy models. The stylized facts that theory seeks to understand are still largely derived from
+a reduced country sample--primarily the U.S. as illustrated, e.g., by Davis and Heathcote (2005)
+and Davis (2010)). Our efforts to develop a consistent panel of international house prices and
+other housing indicators, therefore, seeks to mitigate the concerns about the comparability of the
+data and to facilitate the empirical and theoretical research in this area.
+
+As indicated, lack of comparability complicates the research on international house prices. The
+main contribution of our work is, therefore, sorting out the existing data by country, selecting the
+most similar series and documenting the differences across countries to clarify the extent to
+which international sources can be made comparable for empirical analysis purposes. As a result,
+we construct a panel dataset of house price indexes starting in the first quarter of 1975, which is
+released regularly to the public at quarterly frequency. We also maintain all vintages of the
+country series for researchers interested in the effect of data revisions, and complement the
+database with the corresponding indexes on personal disposable income (PDI) per capita. PDIs
+per capita can be used to control for changes in the affordability of housing, so as not to treat
+house price movements in isolation.
+
+1.1 Outline
+
+The rest of the paper proceeds as follows. Section 2 discusses the standard methods used to
+construct a representative house price index, and explains the selection criteria used to obtain
+comparable reference indexes for house prices. It also outlines the national income and product
+accounts and the relevant definitions of income used to construct the corresponding indexes of
+PDI per capita. Section 3 briefly describes our own methodology to extend the reference series,
+and seasonally-adjust the data. It discusses the aggregation method that we use on the house
+price and PDI index series as well. Section 3 also explains how the database is maintained and
+the quarterly updating process that we follow, after a sufficient number of countries in our
+sample have reported the necessary data. Section 4 provides a detailed discussion of the national
+data sources and describes the implementation of our methodology to construct a house price
+index series expressed in nominal and real terms for each country. It also notes the sources of
+PDI data, working-age population data, and the Personal Consumption Expenditure (PCE)
+deflator for every country.
+The appendix contains a brief description of the data sources as well as a series of tables
+summarizing the key characteristics of the data by country and by the characteristics of the
+dwellings. Future drafts of this note will contain notice of any refinements or modifications of
+the methodology described here as well as detailed references to any new series that might be
+added to the database.
+
+Prices from around the world, all under one roof.
+
