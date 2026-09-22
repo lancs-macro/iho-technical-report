@@ -19,27 +19,70 @@ Hosted on Overleaf. Compile entry point: `main.tex`.
 ├── sections/
 │   ├── 01-introduction.tex
 │   ├── notation.tex                abbreviations table (unnumbered section)
-│   ├── 02-database.tex             IHPD construction, variables, sources
-│   ├── 03-data-access.tex          data retrieval, ihpdr, update workflow
-│   ├── 03-methodology.tex          GSADF + PSY-IVX
-│   ├── 04-website-and-outputs.tex  dashboard, reports, software
-│   ├── appendix-a-countries.tex    country source table
+│   ├── 02-database.tex             IHPD coverage, variables, construction, limitations
+│   ├── 03-data-access.tex          release files, ihpdr, data API, update workflow
+│   ├── 04-methodology.tex          GSADF + PSY-IVX + nowcast
+│   ├── 05-website-and-outputs.tex  dashboard, reports, software
+│   ├── 06-roadmap.tex              planned extensions (database + toolkit)
+│   ├── acknowledgements.tex
+│   ├── appendix-a-countries.tex    coverage table + pointer to WP99 / Dallas Fed Appendix A
 │   ├── appendix-b-changelog.tex    version history
 │   └── bibliography.tex            wraps \bibliographystyle + \bibliography
 ├── figures/                        place .pdf/.png figures here
 ├── data/
 │   ├── raw/                        Dallas Fed downloads (hp2504.xlsx, hpta2504.xlsx)
 │   └── processed/                  cleaned outputs for tables
-└── references/                     downloaded PDFs of key papers
+└── references/
+    ├── *.pdf                       downloaded PDFs of key papers
+    └── extracted/                  pdftotext -layout output, for grep/reuse
 ```
+
+Regenerate extracted text after adding a PDF:
+`cd references && for f in *.pdf; do pdftotext -layout "$f" "extracted/${f%.pdf}.txt"; done`
 
 ## Key domain facts
 
-- **Data:** 25 countries, 1975 Q1 – present, quarterly
-- **Variables:** HPI, RHPI, PDI, RPDI — all rebased 2005 = 100; PCE deflated
-- **Methods:** GSADF test (Phillips, Shi & Yu 2015 IER) + PSY-IVX (Shi & Phillips 2021 JES)
-- **R packages:** `ihpdr` (data access), `exuber` (GSADF estimation) — both maintained by Konstantin
-- **Latest data:** `data/raw/hp2504.xlsx` = Q4 2025; `hpta2504.xlsx` = BSADF sequences
+**Verified against `data/raw/hp2504.xlsx` — do not "correct" these from memory.**
+
+- **Coverage:** 26 economies + 2 aggregate series, 1975 Q1 – 2025 Q4, quarterly (204 obs)
+- **Economies:** Australia, Belgium, Canada, Colombia, Croatia, Denmark, Finland,
+  France, Germany, Ireland, Israel, Italy, Japan, Luxembourg, Netherlands,
+  New Zealand, Norway, Portugal, Slovenia, South Africa, South Korea, Spain,
+  Sweden, Switzerland, UK, US
+- **Aggregates:** `Aggregate - 2005 Fixed Weights` and `Aggregate - Dynamic Weights`
+  (dashboard headline charts use the dynamic one)
+- **Panel is balanced** — no interior gaps. That is a product of splicing /
+  interpolation / backcasting, NOT of uniform national reporting since 1975.
+- **Variables:** HPI, RHPI, PDI, RPDI — rebased 2005 = 100; real series PCE deflated;
+  income per *working-age* capita
+- **File naming:** `hp{YY}{Q}.xlsx` — YY = year, Q = last quarter included.
+  `hp2504.xlsx` = data through 2025 Q4 (released first full week of Jan 2026).
+  Not a release-month code.
+- **Sheet layout:** one sheet per *variable* (`Note`, `HPI`, `RHPI`, `PDI`, `RPDI`),
+  quarters in rows, economies in columns. NOT one sheet per country.
+- **`hpta{YY}{Q}.xlsx`:** sheets `Note`, `LAG=1`, `LAG=4`; GSADF/SADF stats + 95% CVs
+  per country, and BSADF sequences for RHPI and RHPI/RPDI (start 1988 Q2)
+- **Release schedule:** first full week of Jan / Apr / Jul / Oct, 3-month lag
+- **Methods:** GSADF (Phillips, Shi & Yu 2015 IER) + PSY-IVX (Shi & Phillips 2021 JES)
+  + mixed-frequency DFM nowcast
+- **Seasonal adjustment:** BSTS model (Harvey 1989), ML + Kalman filter — also
+  supplies the Dallas Fed's own backcasts/nowcasts that complete each release
+
+## Actual API surface (verified in `03-data/api/int/01-download.R`)
+
+`ihpdr`: `ihpd_get(version = )`, `ihpd_versions()`, `ihpd_countries()`,
+`ihpd_get_local(path)`. Output cols: `Date, country, hpi, rhpi, pdi, rpdi`.
+There is no `hpdr_raw()` / `hpdr_sadf()` / `hpdr_bsadf()` — an early draft of
+this report invented those.
+
+`exuber`: `radf(x, lag = 1)`; critical values from the stored table
+`radf_crit[[NROW(x)]]` (not simulated per run); `tidy_join()`, `augment_join()`,
+`datestamp(est, cv, min_duration = 2)`.
+
+Dashboard reports 90% / 95% / 99% critical values. Reporting convention:
+≥95% = evidence of exuberance; 90–95% = caution; <90% = none.
+
+Observatory JSON API: `https://api.housing-observatory.com/datasets/int/index.json`
 
 ## References policy
 
@@ -108,33 +151,35 @@ Publish each release to Zenodo → DOI per version. Cite as:
 ### Report structure (canonical sections)
 
 ```
-1. Introduction
-   1.1 Background
-   1.2 The International Housing Observatory
-   1.3 Purpose of This Report
-   1.4 Scope
-
+1. Introduction — background, the Observatory, purpose, scope
 2. The International House Price Database
-   2.1 Country Coverage and Time Span
-   2.2 Variable Definitions (HPI, RHPI, PDI, RPDI)
-   2.3 Seasonal Adjustment
-   2.4 Real Series Construction
-   2.5 Programmatic Access — ihpdr R package
-
-3. Econometric Methodology
-   3.1 Exuberance Detection: GSADF Test (PSY 2015)
-   3.2 Fundamental Decomposition: PSY-IVX (Shi & Phillips 2021)
-   3.3 Rolling Window and Critical Values
-   3.4 Estimation — exuber R package
-
-4. Web Platform and Outputs
-   4.1 Dashboard
-   4.2 Quarterly PDF Reports
-   4.3 Update Cadence
-
-Appendix A. Country Sources
+   2.1 Overview and relationship to WP99   <- we summarise, WP99 is authoritative
+   2.2 Coverage (26 economies + 2 aggregates)
+   2.3 Variables
+   2.4 Construction methodology (benchmark, frequency conversion, splicing,
+       backcast/nowcast, BSTS seasonal adjustment, rebasing)
+   2.5 Release schedule and vintages
+   2.6 Data quality and known limitations
+3. Data Access — release files, ihpdr, Observatory JSON API, update workflow
+4. Econometric Methodology
+   4.1 The toolkit (three tools, three questions)
+   4.2 GSADF / BSADF date-stamping
+   4.3 Reporting conventions
+   4.4 PSY-IVX
+   4.5 Nowcasting (mixed-frequency DFM)     <- Erik owns this subsection
+5. Platform and Outputs — dashboard, quarterly reports, nowcast reports,
+   Housing Fever, software
+6. Planned Extensions — database, toolkit, real-time evaluation
+Appendix A. Coverage and country documentation
 Appendix B. Changelog / Version History
 ```
+
+### Editorial stance
+
+The report is a **companion to WP99, not a replacement**. Where WP99 already
+documents something in depth — above all the country-by-country sources — point
+there rather than restating it. Do not reconstruct per-country source tables
+from memory; that is how the previous draft acquired invented sources.
 
 ### Key exemplars for reference
 

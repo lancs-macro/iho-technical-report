@@ -44,13 +44,19 @@ Output: `main.pdf`
 New Dallas Fed quarterly releases appear at:
 https://www.dallasfed.org/research/international/houseprice
 
-Download pattern: `hp{YY}{Q}.xlsx` (e.g., `hp2504.xlsx` = 2025 Q4)
+Download pattern: `hp{YY}{Q}.xlsx`, where `Q` is the **last quarter included**,
+not the release month — e.g. `hp2504.xlsx` holds data through 2025 Q4 and is
+published in the first full week of January 2026. Releases land in the first
+full week of January, April, July and October.
 
 **Via R:**
 ```r
 library(ihpdr)
-raw   <- hpdr_raw()    # latest HPI, RHPI, PDI, RPDI
-bsadf <- hpdr_bsadf()  # latest BSADF sequences
+
+full_data <- ihpd_get()                 # current release, long format
+older     <- ihpd_get(version = "2303") # an archived vintage
+ihpd_versions()                         # what vintages exist
+ihpd_countries()                        # economies in the current release
 ```
 
 Save new files to `data/raw/`.
@@ -61,13 +67,22 @@ Save new files to `data/raw/`.
 
 | What to change | File |
 |---|---|
-| Title, authors, abstract | `main.tex` |
+| Title, authors, abstract, version | `main.tex` |
 | Introduction | `sections/01-introduction.tex` |
+| Abbreviations | `sections/notation.tex` |
 | Database description | `sections/02-database.tex` |
-| GSADF / PSY-IVX methodology | `sections/03-methodology.tex` |
-| Website and outputs | `sections/04-website-and-outputs.tex` |
+| Data access, ihpdr, API | `sections/03-data-access.tex` |
+| GSADF / PSY-IVX / nowcast methodology | `sections/04-methodology.tex` |
+| Platform and outputs | `sections/05-website-and-outputs.tex` |
+| Planned extensions | `sections/06-roadmap.tex` |
+| Coverage appendix | `sections/appendix-a-countries.tex` |
+| Changelog | `sections/appendix-b-changelog.tex` |
 | Bibliography | `references.bib` |
 | Figures | `figures/` (use `.pdf` or `.png`) |
+
+Reference PDFs live in `references/`, with `pdftotext -layout` output alongside
+them in `references/extracted/` so the source papers can be grepped and quoted
+without reopening the PDFs.
 
 ---
 
