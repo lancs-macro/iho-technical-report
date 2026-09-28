@@ -140,16 +140,16 @@ Format: `vMAJOR.MINOR.PATCH`
 | MINOR | Data update (quarterly release) or methodology refinement |
 | PATCH | Correction, typo fix, clarification |
 
-Starting version: `v1.0.0` — first complete release.
+Starting version: `v0.0.1` — initial release (pre-1.0 while the report is under review).
 
-Version appears in: title page, PDF filename (`ihpd-technical-report-v1.0.0.pdf`),
+Version appears in: title page, PDF filename (`ihpd-technical-report-v0.0.1.pdf`),
 and the version history table (Section — Changelog).
 
 ### Citability
 
 Publish each release to Zenodo → DOI per version. Cite as:
 > Vasilopoulos et al. (2025). *International Housing Observatory: Data and
-> Methods*. Technical Report v1.0.0. doi:10.5281/zenodo.XXXXXXX
+> Methods*. Technical Report v0.0.1. doi:10.5281/zenodo.XXXXXXX
 
 ### Report structure (canonical sections)
 
