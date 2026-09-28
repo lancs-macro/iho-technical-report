@@ -67,9 +67,10 @@
 \usepackage{listings}
 \lstset{
   language=R,
-  basicstyle=\small\ttfamily\color{ihoblue!90!black},
+  basicstyle=\small\ttfamily\color{ihoblue!90!black}\setstretch{1},
+  alsoletter={._},                    % min_duration is one identifier
   keywordstyle=\color{ihoaccent}\bfseries,
-  commentstyle=\color{gray}\itshape,
+  commentstyle=\color{gray},
   stringstyle=\color{teal!70!black},
   backgroundcolor=\color{iholight},
   frame=leftline, framerule=2.5pt, rulecolor=\color{ihoblue},
@@ -144,6 +145,7 @@
       at ([xshift=-2.8cm, yshift=1.5cm]current page.south east)
       {\reportdate};
   \end{tikzpicture}%
+  \setlength{\parindent}{0pt}%
   \sffamily
   \includegraphics[height=2.4cm]{iho-logo}\par
   \vspace{3cm}
@@ -171,7 +173,7 @@
   {\footnotesize\color{ihoblue!70}The views expressed here are those of the
     authors and do not necessarily represent those of the Federal Reserve Bank
     of Dallas or the Federal Reserve System.\par}
-  \vspace{3.2cm}
+  \vspace*{1.2cm}%  keep clear of the footer band
 \end{titlepage}
 
 % ── Front matter ──────────────────────────────────────────────────────────────
@@ -213,7 +215,7 @@ and Andres Escayola, E. (\reportdate).
 (\reportversion).
 \end{tcolorbox}
 
-\vspace{1.5em}
+\clearpage
 \tableofcontents
 
 \clearpage
