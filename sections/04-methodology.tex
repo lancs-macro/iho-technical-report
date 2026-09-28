@@ -7,28 +7,38 @@ The Observatory maintains three econometric tools, each answering a different
 question about the same data.
 
 \begin{enumerate}
-  \item \textbf{Is there exuberance, and when?} The GSADF test and its BSADF
-        date-stamping procedure \citep{phillips2015a, phillips2015b} detect
-        mildly explosive dynamics in a series and locate the episodes in
-        time. This is the Observatory's headline indicator, applied to every
-        economy in the database each quarter
-        (Section~\ref{subsec:gsadf}).
+  \item \textbf{Is there house price exuberance, and when?} The GSADF test
+        and its BSADF date-stamping procedure
+        \citep{phillips2015a, phillips2015b}, described in
+        Section~\ref{subsec:gsadf}, detect mildly explosive dynamics in a
+        series and locate the episodes in time. Intuitively, they flag
+        periods in which prices do not merely rise but accelerate, growing at
+        an increasing rate --- the signature of a market in which purchases
+        are driven by the expectation of further price increases. Applied to
+        the price-to-income ratio, the same tests flag periods in which prices
+        accelerate away from incomes. This is the Observatory's headline
+        indicator, applied to every economy in the database each quarter.
 
-  \item \textbf{Is it justified by fundamentals?} The PSY-IVX decomposition
+  \item \textbf{Are house prices evolving according to fundamentals?} The
+        PSY-IVX decomposition
         \citep{shi2021} separates the price-to-rent ratio into a component
         explained by fundamentals and a residual, and tests the residual for
         explosive behaviour. This distinguishes prices that are rising fast
         from prices that are rising fast \emph{without} fundamental support
         (Section~\ref{subsec:psyivx}).
 
-  \item \textbf{What is happening now?} A mixed-frequency dynamic factor
+  \item \textbf{Can we get ahead of the data release?} A mixed-frequency
+        dynamic factor
         model uses monthly indicators to nowcast the current quarter's real
         house price growth, ahead of the official release
         (Section~\ref{subsec:nowcast}).
 \end{enumerate}
 
-\noindent The first two are applied to the published IHPD series; the third
-exists because those series arrive with a lag.
+\noindent The first two are applied to the published IHPD series. The third
+exists because those series arrive with a lag of about a quarter, so that by
+the time a release confirms a turning point it is already months old. The
+nowcast gives an early read on the current quarter, which is most valuable
+precisely when markets are turning and timely evidence matters most.
 
 % ── GSADF ────────────────────────────────────────────────────────────────────
 \subsection{Detecting Exuberance: the GSADF Test}
@@ -135,8 +145,7 @@ are taken from \texttt{radf\_crit}, the package's stored table of simulated
 values indexed by sample size, rather than simulated afresh at each release,
 which keeps results reproducible across quarters.
 
-% ── Reporting ────────────────────────────────────────────────────────────────
-\subsection{Reporting Conventions}
+\subsubsection{Reporting Conventions}
 \label{subsec:reporting}
 
 Results are reported against simulated critical values at the 90\,\%, 95\,\%

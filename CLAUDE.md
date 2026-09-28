@@ -163,10 +163,10 @@ Publish each release to Zenodo → DOI per version. Cite as:
 3. Data Access — release files, ihpdr, Observatory JSON API, update workflow
 4. Econometric Methodology
    4.1 The toolkit (three tools, three questions)
-   4.2 GSADF / BSADF date-stamping
-   4.3 Reporting conventions
-   4.4 PSY-IVX
-   4.5 Nowcasting (mixed-frequency DFM)     <- Erik owns this subsection
+   4.2 GSADF / BSADF date-stamping (incl. reporting conventions)
+   4.3 PSY-IVX
+   4.4 Nowcasting (mixed-frequency DFM)     <- Erik owns this subsection
+   (4.2-4.4 mirror the three questions in 4.1)
 5. Platform and Outputs — dashboard, quarterly reports, nowcast reports,
    Housing Fever, software
 6. Planned Extensions — database, toolkit, real-time evaluation
