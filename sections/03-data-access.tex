@@ -44,59 +44,8 @@ worksheet holds all economies for one variable. The BSADF sequences in the
 requires a minimum initial estimation window (Section~\ref{subsec:gsadf}).
 
 Only the current release is linked from the Dallas Fed page. Earlier
-vintages remain retrievable programmatically, as described below, and the
-Observatory additionally archives release files it has used under
-\texttt{data/raw/}.
-
-\subsection{Programmatic Access via \texttt{ihpdr}}
-\label{subsec:ihpdr}
-
-The \texttt{ihpdr} \textsf{R} package \citep{ihpdr} downloads a release
-directly from the Dallas Fed server and returns it as a tidy data frame,
-handling the workbook parsing and the wide-to-long reshaping.
-
-\begin{lstlisting}[caption={Retrieving IHPD data with \texttt{ihpdr}}]
-install.packages("ihpdr")
-library(ihpdr)
-
-# Current release, all economies, all four variables
-full_data <- ihpd_get()
-
-# A specific vintage, identified as in the filename (YYQ)
-older <- ihpd_get(version = "2303")
-
-# Available vintages, and the economies in the current release
-ihpd_versions()
-ihpd_countries()
-\end{lstlisting}
-
-\noindent \texttt{ihpd\_get()} returns one row per economy-quarter, with the
-columns in Table~\ref{tab:data-structure}. Because the \texttt{version}
-argument accepts any archived vintage, real-time exercises that require the
-data as they stood at a past release can be run without maintaining a local
-archive.
-
-\begin{table}[ht]
-  \centering
-  \caption{Structure of \texttt{ihpd\_get()} output}
-  \label{tab:data-structure}
-  \begin{tabular}{llp{8.5cm}}
-    \toprule
-    Column & Type & Description \\
-    \midrule
-    \texttt{Date}    & Date    & Quarter start date \\
-    \texttt{country} & character & Economy name \\
-    \texttt{hpi}     & numeric & Nominal house price index (2005\,=\,100) \\
-    \texttt{rhpi}    & numeric & Real house price index (2005\,=\,100) \\
-    \texttt{pdi}     & numeric & Nominal per working-age capita disposable income \\
-    \texttt{rpdi}    & numeric & Real per working-age capita disposable income \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-The package is available on CRAN
-(\url{https://cran.r-project.org/web/packages/ihpdr/}) and GitHub
-(\url{https://github.com/kvasilopoulos/ihpdr}).
+vintages are retained by the Dallas Fed, and the Observatory additionally
+archives the release files it has used.
 
 \subsection{The Observatory Data API}
 \label{subsec:api}
@@ -122,7 +71,7 @@ Each release is incorporated through a fixed sequence:
 \begin{enumerate}
   \item The Dallas Fed publishes the new \texttt{hp} and \texttt{hpta}
         workbooks on the schedule in Table~\ref{tab:release-schedule}.
-  \item The release is retrieved with \texttt{ihpd\_get()} and archived.
+  \item The release is retrieved from the Dallas Fed and archived.
   \item The two indicator series are constructed: the real house price index,
         and the price-to-income ratio RHPI/RPDI.
   \item Exuberance statistics are re-estimated with \texttt{exuber}

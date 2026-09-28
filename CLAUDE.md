@@ -70,6 +70,9 @@ Regenerate extracted text after adding a PDF:
 
 ## Actual API surface (verified in `03-data/api/int/01-download.R`)
 
+**Do not mention `ihpdr` in the report text** (team decision, 2026-09-29: not a
+contribution worth featuring). Kept below for reference only.
+
 `ihpdr`: `ihpd_get(version = )`, `ihpd_versions()`, `ihpd_countries()`,
 `ihpd_get_local(path)`. Output cols: `Date, country, hpi, rhpi, pdi, rpdi`.
 There is no `hpdr_raw()` / `hpdr_sadf()` / `hpdr_bsadf()` — an early draft of
