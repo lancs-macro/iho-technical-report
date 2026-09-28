@@ -154,7 +154,7 @@ Publish each release to Zenodo → DOI per version. Cite as:
 ### Report structure (canonical sections)
 
 ```
-1. Introduction — background, the Observatory, purpose, scope
+1. Introduction — background, the IHPD, the Observatory, purpose, structure
 2. The International House Price Database
    2.1 Overview   <- we summarise, WP99 (mack2011) is authoritative
    2.2 Coverage (26 economies + 2 aggregates)
@@ -163,7 +163,7 @@ Publish each release to Zenodo → DOI per version. Cite as:
        backcast/nowcast, BSTS seasonal adjustment, rebasing)
    2.5 Release schedule and vintages
    2.6 Data quality and known limitations
-3. Data Access — release files, ihpdr, Observatory JSON API, update workflow
+3. Data Access — release files, Observatory JSON API, update workflow
 4. Econometric Methodology
    4.1 The toolkit (three tools, three questions)
    4.2 GSADF / BSADF date-stamping (incl. reporting conventions)
