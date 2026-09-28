@@ -31,8 +31,10 @@
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\sffamily\small\color{ihoblue}International Housing Observatory}
-\fancyhead[R]{\sffamily\small\color{ihoblue!70}Technical Report \reportversion}
+\renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+\fancyhead[L]{\sffamily\small\color{ihoblue}\textbf{IHO} Technical Report
+  \reportversion}
+\fancyhead[R]{\sffamily\small\color{ihoblue!70}\nouppercase{\leftmark}}
 \fancyfoot[C]{\sffamily\small\color{ihoblue}\thepage}
 \renewcommand{\headrulewidth}{0.5pt}
 \renewcommand{\headrule}{{\color{ihorule}%
@@ -48,8 +50,14 @@
 \usepackage{array}
 \usepackage{longtable}
 \usepackage{float}                    % [H]: tables stay where they are written
+\usepackage{etoolbox}
+\AtBeginEnvironment{table}{\small\sffamily}
 \arrayrulecolor{ihoblue}
-\renewcommand{\arraystretch}{1.15}
+\setlength{\aboverulesep}{0pt}        % let \rowcolor fill up to the rules
+\setlength{\belowrulesep}{0pt}
+\setlength{\heavyrulewidth}{1pt}
+\renewcommand{\arraystretch}{1.35}
+\newcommand{\thd}[1]{\bfseries\color{ihoblue}#1}  % table header cell
 
 % ── Graphics & boxes ──────────────────────────────────────────────────────────
 \usepackage{graphicx}
@@ -90,12 +98,14 @@
 
 % ── Bibliography ──────────────────────────────────────────────────────────────
 \usepackage[round, authoryear, sort]{natbib}
+\renewcommand{\bibfont}{\small}
+\setlength{\bibsep}{0.6em}
 
 % ── Section formatting ────────────────────────────────────────────────────────
 \usepackage{titlesec}
 \titleformat{\section}
   {\sffamily\Large\bfseries\color{ihoblue}}
-  {\color{ihoaccent}\thesection}{0.7em}{}
+  {\colorbox{ihoblue}{\makebox[1.1em]{\color{white}\thesection}}}{0.6em}{}
   [\vspace{3pt}{\color{ihorule}\titlerule[0.8pt]}]
 \titleformat{\subsection}
   {\sffamily\large\bfseries\color{ihoblue}}
@@ -123,6 +133,14 @@
 \DeclareCaptionFont{ihoblue}{\color{ihoblue}}
 \captionsetup{font={small,sf}, labelfont={bf,ihoblue}, labelsep=period,
               skip=6pt}
+
+% ── Key-facts box ─────────────────────────────────────────────────────────────
+\newtcolorbox{keyfacts}[1]{enhanced, colback=iholight, colframe=iholight,
+  boxrule=0pt, sharp corners, left=12pt, right=12pt, top=10pt, bottom=6pt,
+  before skip=1.2em, after skip=1.2em, fontupper=\small\sffamily,
+  title={#1}, fonttitle=\sffamily\bfseries\small, coltitle=white,
+  colbacktitle=ihoblue, attach boxed title to top left={xshift=10pt, yshift=-7pt},
+  boxed title style={sharp corners, boxrule=0pt}}
 
 % ─────────────────────────────────────────────────────────────────────────────
 \newcommand{\authorline}[2]{%
