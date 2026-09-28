@@ -51,13 +51,14 @@
 \usepackage{longtable}
 \usepackage{float}                    % [H]: tables stay where they are written
 \usepackage{etoolbox}
-\AtBeginEnvironment{table}{\small\sffamily}
+\AtBeginEnvironment{tabular}{\small\sffamily}
 \arrayrulecolor{ihoblue}
 \setlength{\aboverulesep}{0pt}        % let \rowcolor fill up to the rules
 \setlength{\belowrulesep}{0pt}
 \setlength{\heavyrulewidth}{1pt}
 \renewcommand{\arraystretch}{1.35}
-\newcommand{\thd}[1]{\bfseries\color{ihoblue}#1}  % table header cell
+% table header cell; \leavevmode stops \color pushing p{} cells down a line
+\newcommand{\thd}[1]{\leavevmode\bfseries\color{ihoblue}#1}
 
 % ── Graphics & boxes ──────────────────────────────────────────────────────────
 \usepackage{graphicx}
