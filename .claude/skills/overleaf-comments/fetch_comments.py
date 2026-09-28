@@ -149,6 +149,33 @@ def reply(path: Path) -> None:
             print(f"{tid}: HTTP {r.status}")
 
 
+def compile_project(out: Path) -> None:
+    """Trigger an Overleaf compile; save output.pdf/output.log to `out`, print errors."""
+    out.mkdir(parents=True, exist_ok=True)
+    with sync_playwright() as p:
+        ctx = launch(p, headless=True)
+        page = ctx.new_page()
+        page.goto(f"{BASE}/project/{PROJECT_ID}")
+        if "/login" in page.url:
+            sys.exit("Not authenticated. Refresh OVERLEAF_SESSION in .env.")
+        csrf = page.get_attribute('meta[name="ol-csrfToken"]', "content") or ""
+        r = ctx.request.post(f"{BASE}/project/{PROJECT_ID}/compile?auto_compile=false",
+                             data={"check": "silent", "draft": False, "incrementalCompilesEnabled": False},
+                             headers={"X-Csrf-Token": csrf}, timeout=240_000)
+        res = r.json()
+        print("status:", res.get("status"))
+        host = res.get("pdfDownloadDomain") or BASE
+        q = f"?clsiserverid={res['clsiServerId']}" if res.get("clsiServerId") else ""
+        for f in res.get("outputFiles", []):
+            if f["path"] in ("output.pdf", "output.log"):
+                (out / f["path"]).write_bytes(ctx.request.get(f"{host}{f['url']}{q}").body())
+    log = (out / "output.log").read_text(encoding="utf-8", errors="replace") if (out / "output.log").exists() else ""
+    errors = [l for l in log.splitlines() if l.startswith("!")]
+    print(f"errors: {len(errors)}", *errors[:15], sep="\n  ")
+    print(f"overfull boxes: {log.count('Overfull')}; undefined refs: {log.count('undefined')}")
+    print(f"saved to {out}")
+
+
 if __name__ == "__main__":
     sys.stdout.reconfigure(encoding="utf-8")  # type: ignore[attr-defined]
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -156,9 +183,12 @@ if __name__ == "__main__":
     ap.add_argument("--ref", default="overleaf/main", help="git ref used to map comments to lines")
     ap.add_argument("--all", action="store_true", help="include resolved threads")
     ap.add_argument("--reply", type=Path, metavar="JSON", help="post replies from {thread_id: text}")
+    ap.add_argument("--compile", type=Path, metavar="DIR", help="compile on Overleaf, save pdf+log to DIR")
     a = ap.parse_args()
     if a.login:
         login()
+    elif a.compile:
+        compile_project(a.compile)
     elif a.reply:
         reply(a.reply)
     else:
