@@ -49,6 +49,11 @@ that `overleaf/main^{tree}` still equals the tree the edits were based on, then
 tree without `.claude/` (temporary `GIT_INDEX_FILE` + `git rm --cached -r .claude`)
 so tooling stays out of the collaborators' file tree.
 
+Then keep GitHub tracking the same progress: `git fetch origin`; if
+`origin/main` is an ancestor of `main`, `git push origin main`. If it diverged
+(Overleaf's own GitHub sync pushes `overleaf-*` merge branches there), merge
+`origin/main` into `main` first, then push. Never force-push.
+
 After pushing, verify with `fetch_comments.py --compile <scratchpad>/build`: it
 compiles on Overleaf, saves `output.pdf`/`output.log`, and prints LaTeX errors.
 No local TeX needed; render pages with PyMuPDF to check layout visually.
