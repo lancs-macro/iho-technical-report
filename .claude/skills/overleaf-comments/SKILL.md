@@ -45,7 +45,13 @@ posted). Replies are visible to collaborators: only post what the user asked for
 The GitHub `main` and `overleaf/main` share no history. After re-fetching, check
 that `overleaf/main^{tree}` still equals the tree the edits were based on, then
 `git commit-tree HEAD^{tree} -p overleaf/main -m "..."` and push that commit to
-`overleaf main` (same token header as step 1). Never force-push.
+`overleaf main` (same token header as step 1). Never force-push. Build the
+tree without `.claude/` (temporary `GIT_INDEX_FILE` + `git rm --cached -r .claude`)
+so tooling stays out of the collaborators' file tree.
+
+After pushing, verify with `fetch_comments.py --compile <scratchpad>/build`: it
+compiles on Overleaf, saves `output.pdf`/`output.log`, and prints LaTeX errors.
+No local TeX needed; render pages with PyMuPDF to check layout visually.
 
 ## Notes
 - The routes are undocumented; if the JSON shape changes, inspect the raw
