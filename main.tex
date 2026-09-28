@@ -1,58 +1,90 @@
-\documentclass[12pt, a4paper]{article}
+\documentclass[11pt, a4paper]{article}
 
-% ── Encoding & fonts ──────────────────────────────────────────────────────────
+% ── Version ───────────────────────────────────────────────────────────────────
+\newcommand{\reportversion}{v1.0.0}
+\newcommand{\reportdate}{September 2026}
+
+% ── Encoding, maths & fonts ───────────────────────────────────────────────────
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
+\usepackage{amsmath, amsthm}          % before newtxmath; it supplies the symbols
+\usepackage{XCharter}                 % body text
+\usepackage[xcharter]{newtxmath}      % matching maths
+\usepackage[scale=0.92]{sourcesanspro} % headings, captions, labels
+\usepackage[scaled=0.9]{inconsolata}  % code and URLs
 \usepackage{microtype}
-\usepackage{lmodern}
+
+% ── Colours (from the Observatory website) ────────────────────────────────────
+\usepackage[table]{xcolor}
+\definecolor{ihoblue}{HTML}{314658}
+\definecolor{ihoaccent}{HTML}{003399}
+\definecolor{iholight}{HTML}{EEF1F4}
+\definecolor{ihorule}{HTML}{D5DADF}
 
 % ── Page layout ───────────────────────────────────────────────────────────────
-\usepackage[top=2.5cm, bottom=2.5cm, left=3cm, right=3cm]{geometry}
+\usepackage[top=2.6cm, bottom=2.6cm, left=2.8cm, right=2.8cm,
+            headheight=14pt]{geometry}
 \usepackage{setspace}
-\onehalfspacing
+\setstretch{1.2}
 
 % ── Headers and footers ───────────────────────────────────────────────────────
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\small\textit{International Housing Observatory}}
-\fancyhead[R]{\small Technical Report \reportversion}
-\fancyfoot[C]{\small\thepage}
-\renewcommand{\headrulewidth}{0.4pt}
-\renewcommand{\footrulewidth}{0pt}
+\fancyhead[L]{\sffamily\small\color{ihoblue}International Housing Observatory}
+\fancyhead[R]{\sffamily\small\color{ihoblue!70}Technical Report \reportversion}
+\fancyfoot[C]{\sffamily\small\color{ihoblue}\thepage}
+\renewcommand{\headrulewidth}{0.5pt}
+\renewcommand{\headrule}{{\color{ihorule}%
+  \hrule width\headwidth height\headrulewidth \vskip-\headrulewidth}}
 \fancypagestyle{plain}{%
   \fancyhf{}%
-  \fancyfoot[C]{\small\thepage}%
+  \fancyfoot[C]{\sffamily\small\color{ihoblue}\thepage}%
   \renewcommand{\headrulewidth}{0pt}%
 }
-
-% ── Mathematics ───────────────────────────────────────────────────────────────
-\usepackage{amsmath, amssymb, amsthm}
 
 % ── Tables ────────────────────────────────────────────────────────────────────
 \usepackage{booktabs}
 \usepackage{array}
 \usepackage{longtable}
+\usepackage{float}                    % [H]: tables stay where they are written
+\arrayrulecolor{ihoblue}
+\renewcommand{\arraystretch}{1.15}
 
-% ── Graphics ──────────────────────────────────────────────────────────────────
+% ── Graphics & boxes ──────────────────────────────────────────────────────────
 \usepackage{graphicx}
 \graphicspath{{figures/}}
+\usepackage{tikz}
+\usepackage[most]{tcolorbox}
+
+% ── Lists ─────────────────────────────────────────────────────────────────────
+\usepackage{enumitem}
+\setlist{itemsep=0.3em, topsep=0.6em}
+\setlist[itemize,1]{label=\textcolor{ihoaccent}{\textbullet}}
+\setlist[enumerate,1]{label=\textcolor{ihoaccent}{\sffamily\bfseries\arabic*.}}
 
 % ── Code listings ─────────────────────────────────────────────────────────────
 \usepackage{listings}
-\usepackage{xcolor}
 \lstset{
-  basicstyle=\small\ttfamily,
-  breaklines=true,
-  frame=single,
-  backgroundcolor=\color{gray!10},
-  language=R
+  language=R,
+  basicstyle=\small\ttfamily\color{ihoblue!90!black},
+  keywordstyle=\color{ihoaccent}\bfseries,
+  commentstyle=\color{gray}\itshape,
+  stringstyle=\color{teal!70!black},
+  backgroundcolor=\color{iholight},
+  frame=leftline, framerule=2.5pt, rulecolor=\color{ihoblue},
+  xleftmargin=8pt, framexleftmargin=8pt, framesep=0pt,
+  aboveskip=1.2em, belowskip=1em,
+  breaklines=true, columns=fullflexible, keepspaces=true, upquote=true
 }
 
 % ── URLs and hyperlinks ───────────────────────────────────────────────────────
 \usepackage{url}
-\usepackage[colorlinks=true, linkcolor=blue!60!black,
-            citecolor=blue!60!black, urlcolor=blue!60!black]{hyperref}
+\usepackage[colorlinks=true, linkcolor=ihoblue, citecolor=ihoaccent,
+            urlcolor=ihoaccent,
+            pdftitle={International Housing Observatory: Technical Report},
+            pdfauthor={Mart\'{i}nez-Garc\'{i}a, Pavlidis, Paya,
+                       Vasilopoulos, Andres Escayola}]{hyperref}
 \usepackage{xurl}
 
 % ── Bibliography ──────────────────────────────────────────────────────────────
@@ -60,54 +92,96 @@
 
 % ── Section formatting ────────────────────────────────────────────────────────
 \usepackage{titlesec}
-\titleformat{\section}{\large\bfseries}{\thesection.}{0.5em}{}
-\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
-\titleformat{\subsubsection}{\normalsize\itshape}{\thesubsubsection.}{0.5em}{}
+\titleformat{\section}
+  {\sffamily\Large\bfseries\color{ihoblue}}
+  {\color{ihoaccent}\thesection}{0.7em}{}
+  [\vspace{3pt}{\color{ihorule}\titlerule[0.8pt]}]
+\titleformat{\subsection}
+  {\sffamily\large\bfseries\color{ihoblue}}
+  {\color{ihoaccent}\thesubsection}{0.7em}{}
+\titleformat{\subsubsection}
+  {\sffamily\normalsize\bfseries\color{ihoblue}}
+  {\thesubsubsection}{0.7em}{}
+\titleformat{\paragraph}[runin]
+  {\sffamily\normalsize\bfseries\color{ihoblue}}{}{0pt}{}
+\titlespacing*{\section}{0pt}{2.4em plus 0.6em}{1.1em}
+\titlespacing*{\subsection}{0pt}{1.8em plus 0.4em}{0.7em}
+\titlespacing*{\subsubsection}{0pt}{1.3em plus 0.3em}{0.5em}
+\titlespacing*{\paragraph}{0pt}{1em plus 0.2em}{0.6em}
+
+% ── Table of contents ─────────────────────────────────────────────────────────
+\usepackage[titles]{tocloft}
+\renewcommand{\cftsecfont}{\sffamily\bfseries\color{ihoblue}}
+\renewcommand{\cftsecpagefont}{\sffamily\bfseries\color{ihoblue}}
+\renewcommand{\cftsubsecfont}{\sffamily}
+\renewcommand{\cftsubsecpagefont}{\sffamily}
+\setcounter{tocdepth}{2}
 
 % ── Captions ──────────────────────────────────────────────────────────────────
-\usepackage[labelfont=bf, font=small]{caption}
-
-% ── Abstract ──────────────────────────────────────────────────────────────────
-\usepackage{abstract}
-\renewcommand{\abstractname}{Abstract}
-
-% ── Version ───────────────────────────────────────────────────────────────────
-\newcommand{\reportversion}{v1.0.0}
-\newcommand{\reportdate}{September 2026}
+\usepackage{caption}
+\DeclareCaptionFont{ihoblue}{\color{ihoblue}}
+\captionsetup{font={small,sf}, labelfont={bf,ihoblue}, labelsep=period,
+              skip=6pt}
 
 % ─────────────────────────────────────────────────────────────────────────────
-\title{%
-  \textbf{International House Price Observatory}\\[0.4em]
-  \large Technical Report\\[0.3em]
-}
-
-\author{%
-  Enrique Mart\'{i}nez-Garc\'{i}a\thanks{Director. Federal Reserve Bank of Dallas,
-       Globalization Institute. The views expressed here are those of the authors
-       and do not necessarily represent those of the Federal Reserve Bank of
-       Dallas or the Federal Reserve System.}
-  \and Themis Pavlidis\thanks{Director. Lancaster University Management School,
-       Economics Department.}
-  \and Ivan Paya\thanks{Director. University of Alicante, Department of
-       Fundamentals of Economic Analysis.}
-  \and Kostas Vasilopoulos\thanks{Web Administrator.
-       \href{mailto:k.vasilopoulo@gmail.com}{\texttt{k.vasilopoulo@gmail.com}}.
-       \texttt{exuber} \textsf{R} package.}
-  \and Erik Andres Escayola\thanks{Researcher.}%
-}
-
-\date{%
-  Version \reportversion\\[0.2em]
-  \normalsize\reportdate%
-}
-% ─────────────────────────────────────────────────────────────────────────────
+\newcommand{\authorline}[2]{%
+  {\large\bfseries\color{ihoblue}#1}\\[1pt]
+  {\small\color{ihoblue!75}#2}\par\vspace{0.9em}}
 
 \begin{document}
 
-\maketitle
+% ── Title page ────────────────────────────────────────────────────────────────
+\begin{titlepage}
+  \begin{tikzpicture}[remember picture, overlay]
+    \fill[ihoblue] (current page.south west)
+      rectangle ([yshift=3cm]current page.south east);
+    \fill[ihoaccent] ([yshift=3cm]current page.south west)
+      rectangle ([yshift=3.15cm]current page.south east);
+    \node[anchor=west, text=white, font=\sffamily\small]
+      at ([xshift=2.8cm, yshift=1.5cm]current page.south west)
+      {int.housing-observatory.com};
+    \node[anchor=east, text=white, font=\sffamily\small]
+      at ([xshift=-2.8cm, yshift=1.5cm]current page.south east)
+      {\reportdate};
+  \end{tikzpicture}%
+  \sffamily
+  \includegraphics[height=2.4cm]{iho-logo}\par
+  \vspace{3cm}
+  {\color{ihoaccent}\large\bfseries\textls[150]{TECHNICAL REPORT}\par}
+  \vspace{0.8em}
+  {\color{ihoblue}\fontsize{32}{38}\selectfont\bfseries
+    International House Price\\Observatory\par}
+  \vspace{1.2em}
+  \tcbox[on line, colback=ihoblue, coltext=white, boxrule=0pt, arc=2pt,
+         left=6pt, right=6pt, top=2pt, bottom=2pt,
+         fontupper=\sffamily\small\bfseries]{Version \reportversion}
+  \par\vspace{2.8cm}
+  {\color{ihoaccent}\rule{2.5cm}{2pt}}\par\vspace{1.2em}
+  \authorline{Enrique Mart\'{i}nez-Garc\'{i}a}{Director \textperiodcentered{}
+    Federal Reserve Bank of Dallas, Globalization Institute}
+  \authorline{Themis Pavlidis}{Director \textperiodcentered{}
+    Lancaster University Management School, Economics Department}
+  \authorline{Ivan Paya}{Director \textperiodcentered{}
+    University of Alicante, Department of Fundamentals of Economic Analysis}
+  \authorline{Kostas Vasilopoulos}{Web Administrator \textperiodcentered{}
+    \texttt{exuber} \textsf{R} package \textperiodcentered{}
+    \href{mailto:k.vasilopoulo@gmail.com}{\color{ihoblue!75}k.vasilopoulo@gmail.com}}
+  \authorline{Erik Andres Escayola}{Researcher}
+  \vfill
+  {\footnotesize\color{ihoblue!70}The views expressed here are those of the
+    authors and do not necessarily represent those of the Federal Reserve Bank
+    of Dallas or the Federal Reserve System.\par}
+  \vspace{3.2cm}
+\end{titlepage}
+
+% ── Front matter ──────────────────────────────────────────────────────────────
+\pagenumbering{roman}
 \thispagestyle{plain}
 
-\begin{abstract}
+\begin{tcolorbox}[enhanced, colback=iholight, colframe=ihoblue, boxrule=0pt,
+                  leftrule=3pt, sharp corners, left=12pt, right=12pt,
+                  top=10pt, bottom=10pt]
+{\sffamily\large\bfseries\color{ihoblue}Abstract}\par\medskip
   The International Housing Observatory is a joint initiative of the Federal
   Reserve Bank of Dallas, Lancaster University and the University of Alicante,
   set up to monitor developments in international housing markets using a
@@ -128,18 +202,22 @@
   A final section records planned extensions to the database and the toolkit.
   This report is a living document updated alongside each data release; the
   version history is in Appendix~\ref{app:changelog}.
-\end{abstract}
+\end{tcolorbox}
 
-\vspace{1em}
-\noindent\rule{\linewidth}{0.4pt}
-{\small\noindent\textbf{Suggested citation:}
+\begin{tcolorbox}[colback=white, colframe=ihorule, boxrule=0.6pt,
+                  sharp corners, left=12pt, right=12pt, fontupper=\small]
+{\sffamily\bfseries\color{ihoblue}Suggested citation}\par\smallskip
 Mart\'{i}nez-Garc\'{i}a, E., Pavlidis, T., Paya, I., Vasilopoulos, K.,
 and Andres Escayola, E. (\reportdate).
 \textit{International Housing Observatory: Technical Report}
-(\reportversion).}
-\noindent\rule{\linewidth}{0.4pt}
+(\reportversion).
+\end{tcolorbox}
+
+\vspace{1.5em}
+\tableofcontents
 
 \clearpage
+\pagenumbering{arabic}
 
 % ── Sections ──────────────────────────────────────────────────────────────────
 \input{sections/01-introduction}
