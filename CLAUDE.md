@@ -156,7 +156,7 @@ Publish each release to Zenodo → DOI per version. Cite as:
 ```
 1. Introduction — background, the Observatory, purpose, scope
 2. The International House Price Database
-   2.1 Overview and relationship to WP99   <- we summarise, WP99 is authoritative
+   2.1 Overview   <- we summarise, WP99 (mack2011) is authoritative
    2.2 Coverage (26 economies + 2 aggregates)
    2.3 Variables
    2.4 Construction methodology (benchmark, frequency conversion, splicing,
